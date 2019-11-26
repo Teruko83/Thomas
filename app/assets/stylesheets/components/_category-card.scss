@@ -1,4 +1,13 @@
+.category-selector{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .category-card{
+  vertical-align: center;
+  width: 140px;
+  height: 110px;
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
   font-size: 14px;
@@ -10,4 +19,8 @@
 
 .category-card img{
   height: 50px;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
+
+
