@@ -1,0 +1,57 @@
+.button-blue-large{
+  width: 300px;
+  height: 50px;
+  background-color: #82C4C8;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  padding: 13px 10px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.button-blue-small{
+  width: 140px;
+  height: 50px;
+  background-color: #82C4C8;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  padding: 13px 10px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.button-yellow-small{
+  width: 158px;
+  height: 50px;
+  background-color: #DFAB7B;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  padding: 13px 10px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.button-red-small{
+  width: 158px;
+  height: 50px;
+  background-color: #D87171;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  padding: 13px 10px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.time-selector{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

@@ -1,4 +1,39 @@
-
 <%= link_to "Go to breastfeeding", new_baby_breast_feeding_path(@baby) %>
 <%= link_to "Go to bottlefeeding", new_baby_bottle_feeding_path(@baby) %>
 
+<br>
+<h3 style="text-align:center">Category Selector</h3>
+<div class="category-selector">
+  <div class="category-card">
+    <img src="<%= image_path('baby-bottle.svg') %>" alt="">
+    <div><p>Some stats</p></div>
+  </div>
+</div>
+<br>
+<h3 style="text-align:center">Time selector</h3>
+<div class="time-selector">
+<div class="button-blue-small">+5min</div>
+<div class="button-blue-small">+10min</div>
+<div class="button-blue-small">+15min</div>
+<div class="button-blue-small">+20min</div>
+</div>
+<br>
+<h3 style="text-align:center">Navigation buttons</h3>
+<div class="button-blue-large">Accept</div>
+<div class="button-yellow-small">Reset</div>
+<div class="button-red-small">Cancel</div>
+<br>
+<h3 style="text-align:center">Text fields</h3>
+<input class="textfield-rounded" id="email-box" placeholder="Email"></div>
+<input class="textfield-rounded" id="name-box" placeholder="Name"></div>
+<br>
+<h3 style="text-align:center">Toggle access</h3>
+<div class="toggle-switch">
+  <div>
+    <p>Nany Louisia</p>
+  </div>
+  <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+    <label class="custom-control-label" for="customSwitch1"></label>
+  </div>
+</div>
