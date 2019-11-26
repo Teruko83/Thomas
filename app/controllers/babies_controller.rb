@@ -1,4 +1,8 @@
 class BabiesController < ApplicationController
+  def index
+    @babies = current_user.babies
+  end
+
   def show
     @baby = Baby.find(params[:id])
   end
@@ -13,12 +17,13 @@ class BabiesController < ApplicationController
     if @baby.save
       redirect_to user_path(current_user)
     else
-      render "babies/new"
+      render "new_baby"
+    end
   end
 
   private
 
   def params_private_baby
-    params.require(:baby).permit(:first_name, :date_of_birth, :category, :bio, :photo, :price)
+    params.require(:baby).permit(:first_name, :birthdate)
   end
 end
