@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_170656) do
+ActiveRecord::Schema.define(version: 2019_11_26_175457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "babies", force: :cascade do |t|
+    t.string "name"
+    t.date "birthdate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedings", force: :cascade do |t|
+    t.time "start"
+    t.boolean "breast"
+    t.string "breast_side"
+    t.time "duration"
+    t.integer "quantity"
+    t.bigint "baby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_feedings_on_baby_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +46,5 @@ ActiveRecord::Schema.define(version: 2019_11_26_170656) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedings", "babies"
 end

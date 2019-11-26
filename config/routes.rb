@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'baby#show'
+
+  resources :babies, only: [:show, :create, :new] do
+      resources :breast_feedings, only: [:create, :new]
+      resources :bottle_feedings, only: [:create, :new]
+      resources :feedings, only: [:index]
+  end
+
+  resources :feedings, only: [:destroy]
+  resources :users, only: [:show]
 end

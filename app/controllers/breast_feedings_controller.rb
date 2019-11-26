@@ -1,0 +1,2 @@
+class BreastFeedingsController < ApplicationController
+end
