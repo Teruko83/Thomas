@@ -1,4 +1,5 @@
 class BabiesController < ApplicationController
+ 
   def index
     @babies = current_user.babies
   end
@@ -26,4 +27,5 @@ class BabiesController < ApplicationController
   def params_private_baby
     params.require(:baby).permit(:first_name, :birthdate)
   end
+
 end
