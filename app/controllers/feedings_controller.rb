@@ -1,2 +1,0 @@
-class FeedingsController < ApplicationController
-end
