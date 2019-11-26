@@ -1,10 +1,7 @@
 class Createbottlefeedings < ActiveRecord::Migration[5.2]
   def change
-    create_table :feedings do |t|
-      t.time :start
-      t.boolean :breast
-      t.string :breast_side
-      t.time :duration
+    create_table :bottlefeedings do |t|
+      t.datetime :start
       t.integer :quantity
       t.references :baby, foreign_key: true
 
