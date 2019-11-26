@@ -1,0 +1,26 @@
+.category-selector{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.category-card{
+  vertical-align: center;
+  width: 140px;
+  height: 110px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  background-color: #E5E5E5;
+  border-radius: 10px;
+}
+
+.category-card img{
+  height: 50px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+
