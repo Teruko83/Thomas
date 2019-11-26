@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_210126) do
-
+ActiveRecord::Schema.define(version: 2019_11_26_205936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +25,12 @@ ActiveRecord::Schema.define(version: 2019_11_26_210126) do
   end
 
   create_table "bottlefeedings", force: :cascade do |t|
+    t.datetime "start"
+    t.integer "quantity"
+    t.bigint "baby_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_bottlefeedings_on_baby_id"
   end
 
   create_table "breastfeedings", force: :cascade do |t|
@@ -40,18 +43,6 @@ ActiveRecord::Schema.define(version: 2019_11_26_210126) do
     t.datetime "updated_at", null: false
     t.integer "duration_minutes"
     t.index ["baby_id"], name: "index_breastfeedings_on_baby_id"
-  end
-
-  create_table "feedings", force: :cascade do |t|
-    t.time "start"
-    t.boolean "breast"
-    t.string "breast_side"
-    t.time "duration"
-    t.integer "quantity"
-    t.bigint "baby_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["baby_id"], name: "index_feedings_on_baby_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,6 +58,6 @@ ActiveRecord::Schema.define(version: 2019_11_26_210126) do
   end
 
   add_foreign_key "babies", "users"
+  add_foreign_key "bottlefeedings", "babies"
   add_foreign_key "breastfeedings", "babies"
-  add_foreign_key "feedings", "babies"
 end
