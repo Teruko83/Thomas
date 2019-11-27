@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_205936) do
+ActiveRecord::Schema.define(version: 2019_11_27_213738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_205936) do
     t.index ["baby_id"], name: "index_bottlefeedings_on_baby_id"
   end
 
-  create_table "breastfeedings", force: :cascade do |t|
+  create_table "breast_feedings", force: :cascade do |t|
     t.time "start"
     t.boolean "breast"
     t.string "breast_side"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_205936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "duration_minutes"
-    t.index ["baby_id"], name: "index_breastfeedings_on_baby_id"
+    t.index ["baby_id"], name: "index_breast_feedings_on_baby_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,5 +59,5 @@ ActiveRecord::Schema.define(version: 2019_11_26_205936) do
 
   add_foreign_key "babies", "users"
   add_foreign_key "bottlefeedings", "babies"
-  add_foreign_key "breastfeedings", "babies"
+  add_foreign_key "breast_feedings", "babies"
 end
