@@ -1,1 +1,47 @@
+<div class="back-close-nav">
+  <div><a href="user_path"><img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></a></div>
+</div>
 
+<h1>Bottle Feeding</h1>
+
+<img src="<%= image_path('baby-bottle.svg') %>" alt="" style="height:160px; display: block; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 25px">
+
+<h2 id="quantity" style="padding: 10px;">0</h2>
+
+<div class="time-selector">
+  <div class="button-blue-small" id="tenml">+10ml</div>
+  <div class="button-blue-small" id="twentyml">+20ml</div>
+  <div class="button-blue-small" id="fiftyml">+50ml</div>
+  <div class="button-blue-small" id="hundredml">+100ml</div>
+</div>
+
+
+<div style="display: flex; justify-content: center; flex-wrap: wrap; margin-top: 20px">
+<%= link_to "Accept", baby_bottle_feedings_path(@baby, quantityFeeded: 0), method: :post, class: "button-blue-large", id: "acceptBtn" %>
+<div class="button-red-large" id="cancelBtn">Cancel</div>
+</div>
+
+<script>
+
+  const displayedQuantity = document.getElementById("quantity");
+  const acceptBtn = document.getElementById("acceptBtn");
+  const cancelBtn = document.getElementById("cancelBtn");
+
+  document.getElementById("tenml").addEventListener("click", () => {addMinutes(10)});
+  document.getElementById("twentyml").addEventListener("click", () => {addMinutes(20)});
+  document.getElementById("fiftyml").addEventListener("click", () => {addMinutes(50)});
+  document.getElementById("hundredml").addEventListener("click", () => {addMinutes(100)});
+  document.getElementById("cancelBtn").addEventListener("click", () => {resetMinutes()});
+
+  function addMinutes(quantityToAdd) {
+    const actualQuantity = Number(displayedQuantity.innerText)
+    const newQuantity = actualQuantity + quantityToAdd;
+    displayedQuantity.innerHTML =  newQuantity;
+    acceptBtn.href = "/babies/1/bottle_feedings?quantityFeeded=" + newQuantity;
+  }
+
+  function resetMinutes() {
+    displayedQuantity.innerHTML =  0;
+  }
+
+</script>
