@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
-
   def home
+    @baby = current_user.babies.first
   end
 end

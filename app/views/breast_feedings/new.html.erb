@@ -1,0 +1,15 @@
+
+
+
+<div id="start" class="button-blue-small">Start</div>
+<div id="stop" class="button-blue-small">Stop</div>
+
+<div id="basicUsage">00:00:00</div>
+
+
+
+
+<%= simple_form_for [@baby, @feeding] do |f| %>
+<%= f.input(:duration_minutes, as: :hidden) %>
+<%= f.submit("Send the new entry", class: "button-blue-small") %>
+<% end %>

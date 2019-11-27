@@ -1,10 +1,11 @@
 class BabiesController < ApplicationController
- 
+
   def index
     @babies = current_user.babies
   end
 
   def show
+
     @baby = Baby.find(params[:id])
   end
 
