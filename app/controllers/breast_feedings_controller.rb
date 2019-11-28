@@ -9,17 +9,19 @@ class BreastFeedingsController < ApplicationController
   end
 
   def create
-    @feeding = BreastFeeding.new(breastfeedingsparams)
-    @baby = Baby.find(params[:baby_id])
-    @feeding.baby = @baby
-    @feeding.save
-    # redirect _ to
+
+      @feeding = BreastFeeding.new(breastfeedingsparams)
+      @baby = Baby.find(params[:baby_id])
+      @feeding.baby = @baby
+      @feeding.save
+      # redirect _ to
+
   end
 
-private
+  private
 
-  def breastfeedingsparams
-    params.require(:breast_feeding).permit(:duration_minutes)
-  end
+    def breastfeedingsparams
+      params.require(:breast_feeding).permit(:duration_minutes, :baby_id)
+    end
 
 end

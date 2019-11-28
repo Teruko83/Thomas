@@ -12,8 +12,8 @@ const timer = () => {
   });
   stopButton.addEventListener('click', () => {
     timer.pause();
-    const inputBreastTimer = document.querySelector('#breast_feeding_duration_minutes');
-    inputBreastTimer.value = timer.getTotalTimeValues().seconds;
+    const inputBreastTimer = document.querySelectorAll('#breast_feeding_duration_minutes')[0];
+    inputBreastTimer.value = timer.getTotalTimeValues().minutes;
   });
 
 };

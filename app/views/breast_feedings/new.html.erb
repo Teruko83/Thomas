@@ -1,17 +1,71 @@
+<div class="back-close-nav">
+  <div><a href="/"><img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></a></div>
+</div>
 
-<div id="start" class="button-blue-small">Start</div>
-<div id="stop" class="button-blue-small">Stop</div>
+<h1>Breast Feeding</h1>
 
-<div id="basicUsage">00:00:00</div>
+  <div id="basicUsage">00:00:00</div>
+
+  <div class="time-selector">
+  <div id="start" class="button-yellow-small">Start</div>
+  <div id="stop" class="button-red-small">Stop</div>
+
+    <%= simple_form_for [@baby, @feeding] do |f| %>
+    <%= f.input(:duration_minutes, as: :hidden) %>
+    <%= f.submit("New entry", class: "button-blue-small") %>
+    <% end %>
+</div>
 
 
+<div class="back-close-nav">
+  <div><a href="user_path"><img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></a></div>
+</div>
 
 
-<%= simple_form_for [@baby, @feeding] do |f| %>
-<%= f.input(:duration_minutes, as: :hidden) %>
-<%= f.submit("Send the new entry", class: "button-blue-small") %>
-<% end %>
-<h1>Add your breastfeeding info</h1>
+<h2 id="quantity" style="padding: 10px;">0</h2>
 
-<%= link_to "Confirm" , baby_bottle_feedings_path%>
+<div class="time-selector">
+  <div class="button-blue-small" id="5min">+5 min</div>
+  <div class="button-blue-small" id="10min">+10 min</div>
+  <div class="button-blue-small" id="20min">+20 min</div>
+  <div class="button-blue-small" id="30min">+30 min</div>
+</div>
 
+  <%= simple_form_for [@baby, @feeding] do |f| %>
+  <%= f.input(:duration_minutes, as: :hidden)%>
+  <%= f.submit("Accept", class: "button-blue-small") %>
+  <% end %>
+
+<div style="display: flex; justify-content: center; flex-wrap: wrap; margin-top: 20px">
+<%#= link_to "Accept", baby_breast_feedings_path(breast_feeding: { duration_minutes: 0 }), method: :post, class: "button-blue-large", id: "acceptBtn" %>
+
+<div class="button-red-large" id="cancelBtn">Cancel</div>
+</div>
+
+<script>
+
+  const displayedQuantity = document.getElementById("quantity");
+  const acceptBtn = document.getElementById("acceptBtn");
+  const cancelBtn = document.getElementById("cancelBtn");
+
+  document.getElementById("5min").addEventListener("click", () => {addMinutes(5)});
+  document.getElementById("10min").addEventListener("click", () => {addMinutes(10)});
+  document.getElementById("20min").addEventListener("click", () => {addMinutes(20)});
+  document.getElementById("30min").addEventListener("click", () => {addMinutes(30)});
+  document.getElementById("cancelBtn").addEventListener("click", () => {resetMinutes()});
+
+  function addMinutes(quantityToAdd) {
+    const actualQuantity = Number(displayedQuantity.innerText)
+    const newQuantity = actualQuantity + quantityToAdd;
+    const manualForm = document.querySelectorAll('#breast_feeding_duration_minutes')[1]
+    manualForm.value = newQuantity;
+    displayedQuantity.innerHTML =  newQuantity;
+    console.log(manualForm.value);
+    //acceptBtn.href = "/babies/3/breast_feedings?duration_minutes=" + newQuantity;
+  }
+
+  function resetMinutes() {
+    displayedQuantity.innerHTML =  0;
+  }
+
+</script>
