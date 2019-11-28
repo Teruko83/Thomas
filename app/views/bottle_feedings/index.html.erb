@@ -2,11 +2,11 @@
 
 <h2> Overview of all the feedings </h2>
 
-<%# @feedings.each do |f| %>
-  <p>type: <%#= f[:type] %></p>
-  <p>quantity: <%#= f[:quantity] %></p>
-  <p>time_fed: <%#= f[:time_fed] %></p>
-<%# end %>
+<% @feedings.each do |f| %>
+  <p>type: <%= f[:type] %></p>
+  <p>quantity: <%= f[:quantity] %></p>
+  <p>time_fed: <%= f[:time_fed] %></p>
+<% end %>
 
 <%= link_to "Back to baby's profil" , root_path %>
 

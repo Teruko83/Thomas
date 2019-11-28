@@ -1,8 +1,8 @@
 class BottleFeedingsController < ApplicationController
   def index
-    baby = Baby.find(params[:baby_id])
-    @bottlefeedings = baby.bottlefeedings
-    @breastfeedings = baby.breastfeedings
+    @baby = Baby.find(params[:baby_id])
+    @bottlefeedings = @baby.bottlefeedings
+    @breastfeedings = @baby.breastfeedings
 
     @feedings = []
 
