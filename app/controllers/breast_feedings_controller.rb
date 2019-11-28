@@ -21,7 +21,7 @@ class BreastFeedingsController < ApplicationController
     @baby = Baby.find(params[:baby_id])
     @feeding.baby = @baby
     @feeding.save
-    # redirect _ to
+    redirect_to baby_breast_feedings_path(@baby)
   end
 
   private

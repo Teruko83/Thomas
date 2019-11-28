@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     # AKA ====> an Array of hashes / in every hash, keys are x and y, values are date and consumption
     @last7 = quantityforjs(7)
     @last30 = quantityforjs(30)
+    @baby = current_user.babies.first
   end
 
   def quantityforjs(span) # span must be an integer
@@ -24,8 +25,6 @@ class PagesController < ApplicationController
       span_quantity << hash1
     end
     span_quantity
+  end
 
-    def home
-    @baby = current_user.babies.first
-    end
 end

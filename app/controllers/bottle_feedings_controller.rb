@@ -44,7 +44,7 @@ class BottleFeedingsController < ApplicationController
     @bottle_feeding.baby = @baby
     @bottle_feeding.quantity = params[:quantityFeeded]
     if @bottle_feeding.save
-      redirect_to user_path(current_user)
+      redirect_to baby_bottlefeedings_path(@baby)
     else
       render "alert"
     end
