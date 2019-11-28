@@ -1,7 +1,7 @@
 import Chart from "chart.js";
 
-let myChart = document.getElementById('myChart').getContext('2d');
-let chartTest = JSON.parse(document.getElementById('myChart').dataset.bottlefeedingweek);
+let myChart = document.getElementById('mybreastchart').getContext('2d');
+let chartTest = JSON.parse(document.getElementById('mybreastchart').dataset.breastfeedingweek);
 
 // Global Options
 Chart.defaults.global.defaultFontFamily = 'Lato';
@@ -36,11 +36,12 @@ let ConsumptionChart = new Chart(myChart, {
 document.getElementById("last7").addEventListener("click", getLastSevenConsumption);
 const getLastSevenConsumption = () => {
   // Parse data from rails view
-  const rawDataset = JSON.parse(document.getElementById('myChart').dataset.bottlefeedingweek);
+  const rawDataset = JSON.parse(document.getElementById('mybreastchart').dataset.breastfeedingweek);
+  console.log('raw dataset', rawDataset)
   const finalData = [];
   rawDataset.forEach(record => {
     const xValue = record.start;
-    const yValue = record.quantity;
+    const yValue = record.duration_minutes;
     const feeding = { x: xValue, y: yValue };
     finalData.push(feeding);
   })
@@ -72,37 +73,9 @@ const getLastSevenConsumption = () => {
     }
     });
 };
-document.getElementById("last30").addEventListener("click", getLastThirtyConsumption);
-const getLastThirtyConsumption = () => {
-  chartTest = JSON.parse(document.getElementById('myChart').dataset.consumptionthirty)
-  ConsumptionChart = new Chart(myChart, {
-      type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
-      data:{
-        datasets:[{
-          label:'Last thirty days',
-          data: chartTest,
-          backgroundColor:'#0F0D25',
-          borderWidth:1,
-          borderColor:'#777',
-          hoverBorderWidth:3,
-          hoverBorderColor:'#000'
-        }]
-      },
-      options: {
-        scales: {
-            xAxes: [{
-                type: 'time',
-                distribution: 'series',
-                time: {
-                    unit: 'day'
-                }
-            }]
-        }
-    }
-    });
-};
-const initChart = () => {
+
+const initBreastChart = () => {
   getLastSevenConsumption();
-  // getLastThirtyConsumption();
 }
-export {initChart};
+
+initBreastChart();

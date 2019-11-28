@@ -4,6 +4,11 @@ class BreastFeedingsController < ApplicationController
   end
 
   def index
+    @baby = Baby.find(params[:baby_id])
+    @breast_feedings = @baby.breast_feedings
+
+    @last7 = @breast_feedings.last(7)
+    @last30 = @breast_feedings.last(30)
   end
 
   def new
