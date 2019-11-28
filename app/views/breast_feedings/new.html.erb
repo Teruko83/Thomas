@@ -4,23 +4,17 @@
 
 <h1>Breast Feeding</h1>
 
-  <div id="basicUsage">00:00:00</div>
+<div id="basicUsage" style="text-align: center;" ><h2>00:00:00</h2></div>
 
-  <div class="time-selector">
+<div class="time-selector">
   <div id="start" class="button-yellow-small">Start</div>
   <div id="stop" class="button-red-small">Stop</div>
-
     <%= simple_form_for [@baby, @feeding] do |f| %>
-    <%= f.input(:duration_minutes, as: :hidden) %>
-    <%= f.submit("New entry", class: "button-blue-small") %>
+        <%= f.input(:duration_minutes, as: :hidden) %>
+        <%= f.submit("New entry", class: "button-blue-large") %>
     <% end %>
+  </div>
 </div>
-
-
-<div class="back-close-nav">
-  <div><a href="user_path"><img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></a></div>
-</div>
-
 
 <h2 id="quantity" style="padding: 10px;">0</h2>
 
@@ -31,16 +25,19 @@
   <div class="button-blue-small" id="30min">+30 min</div>
 </div>
 
-  <%= simple_form_for [@baby, @feeding] do |f| %>
-  <%= f.input(:duration_minutes, as: :hidden)%>
-  <%= f.submit("Accept", class: "button-blue-small") %>
-  <% end %>
 
 <div style="display: flex; justify-content: center; flex-wrap: wrap; margin-top: 20px">
+  <%= simple_form_for [@baby, @feeding] do |f| %>
+    <%= f.input(:duration_minutes, as: :hidden)%>
+    <%= f.submit("Accept", class: "button-blue-large") %>
+  <% end %>
 <%#= link_to "Accept", baby_breast_feedings_path(breast_feeding: { duration_minutes: 0 }), method: :post, class: "button-blue-large", id: "acceptBtn" %>
 
 <div class="button-red-large" id="cancelBtn">Cancel</div>
 </div>
+
+
+<%= javascript_pack_tag 'timer' %>
 
 <script>
 

@@ -19,3 +19,5 @@ const timer = () => {
 };
 
 export {timer};
+
+timer();
