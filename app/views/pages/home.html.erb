@@ -1,14 +1,13 @@
-<%= link_to "Go to breastfeeding", new_baby_breast_feeding_path(@baby) %>
-<%= link_to "Go to bottlefeeding", new_baby_bottle_feeding_path(@baby) %>
-
-<div class="back-close-nav">
-  <div><img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:20px; margin:15px"></div>
-  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:20px; margin:15px"></div>
+<div class="home-header">
+  <div><img src="<%= image_path('thomas-logo.png') %>" alt="" style="width: 100px"></div>
+  <div style="text-align: right;"><img src=" <%= image_path('adam.jpg') %> " alt="" class="avatar"></div>
 </div>
-<br>
-<br>
-<br>
-<h1 style="text-align:center">Category Selector</h1>
+
+<div style="display: flex; justify-content: center;">
+  <h1 style="text-align:center">Anita</h1>
+  <img src="<%= image_path('down-arrow.svg') %>" alt="" style="width: 15px; margin-left: 10px; margin-bottom: 8px;">
+</div>
+
 <div class="category-selector">
   <div class="category-card">
     <img src="<%= image_path('baby-bottle.svg') %>" alt="">
@@ -29,48 +28,18 @@
 </div>
 
 <div class="time-selector">
-<div class="button-blue-small"> <%= link_to "Add bottlefeeding", new_baby_bottle_feeding_path(@baby)
- %></div>
-<div class="button-blue-small"> <%= link_to "Add breastfeeding", new_baby_breast_feeding_path(@baby)
- %></div>
+  <div class="button-blue-small"> <%= link_to "Bottle", new_baby_bottle_feeding_path(@baby) %></div>
+  <div class="button-blue-small"> <%= link_to "Breast", new_baby_breast_feeding_path(@baby) %></div>
 </div>
 
+<div class="button-blue-large">Sleep</div>
+<div class="button-blue-large">Diapers</div>
+<div class="button-blue-large">Growth/weight</div>
+<div class="button-blue-large">Mood</div>
 
-<h1>--------------------------------------</h1>
+<div class="down-arrow" style="margin-top: 25px"><img src="<%= image_path('down-arrow.svg') %>" alt=""></div>
 
-
-<br>
-<h1 style="text-align:center">Time selector</h1>
-<div class="time-selector">
-<div class="button-blue-small">+5min</div>
-<div class="button-blue-small">+10min</div>
-<div class="button-blue-small">+15min</div>
-<div class="button-blue-small">+20min</div>
-</div>
-<br>
-<h1 style="text-align:center">Navigation buttons</h1>
-<div class="button-blue-large">Accept</div>
-<div class="button-yellow-small">Reset</div>
-<div class="button-red-small">Cancel</div>
-<br>
-<h1 style="text-align:center">Text fields</h1>
-<input class="textfield-rounded" id="email-box" placeholder="Email"></div>
-<input class="textfield-rounded" id="name-box" placeholder="Name"></div>
-<br>
-<h1 style="text-align:center">Toggle access</h1>
-<div class="toggle-switch">
-  <div>
-    <p>Nany Louisia</p>
-  </div>
-  <div class="custom-control custom-switch">
-    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-    <label class="custom-control-label" for="customSwitch1"></label>
-  </div>
-</div>
-
-<div class="down-arrow"><img src="<%= image_path('down-arrow.svg') %>" alt=""></div>
-
-<h1 style="text-align:center">Log row</h1>
+<h1 style="text-align:center">Your Day</h1>
 
 <div class="log-row">
   <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
@@ -86,18 +55,3 @@
   <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
 </div>
 <hr>
-<h1>Text links</h1>
-<a href="#">Log in</a>
-
-<hr>
-
-<h1>Babies infos</h1>
-<div>
-  <div class="baby-info">
-    <div><p>Name</p></div> <div><p>Athena</p></div>
-  </div>
-  <div class="baby-info">
-    <div><p>Birthdate</p></div> <div><p>10/12/18</p></div>
-  </div>
-</div>
-
