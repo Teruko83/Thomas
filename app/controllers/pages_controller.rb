@@ -24,9 +24,9 @@ class PagesController < ApplicationController
       span_quantity << hash1
     end
     span_quantity
+  end
 
-    def home
-      @baby = current_user.babies.first
-    end
+  def home
+    @baby = current_user.babies.first
   end
 end
