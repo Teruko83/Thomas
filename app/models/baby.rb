@@ -1,6 +1,6 @@
 class Baby < ApplicationRecord
   belongs_to :user
-  has_many :breastfeedings
-  has_many :bottlefeedings
+  has_many :breastfeedings, dependent: :destroy
+  has_many :bottlefeedings, dependent: :destroy
   validates :name, :birthdate, presence: true
 end
