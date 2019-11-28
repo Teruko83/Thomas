@@ -24,6 +24,10 @@ class PagesController < ApplicationController
       span_quantity << hash1
     end
     span_quantity
+
+  def home
+    @baby = current_user.babies.first
+
   end
 end
 
