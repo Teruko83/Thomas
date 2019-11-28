@@ -25,9 +25,8 @@ class PagesController < ApplicationController
     end
     span_quantity
 
-  def home
-    @baby = current_user.babies.first
-
+    def home
+      @baby = current_user.babies.first
+    end
   end
 end
-
