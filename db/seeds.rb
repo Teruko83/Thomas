@@ -126,11 +126,11 @@ require 'faker'
   Baby.all.each do |baby|
     bottlefeeding = baby.bottlefeedings
     bottlefeeding.each_with_index do |feeding, index|
-      feeding.update!(start: DateTime.now - index)
+      feeding.update!(start_date: DateTime.now - index)
     end
     breast_feeding = baby.breast_feedings
     breast_feeding.each_with_index do |feeding, index|
-      feeding.update!(start: DateTime.now - index )
+      feeding.update!(start_date: DateTime.now - index )
     end
   end
 

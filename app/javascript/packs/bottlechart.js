@@ -39,7 +39,7 @@ const getLastSevenConsumption = () => {
   const rawDataset = JSON.parse(document.getElementById('myChart').dataset.bottlefeedingweek);
   const finalData = [];
   rawDataset.forEach(record => {
-    const xValue = record.start;
+    const xValue = record.start_date;
     const yValue = record.quantity;
     const feeding = { x: xValue, y: yValue };
     finalData.push(feeding);

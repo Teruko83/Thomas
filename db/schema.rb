@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_210736) do
+ActiveRecord::Schema.define(version: 2019_11_29_162828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_210736) do
     t.bigint "baby_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
     t.index ["baby_id"], name: "index_bottlefeedings_on_baby_id"
   end
 
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_210736) do
     t.datetime "updated_at", null: false
     t.integer "duration_minutes"
     t.datetime "start"
+    t.datetime "start_date"
     t.index ["baby_id"], name: "index_breast_feedings_on_baby_id"
   end
 

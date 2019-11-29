@@ -10,7 +10,7 @@ class BottleFeedingsController < ApplicationController
       feeding = {
         type: "bottle",
         quantity: "#{b.quantity}ml",
-        time_fed: b.created_at
+        time_fed: b.start_date
       }
     @feedings << feeding
     end
@@ -19,12 +19,12 @@ class BottleFeedingsController < ApplicationController
       feeding = {
         type: "boob",
         quantity: "#{b.duration_minutes}min",
-        time_fed: b.created_at
+        time_fed: b.start_date
       }
     @feedings << feeding
     end
 
-    @feedings.sort_by { |f| f[:time_fed] }
+    @feedings.sort_by { |f| f[:start_date] }
 
     # Find the baby by user
     @last7 = @bottlefeedings.last(7)
