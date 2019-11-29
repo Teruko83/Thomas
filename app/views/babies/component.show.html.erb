@@ -1,0 +1,96 @@
+<h1>CECI EST LA PAGE AVEC LES COMPONENTS, NE RIEN CODER, CE N'EST PAS LA HOME PAGE</h1>
+<%= link_to "Go to breastfeeding", new_baby_breast_feeding_path(@baby) %>
+<%= link_to "Go to bottlefeeding", new_baby_bottle_feeding_path(@baby) %>
+<br>
+<br>
+<br>
+
+<div class="back-close-nav">
+  <div><a href="/"><img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></a></div>
+  <div><a href="/"><img src="<%= image_path('close.svg') %>" alt="" style="width:25px; margin:25px"></a></div>
+</div>
+<br>
+<br>
+<br>
+<h1 style="text-align:center">Category Selector</h1>
+<div class="category-selector">
+  <div class="category-card">
+    <img src="<%= image_path('baby-bottle.svg') %>" alt="">
+    <div><p>125ml</p></div>
+  </div>
+  <div class="category-card">
+    <img src="<%= image_path('moon.svg') %>" alt="">
+    <div><p>4.5h</p></div>
+  </div>
+  <div class="category-card">
+    <img src="<%= image_path('give.svg') %>" alt="">
+    <div><p>Happy</p></div>
+  </div>
+  <div class="category-card">
+    <img src="<%= image_path('diaper.svg') %>" alt="">
+    <div><p>4 changes</p></div>
+  </div>
+</div>
+<br>
+<h1 style="text-align:center">Time selector</h1>
+<div class="time-selector">
+<div class="button-blue-small">+5min</div>
+<div class="button-blue-small">+10min</div>
+<div class="button-blue-small">+15min</div>
+<div class="button-blue-small">+20min</div>
+</div>
+<br>
+<h1 style="text-align:center">Navigation buttons</h1>
+<div class="button-blue-large">Accept</div>
+<div class="button-yellow-small">Reset</div>
+<div class="button-red-large">Cancel</div>
+<div class="button-red-small">Cancel</div>
+<br>
+<h1 style="text-align:center">Text fields</h1>
+<input class="textfield-rounded" id="email-box" placeholder="Email"></div>
+<input class="textfield-rounded" id="name-box" placeholder="Name"></div>
+<br>
+<h1 style="text-align:center">Toggle access</h1>
+<div class="toggle-switch">
+  <div>
+    <p>Nany Louisia</p>
+  </div>
+  <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+    <label class="custom-control-label" for="customSwitch1"></label>
+  </div>
+</div>
+
+<div class="down-arrow"><img src="<%= image_path('down-arrow.svg') %>" alt=""></div>
+
+<h1 style="text-align:center">Log row</h1>
+
+<div class="log-row">
+  <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
+  <div><p>150ml</p></div>
+  <div><p>14H00</p></div>
+  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+</div>
+<hr>
+<div class="log-row">
+  <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
+  <div><p>150ml</p></div>
+  <div><p>14H00</p></div>
+  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+</div>
+<hr>
+<h1>Text links</h1>
+<a href="#">Log in</a>
+
+<hr>
+
+<h1>Babies infos</h1>
+<div>
+  <div class="baby-info">
+    <div><p>Name</p></div> <div><p>Athena</p></div>
+  </div>
+  <div class="baby-info">
+    <div><p>Birthdate</p></div> <div><p>10/12/18</p></div>
+  </div>
+</div>
+

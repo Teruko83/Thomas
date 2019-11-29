@@ -6,8 +6,15 @@ class PagesController < ApplicationController
     # AKA ====> an Array of hashes / in every hash, keys are x and y, values are date and consumption
     @last7 = quantityforjs(7)
     @last30 = quantityforjs(30)
-    @baby = current_user.babies.first
+
+# if user == current_user
+#   @baby = current_user.babies.first
+#   after_sign_in_path redirect_to baby_path(@baby)
+# else
+# end
   end
+
+
 
   def quantityforjs(span) # span must be an integer
     @baby = Baby.first # User.first is for testing, to be replaced by current_user

@@ -5,8 +5,8 @@ class BabiesController < ApplicationController
   end
 
   def show
-
     @baby = Baby.find(params[:id])
+    # @baby = current_user.babies.first
   end
 
   def new
