@@ -1,3 +1,9 @@
+<div class="back-close-nav">
+<%= link_to baby_path(@baby) do %>
+ <div>
+ <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+</div>
+<% end %>
 
 
 <h2> Overview of all the feedings </h2>
@@ -8,7 +14,8 @@
   <p>time_fed: <%= f[:time_fed] %></p>
 <% end %>
 
-<%= link_to "Back to baby's profil" , root_path %>
+
+
 
 <h1>Graph</h1>
  <div class="container">

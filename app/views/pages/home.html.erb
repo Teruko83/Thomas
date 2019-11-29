@@ -1,56 +1,6 @@
-<div class="home-header">
-  <div><img src="<%= image_path('thomas-logo.png') %>" alt="" style="width: 100px"></div>
-  <div style="text-align: right;"><img src=" <%= image_path('adam.jpg') %> " alt="" class="avatar"></div>
-</div>
+  <%= render 'shared/navbar' %>
 
-<div style="display: flex; justify-content: center;">
-  <h1 style="text-align:center">Anita</h1>
-  <img src="<%= image_path('down-arrow.svg') %>" alt="" style="width: 15px; margin-left: 10px; margin-bottom: 8px;">
-</div>
+<h1> Home page</h1>
 
-<div class="category-selector">
-  <div class="category-card">
-    <img src="<%= image_path('baby-bottle.svg') %>" alt="">
-    <div><p>125ml</p></div>
-  </div>
-  <div class="category-card">
-    <img src="<%= image_path('moon.svg') %>" alt="">
-    <div><p>4.5h</p></div>
-  </div>
-  <div class="category-card">
-    <img src="<%= image_path('give.svg') %>" alt="">
-    <div><p>Happy</p></div>
-  </div>
-  <div class="category-card">
-    <img src="<%= image_path('diaper.svg') %>" alt="">
-    <div><p>4 changes</p></div>
-  </div>
-</div>
 
-<div class="time-selector">
-  <div class="button-blue-small"> <%= link_to "Bottle", new_baby_bottle_feeding_path(@baby) %></div>
-  <div class="button-blue-small"> <%= link_to "Breast", new_baby_breast_feeding_path(@baby) %></div>
-</div>
-
-<div class="button-blue-large">Sleep</div>
-<div class="button-blue-large">Mood</div>
-<div class="button-blue-large">Diapers</div>
-
-<div class="down-arrow" style="margin-top: 25px"><img src="<%= image_path('down-arrow.svg') %>" alt=""></div>
-
-<h1 style="text-align:center">Your Day</h1>
-
-<div class="log-row">
-  <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
-  <div><p>150ml</p></div>
-  <div><p>14H00</p></div>
-  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
-</div>
-<hr>
-<div class="log-row">
-  <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
-  <div><p>150ml</p></div>
-  <div><p>14H00</p></div>
-  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
-</div>
-<hr>
+<h3>Merci de vous identifier pour avoir acces à Thomas</h3>

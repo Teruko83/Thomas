@@ -1,3 +1,11 @@
+<div class="back-close-nav">
+<%= link_to baby_path(@baby) do %>
+ <div>
+ <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+</div>
+<% end %>
+
+
 <h1>Graph</h1>
  <div class="container">
     <canvas id="mybreastchart" data-breastfeedingweek="<%= @last7.to_json %>" data-breastfeedingmonth="<%= @last30.to_json %>" ></canvas>
