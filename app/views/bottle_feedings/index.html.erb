@@ -1,23 +1,35 @@
+<div class="back-close-nav">
+  <div><a href="/"><img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></a></div>
+</div>
 
-
-<h2> Overview of all the feedings </h2>
+<h1>Feedings</h1>
+ <div class="container">
+    <canvas id="myChart" data-bottlefeedingweek="<%= @last7.to_json %>" data-bottlefeedingmonth="<%= @last30.to_json %>" style="padding-bottom: 25px" ></canvas>
+ </div>
+<div class="time-selector" >
+  <div id="last7" class="button-blue-small">7 days</div>
+  <div id="last30" class="button-blue-small">30 days</div>
+</div>
+<div class="button-blue-large">Add an entry</div>
+<br>
 
 <% @feedings.each do |f| %>
-  <p>type: <%= f[:type] %></p>
-  <p>quantity: <%= f[:quantity] %></p>
-  <p>time_fed: <%= f[:time_fed] %></p>
+<div class="log-row">
+  <% if f[:type] == "bottle" %>
+    <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
+  <% else %>
+    <div><img src="<%= image_path('breast.svg') %>" alt="" style="width:30px"></div>
+  <% end %>
+
+  <div><p><%= f[:quantity] %></p></div>
+  <div><p><%= f[:time_fed] %></p></div>
+  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+</div>
+<hr>
 <% end %>
 
 <%= link_to "Back to baby's profil" , root_path %>
 
-<h1>Graph</h1>
- <div class="container">
-    <canvas id="myChart" data-bottlefeedingweek="<%= @last7.to_json %>" data-bottlefeedingmonth="<%= @last30.to_json %>" ></canvas>
- </div>
-<div class="container">
-  <div id="last7" class="btn btn-ghost">Last 7 days</div>
-  <div id="last30" class="btn btn-ghost">Last 30 days</div>
-</div>
 
 
 <%= javascript_pack_tag 'bottlechart' %>
