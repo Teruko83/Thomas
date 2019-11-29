@@ -2,7 +2,6 @@ class BottleFeedingsController < ApplicationController
   def index
     @baby = Baby.find(params[:baby_id])
     @bottlefeedings = @baby.bottlefeedings
-    @breastfeedings = @baby.breast_feedings
 
     @feedings = []
 
@@ -15,20 +14,12 @@ class BottleFeedingsController < ApplicationController
     @feedings << feeding
     end
 
-    @breastfeedings.each do |b|
-      feeding = {
-        type: "boob",
-        quantity: "#{b.duration_minutes}min",
-        time_fed: b.start_date
-      }
-    @feedings << feeding
-    end
-
     @feedings.sort_by { |f| f[:start_date] }
 
     # Find the baby by user
-    @last7 = @bottlefeedings.last(7)
-    @last30 = @bottlefeedings.last(30)
+
+    @last7 = @bottlefeedings.order(:start_date).last(7)
+    @last30 = @bottlefeedings.order(:start_date).last(30)
   end
 
   def show
@@ -42,6 +33,7 @@ class BottleFeedingsController < ApplicationController
   def create
     @baby = Baby.find(params[:baby_id])
     @bottle_feeding = Bottlefeeding.new(bottlefeedparams)
+    @bottle_feeding.start_date = Date.today
     @bottle_feeding.baby = @baby
     if @bottle_feeding.save
       redirect_to baby_bottle_feedings_path(@baby)
