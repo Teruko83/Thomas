@@ -4,6 +4,8 @@ const timer = () => {
   const timer = new Timer();
   const startButton = document.querySelector("#start");
   const stopButton = document.querySelector("#stop");
+  if (startButton === null || stopButton === null) return;
+
   timer.addEventListener('secondsUpdated', function (e) {
       $('#basicUsage').html(timer.getTimeValues().toString());
   });
@@ -18,6 +20,4 @@ const timer = () => {
 
 };
 
-export {timer};
-
-timer();
+export { timer };
