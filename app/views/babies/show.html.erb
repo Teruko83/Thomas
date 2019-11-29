@@ -1,6 +1,5 @@
 <%= render 'shared/navbar' %>
 
-
 <div class="home-header">
   <div><img src="<%= image_path('thomas-logo.png') %>" alt="" style="width: 100px"></div>
   <div style="text-align: right;"><img src=" <%= image_path('adam.jpg') %> " alt="" class="avatar"></div>
@@ -12,10 +11,14 @@
 </div>
 
 <div class="category-selector">
+
+<%= link_to baby_bottle_feedings_path(@baby) do %>
   <div class="category-card">
     <img src="<%= image_path('baby-bottle.svg') %>" alt="">
     <div><p>125ml</p></div>
   </div>
+<% end %>
+
   <div class="category-card">
     <img src="<%= image_path('moon.svg') %>" alt="">
     <div><p>4.5h</p></div>
