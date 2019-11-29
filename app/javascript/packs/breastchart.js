@@ -38,12 +38,34 @@ const getLastSevenConsumption = () => {
   // Parse data from rails view
   const rawDataset = JSON.parse(document.getElementById('mybreastchart').dataset.breastfeedingweek);
   console.log('raw dataset', rawDataset)
-  const finalData = [];
+  const intermediateData = [];
   rawDataset.forEach(record => {
     const xValue = record.start_date;
     const yValue = record.duration_minutes;
     const feeding = { x: xValue, y: yValue };
-    finalData.push(feeding);
+    intermediateData.push(feeding);
+  })
+
+  const finalData = [];
+
+  intermediateData.forEach((feeding) => {
+    const dateString = feeding.x;
+    const date = new Date(dateString);
+    const dateWithoutTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    const feedingWithDuplicateDate = finalData.find((finalDataFeeding) => {
+      const finalDateString = finalDataFeeding.x;
+      const finalDate = new Date(finalDateString);
+      const finalDateWithoutTime = new Date(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate());
+
+      return finalDateWithoutTime.getTime() === dateWithoutTime.getTime();
+    })
+
+    if (feedingWithDuplicateDate) {
+      feedingWithDuplicateDate.y += feeding.y;
+    } else {
+      finalData.push(feeding)
+    }
   })
 
   let ConsumptionChart = new Chart(myChart, {
