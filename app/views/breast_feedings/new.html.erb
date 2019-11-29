@@ -54,7 +54,9 @@
   function addMinutes(quantityToAdd) {
     const actualQuantity = Number(displayedQuantity.innerText)
     const newQuantity = actualQuantity + quantityToAdd;
+    // query select hidden form for breast feedings
     const manualForm = document.querySelectorAll('#breast_feeding_duration_minutes')[1]
+    // set the value of the query selected variable of the form above to the new value
     manualForm.value = newQuantity;
     displayedQuantity.innerHTML =  newQuantity;
     console.log(manualForm.value);

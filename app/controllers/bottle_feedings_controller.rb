@@ -36,17 +36,23 @@ class BottleFeedingsController < ApplicationController
 
   def new
     @baby = Baby.find(params[:baby_id])
+    @feeding = Bottlefeeding.new
   end
 
   def create
     @baby = Baby.find(params[:baby_id])
-    @bottle_feeding = Bottlefeeding.new
+    @bottle_feeding = Bottlefeeding.new(bottlefeedparams)
     @bottle_feeding.baby = @baby
-    @bottle_feeding.quantity = params[:quantityFeeded]
     if @bottle_feeding.save
-      redirect_to baby_bottlefeedings_path(@baby)
+      redirect_to baby_bottle_feedings_path(@baby)
     else
       render "alert"
     end
+  end
+
+  private
+
+  def bottlefeedparams
+    params.require(:bottle_feeding).permit(:quantity)
   end
 end
