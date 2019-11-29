@@ -10,9 +10,9 @@
  <div class="container">
     <canvas id="mybreastchart" data-breastfeedingweek="<%= @last7.to_json %>" data-breastfeedingmonth="<%= @last30.to_json %>" ></canvas>
  </div>
-<div class="container">
-  <div id="last7" class="btn btn-ghost">Last 7 days</div>
-  <div id="last30" class="btn btn-ghost">Last 30 days</div>
+<div class="time-selector">
+  <div id="last7" class="button-blue-small">Last 7 days</div>
+  <div id="last30" class="button-blue-small">Last 30 days</div>
 </div>
 
 <% @feedings.each do |f| %>
