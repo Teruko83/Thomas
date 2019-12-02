@@ -41,17 +41,19 @@
 
 <h1 style="text-align:center">Your Day</h1>
 
-<div class="log-row">
-  <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
-  <div><p>150ml</p></div>
-  <div><p>14H00</p></div>
-  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
-</div>
-<hr>
-<div class="log-row">
-  <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
-  <div><p>150ml</p></div>
-  <div><p>14H00</p></div>
-  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
-</div>
-<hr>
+<% @feedings.each do |f| %>
+  <div class="log-row">
+    <% if f[:type] == "bottle" %>
+      <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
+      <div><p><%= f[:quantity] %></p></div>
+      <div><p><%= f[:time_fed] %></p></div>
+      <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+    <% else %>
+      <div><img src="<%= image_path('breast.svg') %>" alt="" style="width:30px"></div>
+      <div><p><%= f[:duration_minutes] %></p></div>
+      <div><p><%= f[:time_fed] %></p></div>
+      <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+    <% end %>
+  </div>
+  <hr>
+<% end %>
