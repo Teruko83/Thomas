@@ -1,0 +1,29 @@
+<div class="back-close-nav">
+
+<%= link_to baby_path(@baby) do %>
+ <div>
+ <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+</div>
+<% end %>
+
+
+<h1>Sleep Sessions</h1>
+
+<% @sleeps.each do |s| %>
+<div class="log-row">
+  <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
+  <div><p><%= s[:sleep_type] %></p></div>
+  <div><p><%= s[:sleep_time] %></p></div>
+  <div><p><%= s[:start_date] %></p></div>
+  <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:15px"></div>
+</div>
+<hr>
+<% end %>
+
+
+
+
+
+
+<%= javascript_pack_tag 'bottlechart' %>
+
