@@ -8,6 +8,17 @@
 
 
 <h1>Sleep Sessions</h1>
+<br>
+<div class="container" style="margin-bottom: 45px;">
+
+  <div class="range-slider">
+    <span id="rs-bullet" class="rs-label">0</span>
+    <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="10" step="0.5">
+  </div>
+
+</div>
+<div class="button-blue-large">Confirm</div>
+
 
 <% @sleeps.each do |s| %>
 <div class="log-row">
@@ -20,10 +31,21 @@
 <hr>
 <% end %>
 
+<div class="down-arrow" style="margin-top: 25px"><img src="<%= image_path('down-arrow.svg') %>" alt=""></div>
 
+<h1 style="text-align:center">Your Day</h1>
 
+<script>
+  var rangeSlider = document.getElementById("rs-range-line");
+  var rangeBullet = document.getElementById("rs-bullet");
 
+  rangeSlider.addEventListener("input", showSliderValue, false);
 
+  function showSliderValue() {
+    rangeBullet.innerHTML = rangeSlider.value;
+    var bulletPosition = (rangeSlider.value /rangeSlider.max);
 
-<%= javascript_pack_tag 'bottlechart' %>
+  }
+
+</script>
 
