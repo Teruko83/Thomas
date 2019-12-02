@@ -2,11 +2,38 @@ class BabiesController < ApplicationController
 
   def index
     @babies = current_user.babies
+
   end
 
   def show
     @baby = Baby.find(params[:id])
     # @baby = current_user.babies.first
+    @bottlefeedings = @baby.bottlefeedings
+    @breastfeedings = @baby.breast_feedings
+
+    @feedings = []
+
+    @bottlefeedings.each do |b|
+      feeding = {
+        type: "bottle",
+        quantity: "#{b.quantity}ml",
+        time_fed: b.start_date
+      }
+
+    @feedings << feeding
+    end
+
+    @breastfeedings.each do |b|
+      feeding = {
+        type: "boob",
+        duration_minutes: "#{b.duration_minutes}min",
+        time_fed: b.start_date
+      }
+
+    @feedings << feeding
+    end
+    @feedings = @feedings.sort_by { |f| f[:start_date] }
+
   end
 
   def new
