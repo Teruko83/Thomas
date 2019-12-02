@@ -4,4 +4,5 @@ class Baby < ApplicationRecord
   has_many :bottlefeedings, dependent: :destroy
   has_many :sleeps, dependent: :destroy
   validates :name, :birthdate, presence: true
+  has_many :care_takings
 end

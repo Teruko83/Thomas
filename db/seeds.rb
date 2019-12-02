@@ -30,6 +30,8 @@ require 'faker'
   baby5 = Baby.create!(name: "Zoé", birthdate: "26/02/2015",user: user3)
   baby6 = Baby.create!(name: "Baltazar", birthdate: "01/05/2018", user: user3)
 
+  CareTaking.create(baby: baby1, user: user3)
+
   brfeeding1 = BreastFeeding.create!(start: "10:10", duration_minutes: 25,  breast_side: "R" baby: baby6)
   brfeeding2 = BreastFeeding.create!(start: "12:10", duration_minutes: 35,  breast_side: "L" baby: baby3)
   brfeeding3 = BreastFeeding.create!(start: "13:15", duration_minutes: 15,  breast_side: "R" baby: baby2)
@@ -121,7 +123,6 @@ require 'faker'
   bofeeding33 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby1)
   bofeeding35 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5)
   bofeeding36 = Bottlefeeding.create!(start: "21:40", quantity: 40, baby: baby4)
-
 
   Baby.all.each do |baby|
     bottlefeeding = baby.bottlefeedings
