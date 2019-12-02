@@ -41,6 +41,10 @@ class BottleFeedingsController < ApplicationController
       render "alert"
     end
   end
+   def destroy
+    Bottlefeeding.Find(params[:id]).destroy
+    redirect_to baby_bottle_feeding(@baby)
+  end
 
   private
 

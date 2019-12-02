@@ -23,13 +23,11 @@
   <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
   <div><p><%= f[:quantity] %></p></div>
   <div><p><%= f[:time_fed] %></p></div>
-  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+  <%= link_to 'img src="close.svg"', method: :delete %>
+
 </div>
 <hr>
 <% end %>
-
-
-
 
 
 
