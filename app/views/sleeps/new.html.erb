@@ -1,6 +1,10 @@
-<h1>Sleeps#new</h1>
-<p>Find me in app/views/sleeps/new.html.erb</p>
+<div class="back-close-nav">
 
+<%= link_to baby_path(@baby) do %>
+  <div>
+    <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+  </div>
+<% end %>
 
 <h1>Sleep Sessions</h1>
 <br>
@@ -30,9 +34,12 @@
     rangeBullet.innerHTML = rangeSlider.value;
     var bulletPosition = (rangeSlider.value /rangeSlider.max);
 
-    console.log(rangeSlider.value)
+    const newData = document.getElementById("sleep_sleep_time");
+    // set the value of the query selected variable of the form above to the new value `newQuantity`
+    newData.value = bulletPosition * 100;
 
   }
+
 
   // const displayedQuantity = rangeBullet.innerHTML;
 
