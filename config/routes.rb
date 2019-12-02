@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :breast_feedings, only: [:create, :new, :show, :index]
       resources :bottle_feedings, only: [:create, :new, :show, :index]
   end
-
+  resources :breast_feedings, only: [:destroy]
   resources :bottle_feedings, only: [:destroy]
   resources :users, only: [:show]
 end

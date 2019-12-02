@@ -13,7 +13,8 @@ class BreastFeedingsController < ApplicationController
       feeding = {
         type: "boob",
         quantity: "#{b.duration_minutes}min",
-        time_fed: b.start_date
+        time_fed: b.start_date,
+        id: b.id
       }
       @feedings << feeding
     end
@@ -29,17 +30,26 @@ class BreastFeedingsController < ApplicationController
   end
 
   def new
-    @feeding = BreastFeeding.new
     @baby = Baby.find(params[:baby_id])
+    @feeding = BreastFeeding.new
   end
 
   def create
-    @feeding = BreastFeeding.new(breastfeedingsparams)
-    @feeding.start_date = DateTime.today
     @baby = Baby.find(params[:baby_id])
+    @feeding = BreastFeeding.new(breastfeedingsparams)
+    @feeding.start_date = DateTime.now
     @feeding.baby = @baby
-    @feeding.save
-    redirect_to baby_breast_feedings_path(@baby)
+      if @feeding.save
+      redirect_to baby_breast_feedings_path(@baby)
+      else
+      render "alert"
+      end
+  end
+
+  def destroy
+    breastfeeding = BreastFeeding.find(params[:id])
+    breastfeeding.destroy
+    redirect_to baby_breast_feedings_path(breastfeeding.baby)
   end
 
   private

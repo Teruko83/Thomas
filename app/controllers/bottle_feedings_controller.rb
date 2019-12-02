@@ -46,7 +46,8 @@ class BottleFeedingsController < ApplicationController
       render "alert"
     end
   end
-   def destroy
+
+  def destroy
     bottlefeeding = Bottlefeeding.find(params[:id])
     bottlefeeding.destroy
     redirect_to baby_bottle_feedings_path(bottlefeeding.baby)
