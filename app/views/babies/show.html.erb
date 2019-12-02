@@ -7,25 +7,28 @@
 
 <div class="category-selector">
 
-<%= link_to baby_bottle_feedings_path(@baby) do %>
-  <div class="category-card">
-    <img src="<%= image_path('baby-bottle.svg') %>" alt="">
-    <div><p>125ml</p></div>
-  </div>
-<% end %>
+  <%= link_to baby_bottle_feedings_path(@baby) do %>
+    <div class="category-card">
+      <img src="<%= image_path('baby-bottle.svg') %>" alt="">
+      <div><p>125ml</p></div>
+    </div>
+  <% end %>
 
-  <div class="category-card">
-    <img src="<%= image_path('moon.svg') %>" alt="">
-    <div><p>4.5h</p></div>
-  </div>
-  <div class="category-card">
-    <img src="<%= image_path('give.svg') %>" alt="">
-    <div><p>Happy</p></div>
-  </div>
-  <div class="category-card">
-    <img src="<%= image_path('diaper.svg') %>" alt="">
-    <div><p>4 changes</p></div>
-  </div>
+    <div class="category-card">
+      <img src="<%= image_path('moon.svg') %>" alt="">
+      <div><p>4.5h</p></div>
+    </div>
+    <div class="category-card">
+      <img src="<%= image_path('give.svg') %>" alt="">
+      <div><p>Happy</p></div>
+    </div>
+  <%= link_to baby_diapers_path(@baby) do %>
+    <div class="category-card">
+      <img src="<%= image_path('diaper.svg') %>" alt="">
+      <div><p>4 changes</p></div>
+    </div>
+  <% end %>
+
 </div>
 
 <div class="time-selector">
@@ -35,7 +38,7 @@
 
 <div class="button-blue-large">Sleep</div>
 <div class="button-blue-large">Mood</div>
-<div class="button-blue-large">Diapers</div>
+<div class="button-blue-large"> <%= link_to "Diapers", new_baby_diaper_path(@baby) %></div>
 
 <div class="down-arrow" style="margin-top: 25px"><img src="<%= image_path('down-arrow.svg') %>" alt=""></div>
 
