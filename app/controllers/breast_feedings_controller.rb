@@ -18,10 +18,14 @@ class BreastFeedingsController < ApplicationController
       @feedings << feeding
     end
 
-    @feedings.sort_by { |f| f[:start_date] }
+    @feedings.sort_by! { |f| f[:time_fed] }.reverse!
 
-    @last7 = @breast_feedings.order(:start_date).last(7)
-    @last30 = @breast_feedings.order(:start_date).last(30)
+    @last7 = @breast_feedings
+      .where(start_date: 7.days.ago..DateTime.now)
+      .order(:start_date)
+    @last30 = @breast_feedings
+      .where(start_date: 30.days.ago..DateTime.now)
+      .order(:start_date)
   end
 
   def new
@@ -31,7 +35,7 @@ class BreastFeedingsController < ApplicationController
 
   def create
     @feeding = BreastFeeding.new(breastfeedingsparams)
-    @feeding.start_date = Date.today
+    @feeding.start_date = DateTime.today
     @baby = Baby.find(params[:baby_id])
     @feeding.baby = @baby
     @feeding.save

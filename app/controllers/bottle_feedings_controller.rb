@@ -19,8 +19,12 @@ class BottleFeedingsController < ApplicationController
 
     # Find the baby by user
 
-    @last7 = @bottlefeedings.order(:start_date).last(7)
-    @last30 = @bottlefeedings.order(:start_date).last(30)
+    @last7 = @bottlefeedings
+      .where(start_date: 7.days.ago..DateTime.now)
+      .order(:start_date)
+    @last30 = @bottlefeedings
+      .where(start_date: 30.days.ago..DateTime.now)
+      .order(:start_date)
   end
 
   def show
