@@ -30,6 +30,8 @@ require 'faker'
   baby5 = Baby.create!(name: "Zoé", birthdate: "26/02/2015",user: user3)
   baby6 = Baby.create!(name: "Baltazar", birthdate: "01/05/2018", user: user3)
 
+  CareTaking.create(baby: baby1, user: user3)
+
   brfeeding1 = BreastFeeding.create!(start: "10:10", duration_minutes: 25, baby: baby6)
   brfeeding2 = BreastFeeding.create!(start: "12:10", duration_minutes: 35, baby: baby3)
   brfeeding3 = BreastFeeding.create!(start: "13:15", duration_minutes: 15, baby: baby2)

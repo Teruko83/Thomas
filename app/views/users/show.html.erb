@@ -1,1 +1,18 @@
 <h1>User's profil</h1>
+
+<% if current_user.babies.count > 0  %>
+
+<% current_user.babies.each do |baby| %>
+  <%= simple_form_for [baby, CareTaking.new], method: :post, url: baby_care_takings_path(baby) do |f| %>
+      <%= f.input(:email)%>
+      <%= f.submit("Accept", class: "button-blue-large") %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if current_user.care_takings.count > 0 %>
+<% current_user.care_takings.each do |care_taking| %>
+    <%= link_to "test2", baby_path(care_taking.baby) %>
+  <% end %>
+<% end %>
+
