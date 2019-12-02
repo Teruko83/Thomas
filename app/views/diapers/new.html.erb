@@ -15,31 +15,31 @@
   <div class="button-blue-large" id="OMG">OMG</div>
   <div class="button-blue-large" id="clean">Clean</div>
 
-</div>
+  <%= simple_form_for [@baby, @diaper] do |f| %>
+    <%= f.input( :category , as: :hidden)%>
+    <%= f.input(:comment)%>
+    <%= f.input(:start_date, as: :hidden)%>
+    <%= f.submit("Accept", class: "button-blue-large") %>
+  <% end %>
 
-<%= simple_form_for [@baby, @diaper] do |f| %>
-<%= f.input(:category, as: :hidden)%>
-<%= f.input(:comment, as: :hidden)%>
-<%= f.input(:start_date, as: :hidden)%>
-<%= f.submit("Accept", class: "button-blue-large") %>
-<% end %>
-
-
-<%= link_to "Accept", baby_diapers_path(@baby), method: :post, class: "button-blue-large", id: "acceptBtn" %>
-<div class="button-red-large" id="cancelBtn">Cancel</div>
+  <div class="button-red-large" id="cancelBtn">Cancel</div>
+  </div>
 </div>
 
 <script>
 
-  const displayedQuantity = document.getElementById("quantity");
-  const acceptBtn = document.getElementById("acceptBtn");
-  const cancelBtn = document.getElementById("cancelBtn");
+  document.getElementById("wet").addEventListener("click", (e) => {changeDiaperType("wet", e)});
+  document.getElementById("dirty").addEventListener("click", (e) => {changeDiaperType("dirty", e)});
+  document.getElementById("wetdirty").addEventListener("click", (e) => {changeDiaperType("wet + dirty", e)});
+  document.getElementById("OMG").addEventListener("click", (e) => {changeDiaperType("OMG", e)});
+  document.getElementById("clean").addEventListener("click", (e) => {changeDiaperType("clean", e)});
 
-  document.getElementById("tenml").addEventListener("click", () => {addMinutes(10)});
-  document.getElementById("twentyml").addEventListener("click", () => {addMinutes(20)});
-  document.getElementById("fiftyml").addEventListener("click", () => {addMinutes(50)});
-  document.getElementById("hundredml").addEventListener("click", () => {addMinutes(100)});
-  document.getElementById("cancelBtn").addEventListener("click", () => {resetMinutes()});
+  diaperCategoryInput = document.getElementById("diaper_category")
+
+  const changeDiaperType = (diaperType, e) => {
+    e.target.classList.toggle("selected-diaper")
+    diaperCategoryInput.value = diaperType;
+  }
 
 
 </script>

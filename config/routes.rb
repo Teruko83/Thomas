@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'diapers/index'
-  get 'diapers/new'
-  get 'diapers/create'
-  get 'diapers/destroy'
   devise_for :users
   root to: 'pages#home'
   resources :babies, only: [:show, :create, :new] do
