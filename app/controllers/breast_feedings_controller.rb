@@ -7,15 +7,12 @@ class BreastFeedingsController < ApplicationController
     @baby = Baby.find(params[:baby_id])
     @breast_feedings = @baby.breast_feedings
 
-    @feedings = []
-
-    @breast_feedings.each do |b|
+    @feedings = @breast_feedings.map do |b|
       feeding = {
         type: "boob",
         quantity: "#{b.duration_minutes}min",
         time_fed: b.start_date
       }
-      @feedings << feeding
     end
 
     @feedings.sort_by { |f| f[:start_date] }
