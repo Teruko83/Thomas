@@ -1,0 +1,29 @@
+<div class="back-close-nav">
+
+
+<%= link_to baby_path(@baby) do %>
+ <div>
+ <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+</div>
+<% end %>
+
+<h1 style="text-align:center">Sleep Journal</h1>
+
+<img src="<%= image_path('moon.svg') %>" alt="" style="height:130px; display: block; margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 45px">
+
+<div class="button-blue-large" style="margin-bottom: 25px"><%= link_to "Add Sleep Time", new_baby_sleep_path(@baby) %></div>
+
+<% @sleeps.each do |s| %>
+<div class="log-row">
+  <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:30px"></div>
+  <div><p><%= s[:sleep_type] %></p></div>
+  <div><p><%= s[:sleep_time] / 10 if s[:sleep_time]%></p></div>
+  <div><p><%= s[:start_date] %></p></div>
+  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+</div>
+<hr>
+<% end %>
+
+
+
+

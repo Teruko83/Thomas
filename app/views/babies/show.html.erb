@@ -13,11 +13,12 @@
     <div><p>125ml</p></div>
   </div>
 <% end %>
-
+<%= link_to baby_sleeps_path(@baby) do %>
   <div class="category-card">
     <img src="<%= image_path('moon.svg') %>" alt="">
     <div><p>4.5h</p></div>
   </div>
+<% end %>
   <div class="category-card">
     <img src="<%= image_path('give.svg') %>" alt="">
     <div><p>Happy</p></div>
@@ -33,7 +34,7 @@
   <div class="button-blue-small"> <%= link_to "Breast", new_baby_breast_feeding_path(@baby) %></div>
 </div>
 
-<div class="button-blue-large">Sleep</div>
+<div class="button-blue-large"><%= link_to "Sleep", new_baby_sleep_path(@baby) %></div>
 <div class="button-blue-large">Mood</div>
 <div class="button-blue-large">Diapers</div>
 

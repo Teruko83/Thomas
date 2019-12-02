@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   resources :babies, only: [:show, :create, :new] do
       resources :breast_feedings, only: [:create, :new, :show, :index]
       resources :bottle_feedings, only: [:create, :new, :show, :index]
+      resources :sleeps, only: [:create, :new, :show, :index]
       resources :care_takings, only: [:create]
   end
 
+  resources :sleeps, only: [:destroy]
   resources :feedings, only: [:destroy]
   resources :users, only: [:show]
 end
