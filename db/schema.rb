@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_171024) do
 
   create_table "breast_feedings", force: :cascade do |t|
     t.boolean "breast"
-    t.string "breast_side"
+    t.string "breast_side", default: "L"
     t.integer "quantity"
     t.bigint "baby_id"
     t.datetime "created_at", null: false

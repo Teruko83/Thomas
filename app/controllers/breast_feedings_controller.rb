@@ -10,6 +10,7 @@ class BreastFeedingsController < ApplicationController
     @feedings = @breast_feedings.map do |b|
       feeding = {
         type: "boob",
+        breast_side: b.breast_side || ["L", "R"].sample,
         quantity: "#{b.duration_minutes}min",
         time_fed: b.start_date
       }
@@ -38,6 +39,6 @@ class BreastFeedingsController < ApplicationController
   private
 
   def breastfeedingsparams
-    params.require(:breast_feeding).permit(:duration_minutes, :baby_id)
+    params.require(:breast_feeding).permit(:duration_minutes, :baby_id, :breast_side)
   end
 end
