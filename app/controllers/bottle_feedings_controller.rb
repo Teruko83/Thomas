@@ -50,6 +50,7 @@ class BottleFeedingsController < ApplicationController
   def destroy
     bottlefeeding = Bottlefeeding.find(params[:id])
     bottlefeeding.destroy
+    # Faire un if statement ici pour la homepage?
     redirect_to baby_bottle_feedings_path(bottlefeeding.baby)
   end
 
