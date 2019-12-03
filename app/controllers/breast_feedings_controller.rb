@@ -12,28 +12,46 @@ class BreastFeedingsController < ApplicationController
         type: "boob",
         breast_side: b.breast_side || ["L", "R"].sample,
         quantity: "#{b.duration_minutes}min",
-        time_fed: b.start_date
+        time_fed: b.start_date,
+        id: b.id
       }
     end
 
-    @feedings.sort_by { |f| f[:start_date] }
+    @feedings.sort_by! { |f| f[:time_fed] }.reverse!
 
-    @last7 = @breast_feedings.order(:start_date).last(7)
-    @last30 = @breast_feedings.order(:start_date).last(30)
+    @last7 = @breast_feedings
+      .where(start_date: 7.days.ago..DateTime.now)
+      .order(:start_date)
+    @last30 = @breast_feedings
+      .where(start_date: 30.days.ago..DateTime.now)
+      .order(:start_date)
   end
 
   def new
-    @feeding = BreastFeeding.new
     @baby = Baby.find(params[:baby_id])
+    @feeding = BreastFeeding.new
   end
 
   def create
-    @feeding = BreastFeeding.new(breastfeedingsparams)
-    @feeding.start_date = Date.today
     @baby = Baby.find(params[:baby_id])
+    @feeding = BreastFeeding.new(breastfeedingsparams)
+    @feeding.start_date = DateTime.now
     @feeding.baby = @baby
-    @feeding.save
-    redirect_to baby_breast_feedings_path(@baby)
+      if @feeding.save
+      redirect_to baby_breast_feedings_path(@baby)
+      else
+      render "alert"
+      end
+  end
+
+  def destroy
+    breastfeeding = BreastFeeding.find(params[:id])
+    breastfeeding.destroy
+      if params[:location] == "home"
+        redirect_to baby_path(params[:baby_id])
+      else
+        redirect_to baby_breast_feedings_path(params[:baby_id])
+      end
   end
 
   private

@@ -9,17 +9,22 @@ class BottleFeedingsController < ApplicationController
       feeding = {
         type: "bottle",
         quantity: "#{b.quantity}ml",
-        time_fed: b.start_date
+        time_fed: b.start_date,
+        id: b.id
       }
     @feedings << feeding
     end
 
-    @feedings.sort_by { |f| f[:start_date] }
+    @feedings.sort_by! { |f| f[:time_fed] }.reverse!
 
     # Find the baby by user
 
-    @last7 = @bottlefeedings.order(:start_date).last(7)
-    @last30 = @bottlefeedings.order(:start_date).last(30)
+    @last7 = @bottlefeedings
+      .where(start_date: 7.days.ago..DateTime.now)
+      .order(:start_date)
+    @last30 = @bottlefeedings
+      .where(start_date: 30.days.ago..DateTime.now)
+      .order(:start_date)
   end
 
   def show
@@ -33,12 +38,22 @@ class BottleFeedingsController < ApplicationController
   def create
     @baby = Baby.find(params[:baby_id])
     @bottle_feeding = Bottlefeeding.new(bottlefeedparams)
-    @bottle_feeding.start_date = Date.today
+    @bottle_feeding.start_date = DateTime.now
     @bottle_feeding.baby = @baby
     if @bottle_feeding.save
       redirect_to baby_bottle_feedings_path(@baby)
     else
       render "alert"
+    end
+  end
+
+  def destroy
+    bottlefeeding = Bottlefeeding.find(params[:id])
+    bottlefeeding.destroy
+    if params[:location] == "home"
+      redirect_to baby_path(params[:baby_id])
+    else
+      redirect_to baby_bottle_feedings_path(bottlefeeding.baby)
     end
   end
 

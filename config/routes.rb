@@ -9,9 +9,12 @@ Rails.application.routes.draw do
       resources :bottle_feedings, only: [:create, :new, :show, :index]
       resources :sleeps, only: [:create, :new, :show, :index]
       resources :care_takings, only: [:create]
+      resources :diapers, only: [:create, :new, :show, :index]
   end
-
+  
   resources :sleeps, only: [:destroy]
-  resources :feedings, only: [:destroy]
+  resources :breast_feedings, only: [:destroy]
+  resources :bottle_feedings, only: [:destroy]
+  resources :diapers, only: [:destroy]
   resources :users, only: [:show]
 end

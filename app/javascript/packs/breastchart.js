@@ -67,6 +67,7 @@ const getLastSevenConsumption = () => {
       finalData.push(feeding)
     }
   })
+console.log(finalData)
 
   let ConsumptionChart = new Chart(myChart, {
       type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea

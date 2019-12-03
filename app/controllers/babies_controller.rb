@@ -7,7 +7,6 @@ class BabiesController < ApplicationController
 
   def show
     @baby = Baby.find(params[:id])
-    # @baby = current_user.babies.first
     @bottlefeedings = @baby.bottlefeedings
     @breastfeedings = @baby.breast_feedings
 
@@ -17,7 +16,8 @@ class BabiesController < ApplicationController
       feeding = {
         type: "bottle",
         quantity: "#{b.quantity}ml",
-        time_fed: b.start_date
+        time_fed: b.start_date,
+        id: b.id
       }
 
     @feedings << feeding
