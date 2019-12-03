@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_12_02_203556) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_203556) do
 
   create_table "breast_feedings", force: :cascade do |t|
     t.boolean "breast"
-    t.string "breast_side"
+    t.string "breast_side", default: "L"
     t.integer "quantity"
     t.bigint "baby_id"
     t.datetime "created_at", null: false
@@ -55,6 +56,30 @@ ActiveRecord::Schema.define(version: 2019_12_02_203556) do
     t.bigint "baby_id"
     t.string "comment"
     t.index ["baby_id"], name: "index_diapers_on_baby_id"
+
+  create_table "sleeps", force: :cascade do |t|
+    t.string "sleeps"
+    t.integer "integer"
+    t.string "sleep_type"
+    t.string "string"
+    t.bigint "sleeps_id"
+    t.bigint "baby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.float "sleep_time"
+    t.index ["baby_id"], name: "index_sleeps_on_baby_id"
+    t.index ["sleeps_id"], name: "index_sleeps_on_sleeps_id"
+
+  create_table "care_takings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "baby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.index ["baby_id"], name: "index_care_takings_on_baby_id"
+    t.index ["user_id"], name: "index_care_takings_on_user_id"
+
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,6 +90,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_203556) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "active_baby_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -73,4 +99,5 @@ ActiveRecord::Schema.define(version: 2019_12_02_203556) do
   add_foreign_key "bottlefeedings", "babies"
   add_foreign_key "breast_feedings", "babies"
   add_foreign_key "diapers", "babies"
+  add_foreign_key "sleeps", "babies"
 end
