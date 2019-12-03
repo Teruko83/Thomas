@@ -1,8 +1,6 @@
 class BabiesController < ApplicationController
-
   def index
     @babies = current_user.babies
-
   end
 
   def show
@@ -34,7 +32,8 @@ class BabiesController < ApplicationController
 
     @feedings << feeding
     end
-    # @feedings = @feedings.sort_by { |f| f[:start_date] }
+
+    @feedings = @feedings.sort_by { |f| f[:start_date] }
 
     @diapers.each do |b|
       diaper = {
@@ -58,7 +57,6 @@ class BabiesController < ApplicationController
     @feedings << feeding
     end
 
-
   end
 
   def new
@@ -78,7 +76,6 @@ class BabiesController < ApplicationController
   private
 
   def params_private_baby
-    params.require(:baby).permit(:first_name, :birthdate)
+    params.require(:baby).permit(:name, :birthdate)
   end
-
 end

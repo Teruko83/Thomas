@@ -1,18 +1,36 @@
-<h1>User's profil</h1>
 
-<% if current_user.babies.count > 0  %>
+<div class="container">
 
-<% current_user.babies.each do |baby| %>
-  <%= simple_form_for [baby, CareTaking.new], method: :post, url: baby_care_takings_path(baby) do |f| %>
-      <%= f.input(:email)%>
-      <%= f.submit("Accept", class: "button-blue-large") %>
-    <% end %>
+<h1><%= "User's profil" %></h1>
+
+<h2>-------------  Your babies  -------------</h2>
+<% if @babies.any?  %>
+  <% @babies.each do |b|  %>
+    <div>
+      <div class="baby-info">
+        <div><p>Name:</p></div> <div><p> <%=b.name%></p></div>
+     </div>
+      <div class="baby-info">
+        <div><p>Birthdate:</p></div> <div><p> <%=b.birthdate %></p></div>
+      </div>
+    <%= simple_form_for [b, CareTaking.new], method: :post, url: baby_care_takings_path(b) do |f| %>
+        <%= f.input(:email)%>
+        <%= f.submit("Share Access", class: "button-yellow-small") %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
 
+<!-- Once access shared, + cleared field have a flash message saying "YOU HAVE SHARED ACCESS WITH EMAIL X, your baby's prpofil is now shared"
+ -->
+<h2>-------------  Babies shared with you  -------------</h2>
+
 <% if current_user.care_takings.count > 0 %>
 <% current_user.care_takings.each do |care_taking| %>
-    <%= link_to "test2", baby_path(care_taking.baby) %>
+    <%= link_to care_taking.baby.name , baby_path(care_taking.baby) %>
+
+</div>
+
   <% end %>
 <% end %>
 
