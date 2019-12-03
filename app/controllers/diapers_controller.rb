@@ -14,11 +14,18 @@ class DiapersController < ApplicationController
     @diaper = Diaper.new(diaper_params)
     @diaper.start_date = DateTime.now
     @diaper.baby = @baby
-      if @diaper.save
-      redirect_to baby_diapers_path(@baby)
-      else
-      render "alert"
+    @diaper.user = current_user
+    if @diaper.save
+      if current_user.diapers.where(category: "OMG").count == 10 &&
+        current_user.badge_ownerships.where(badge_type: "Diaper Warrior").count == 0
+        BadgeOwnership.create(user: current_user, badge_type: "Diaper Warrior")
+        flash[:notice] = "you're a Diaper Warrior"
+
       end
+      redirect_to baby_diapers_path(@baby)
+    else
+      render "new"
+    end
   end
 
   def destroy

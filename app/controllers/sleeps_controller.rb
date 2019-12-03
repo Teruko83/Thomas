@@ -31,6 +31,7 @@ class SleepsController < ApplicationController
     @sleep = Sleep.new(sleepparams)
     @sleep.start_date = DateTime.now
     @sleep.baby = @baby
+    @sleep.user = current_user
     if @sleep.save
       redirect_to baby_sleeps_path(@baby)
     else

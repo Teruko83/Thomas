@@ -37,6 +37,7 @@ class BreastFeedingsController < ApplicationController
     @feeding = BreastFeeding.new(breastfeedingsparams)
     @feeding.start_date = DateTime.now
     @feeding.baby = @baby
+    @feeding.user = current_user
       if @feeding.save
       redirect_to baby_breast_feedings_path(@baby)
       else
