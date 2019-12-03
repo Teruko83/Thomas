@@ -1,8 +1,24 @@
 <%= render 'shared/navbar' %>
 
-<div style="display: flex; justify-content: center;">
-  <h1 style="text-align:center"><%= @baby.name %></h1>
-  <img src="<%= image_path('down-arrow.svg') %>" alt="" style="width: 15px; margin-left: 10px; margin-bottom: 8px;">
+
+
+<div class="dropdown" style="text-align:center;">
+
+  <button class="btn btn-white dropdown-toggle" type="button" data-toggle="dropdown">
+    <h1 style="text-align:center; padding-bottom: 0; margin: 0;">
+      <%= @baby.name %>
+    </h1>
+    <span class="caret"></span>
+  </button>
+
+  <ul class="dropdown-menu" style="text-align:center;">
+    <% current_user.babies.each do |b|  %>
+      <%= link_to baby_path do %>
+        <li><h2><%= b.name %></h2></li>
+      <% end %>
+    <% end %>
+  </ul>
+
 </div>
 
 <div class="category-selector">
@@ -72,7 +88,7 @@
     <% elsif f[:type] == "sleep" %>
 
       <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:30px"></div>
-      <div><p><%= f[:sleep_time] %></p></div>
+      <div><p><%= f[:sleep_time] %>h</p></div>
       <div><p><%= f[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
 
         <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>

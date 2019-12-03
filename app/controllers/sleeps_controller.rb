@@ -29,7 +29,7 @@ class SleepsController < ApplicationController
   def create
     @baby = Baby.find(params[:baby_id])
     @sleep = Sleep.new(sleepparams)
-    @sleep.start_date = Date.today
+    @sleep.start_date = DateTime.now
     @sleep.baby = @baby
     if @sleep.save
       redirect_to baby_sleeps_path(@baby)
