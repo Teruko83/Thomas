@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_203556) do
-
+ActiveRecord::Schema.define(version: 2019_12_02_232849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +47,16 @@ ActiveRecord::Schema.define(version: 2019_12_02_203556) do
     t.index ["baby_id"], name: "index_breast_feedings_on_baby_id"
   end
 
+  create_table "care_takings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "baby_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.index ["baby_id"], name: "index_care_takings_on_baby_id"
+    t.index ["user_id"], name: "index_care_takings_on_user_id"
+  end
+
   create_table "diapers", force: :cascade do |t|
     t.datetime "start_date"
     t.string "category"
@@ -56,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_203556) do
     t.bigint "baby_id"
     t.string "comment"
     t.index ["baby_id"], name: "index_diapers_on_baby_id"
+  end
 
   create_table "sleeps", force: :cascade do |t|
     t.string "sleeps"
@@ -70,16 +80,6 @@ ActiveRecord::Schema.define(version: 2019_12_02_203556) do
     t.float "sleep_time"
     t.index ["baby_id"], name: "index_sleeps_on_baby_id"
     t.index ["sleeps_id"], name: "index_sleeps_on_sleeps_id"
-
-  create_table "care_takings", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "baby_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email"
-    t.index ["baby_id"], name: "index_care_takings_on_baby_id"
-    t.index ["user_id"], name: "index_care_takings_on_user_id"
-
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,4 +100,5 @@ ActiveRecord::Schema.define(version: 2019_12_02_203556) do
   add_foreign_key "breast_feedings", "babies"
   add_foreign_key "diapers", "babies"
   add_foreign_key "sleeps", "babies"
+  add_foreign_key "sleeps", "sleeps", column: "sleeps_id"
 end
