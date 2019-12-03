@@ -50,7 +50,7 @@ class BreastFeedingsController < ApplicationController
       if params[:location] == "home"
         redirect_to baby_path(params[:baby_id])
       else
-        redirect_to baby_breast_feedings_path(params[:baby_id])
+        redirect_to baby_breast_feedings_path(params[id: :baby_id])
       end
   end
 
