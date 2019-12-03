@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_232849) do
+ActiveRecord::Schema.define(version: 2019_12_03_212347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2019_12_02_232849) do
     t.index ["user_id"], name: "index_babies_on_user_id"
   end
 
+  create_table "badge_ownerships", force: :cascade do |t|
+    t.string "badge_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_badge_ownerships_on_user_id"
+  end
+
   create_table "bottlefeedings", force: :cascade do |t|
     t.datetime "start"
     t.integer "quantity"
@@ -31,7 +39,9 @@ ActiveRecord::Schema.define(version: 2019_12_02_232849) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "start_date"
+    t.bigint "user_id"
     t.index ["baby_id"], name: "index_bottlefeedings_on_baby_id"
+    t.index ["user_id"], name: "index_bottlefeedings_on_user_id"
   end
 
   create_table "breast_feedings", force: :cascade do |t|
@@ -44,7 +54,9 @@ ActiveRecord::Schema.define(version: 2019_12_02_232849) do
     t.integer "duration_minutes"
     t.datetime "start"
     t.datetime "start_date"
+    t.bigint "user_id"
     t.index ["baby_id"], name: "index_breast_feedings_on_baby_id"
+    t.index ["user_id"], name: "index_breast_feedings_on_user_id"
   end
 
   create_table "care_takings", force: :cascade do |t|
@@ -64,7 +76,9 @@ ActiveRecord::Schema.define(version: 2019_12_02_232849) do
     t.datetime "updated_at", null: false
     t.bigint "baby_id"
     t.string "comment"
+    t.bigint "user_id"
     t.index ["baby_id"], name: "index_diapers_on_baby_id"
+    t.index ["user_id"], name: "index_diapers_on_user_id"
   end
 
   create_table "sleeps", force: :cascade do |t|
@@ -78,8 +92,10 @@ ActiveRecord::Schema.define(version: 2019_12_02_232849) do
     t.datetime "updated_at", null: false
     t.datetime "start_date"
     t.float "sleep_time"
+    t.bigint "user_id"
     t.index ["baby_id"], name: "index_sleeps_on_baby_id"
     t.index ["sleeps_id"], name: "index_sleeps_on_sleeps_id"
+    t.index ["user_id"], name: "index_sleeps_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,9 +112,14 @@ ActiveRecord::Schema.define(version: 2019_12_02_232849) do
   end
 
   add_foreign_key "babies", "users"
+  add_foreign_key "badge_ownerships", "users"
   add_foreign_key "bottlefeedings", "babies"
+  add_foreign_key "bottlefeedings", "users"
   add_foreign_key "breast_feedings", "babies"
+  add_foreign_key "breast_feedings", "users"
   add_foreign_key "diapers", "babies"
+  add_foreign_key "diapers", "users"
   add_foreign_key "sleeps", "babies"
   add_foreign_key "sleeps", "sleeps", column: "sleeps_id"
+  add_foreign_key "sleeps", "users"
 end

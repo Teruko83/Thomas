@@ -1,17 +1,21 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
   def home
-    # so we can inject it in JS, we need to collect the result as shown below
-    # [{x: '2019-11-26', y: 1 }, {t: '2019-11-25', y: 10 }, {t: '2019-11-24', y: 20 }]
-    # AKA ====> an Array of hashes / in every hash, keys are x and y, values are date and consumption
-    @last7 = quantityforjs(7)
-    @last30 = quantityforjs(30)
+    if user_signed_in? && current_user.babies.count > 0
+      redirect_to baby_path(current_user.babies.first)
+    else
+      # so we can inject it in JS, we need to collect the result as shown below
+      # [{x: '2019-11-26', y: 1 }, {t: '2019-11-25', y: 10 }, {t: '2019-11-24', y: 20 }]
+      # AKA ====> an Array of hashes / in every hash, keys are x and y, values are date and consumption
+      @last7 = quantityforjs(7)
+      @last30 = quantityforjs(30)
 
-# if user == current_user
-#   @baby = current_user.babies.first
-#   after_sign_in_path redirect_to baby_path(@baby)
-# else
-# end
+      # if user == current_user
+      #   @baby = current_user.babies.first
+      #   after_sign_in_path redirect_to baby_path(@baby)
+      # else
+      # end
+    end
   end
 
 

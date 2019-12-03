@@ -40,6 +40,7 @@ class BottleFeedingsController < ApplicationController
     @bottle_feeding = Bottlefeeding.new(bottlefeedparams)
     @bottle_feeding.start_date = DateTime.now
     @bottle_feeding.baby = @baby
+    @bottle_feeding.user = current_user
     if @bottle_feeding.save
       redirect_to baby_bottle_feedings_path(@baby)
     else
