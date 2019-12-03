@@ -7,25 +7,29 @@
 
 <div class="category-selector">
 
-<%= link_to baby_bottle_feedings_path(@baby) do %>
+ <%= link_to baby_bottle_feedings_path(@baby) do %>
   <div class="category-card">
     <img src="<%= image_path('baby-bottle.svg') %>" alt="">
     <div><p>125ml</p></div>
   </div>
 <% end %>
-
+<%= link_to baby_sleeps_path(@baby) do %>
   <div class="category-card">
     <img src="<%= image_path('moon.svg') %>" alt="">
     <div><p>4.5h</p></div>
   </div>
-  <div class="category-card">
-    <img src="<%= image_path('give.svg') %>" alt="">
-    <div><p>Happy</p></div>
-  </div>
-  <div class="category-card">
-    <img src="<%= image_path('diaper.svg') %>" alt="">
-    <div><p>4 changes</p></div>
-  </div>
+<% end %>
+    <div class="category-card">
+      <img src="<%= image_path('give.svg') %>" alt="">
+      <div><p>Happy</p></div>
+    </div>
+  <%= link_to baby_diapers_path(@baby) do %>
+    <div class="category-card">
+      <img src="<%= image_path('diaper.svg') %>" alt="">
+      <div><p>4 changes</p></div>
+    </div>
+  <% end %>
+
 </div>
 
 <div class="time-selector">
@@ -33,26 +37,46 @@
   <div class="button-blue-small"> <%= link_to "Breast", new_baby_breast_feeding_path(@baby) %></div>
 </div>
 
-<div class="button-blue-large">Sleep</div>
+<div class="button-blue-large"><%= link_to "Sleep", new_baby_sleep_path(@baby) %></div>
 <div class="button-blue-large">Mood</div>
-<div class="button-blue-large">Diapers</div>
+<div class="button-blue-large"> <%= link_to "Diapers", new_baby_diaper_path(@baby) %></div>
 
 <div class="down-arrow" style="margin-top: 25px"><img src="<%= image_path('down-arrow.svg') %>" alt=""></div>
 
 <h1 style="text-align:center">Your Day</h1>
-
+  <%#   @feedings.sort_by! { |f| f[:time_fed] }.reverse! %>
 <% @feedings.each do |f| %>
+
   <div class="log-row">
     <% if f[:type] == "bottle" %>
       <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
       <div><p><%= f[:quantity] %></p></div>
-      <div><p><%= f[:time_fed] %></p></div>
-      <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
-    <% else %>
+      <div><p><%= f[:time_fed].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
+        <%= link_to bottle_feeding_path(f[:id], location: :home, baby_id: @baby.id), method: :delete do %>
+          <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+        <% end %>
+    <% elsif f[:type] == "boob"%>
       <div><img src="<%= image_path('breast.svg') %>" alt="" style="width:30px"></div>
       <div><p><%= f[:duration_minutes] %></p></div>
-      <div><p><%= f[:time_fed] %></p></div>
-      <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+      <div><p><%= f[:time_fed].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
+
+        <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+    <% elsif f[:type] == "diaper" %>
+
+      <div><img src="<%= image_path('diaper.svg') %>" alt="" style="width:30px"></div>
+      <div><p><%= f[:category] %></p></div>
+      <div><p><%= f[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
+
+        <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+
+    <% elsif f[:type] == "sleep" %>
+
+      <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:30px"></div>
+      <div><p><%= f[:sleep_time] %></p></div>
+      <div><p><%= f[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
+
+        <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+
     <% end %>
   </div>
   <hr>

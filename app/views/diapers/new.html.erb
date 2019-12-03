@@ -1,0 +1,47 @@
+<div class="back-close-nav">
+ <%= link_to baby_path(@baby) do %>
+  <div>
+  <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+</div>
+<% end %>
+
+<h1>Diaper</h1>
+<img src="<%= image_path('diaper.svg') %>" alt="" style="height:160px; display: block; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 25px">
+
+<div class="time-selector">
+  <div class="button-blue-large" id="wet">Wet</div>
+  <div class="button-blue-large" id="dirty">Dirty</div>
+  <div class="button-blue-large" id="wetdirty">Wet + Dirty</div>
+  <div class="button-blue-large" id="OMG">OMG</div>
+  <div class="button-blue-large" id="clean">Clean</div>
+
+  <%= simple_form_for [@baby, @diaper] do |f| %>
+    <%= f.input( :category , as: :hidden)%>
+    <%= f.input(:comment)%>
+    <%= f.input(:start_date, as: :hidden)%>
+    <%= f.submit("Accept", class: "button-blue-large") %>
+  <% end %>
+
+  <div class="button-red-large" id="cancelBtn">Cancel</div>
+  </div>
+</div>
+
+<script>
+
+  document.getElementById("wet").addEventListener("click", (e) => {changeDiaperType("wet", e)});
+  document.getElementById("dirty").addEventListener("click", (e) => {changeDiaperType("dirty", e)});
+  document.getElementById("wetdirty").addEventListener("click", (e) => {changeDiaperType("wet + dirty", e)});
+  document.getElementById("OMG").addEventListener("click", (e) => {changeDiaperType("OMG", e)});
+  document.getElementById("clean").addEventListener("click", (e) => {changeDiaperType("clean", e)});
+
+  diaperCategoryInput = document.getElementById("diaper_category")
+
+  const changeDiaperType = (diaperType, e) => {
+    e.target.classList.toggle("selected-diaper")
+    diaperCategoryInput.value = diaperType;
+  }
+
+
+</script>
+
+

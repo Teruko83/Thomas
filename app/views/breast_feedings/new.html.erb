@@ -6,7 +6,20 @@
 <% end %>
 
 <h1>Breast Feeding</h1>
-<img src="<%= image_path('breast.svg') %>" alt="" style="height:160px; display: block; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 25px">
+
+<div class="breast-inputs">
+
+  <div class="breast-container">
+    <div class="breast-input" id="breast_feeding_breast_side_l" data-boob="L"></div>
+    <div class="breast-label">L</div>
+  </div>
+
+  <div class="breast-container" >
+    <div class="breast-input" id="breast_feeding_breast_side_r" data-boob="R"></div>
+    <div class="breast-label">R</div>
+  </div>
+
+</div>
 
 <br>
 <h2>-------------  Timed log  -------------</h2>
@@ -18,6 +31,7 @@
   <div id="stop" class="button-red-small">Stop</div>
     <%= simple_form_for [@baby, @feeding] do |f| %>
         <%= f.input(:duration_minutes, as: :hidden) %>
+        <%= f.input(:breast_side, as: :hidden) %>
         <%= f.submit("New entry", class: "button-blue-large") %>
     <% end %>
   </div>
@@ -38,6 +52,7 @@
 <div style="display: flex; justify-content: center; flex-wrap: wrap; margin-top: 20px">
   <%= simple_form_for [@baby, @feeding] do |f| %>
     <%= f.input(:duration_minutes, as: :hidden)%>
+    <%= f.input(:breast_side, as: :hidden) %>
     <%= f.submit("Accept", class: "button-blue-large") %>
   <% end %>
 <%#= link_to "Accept", baby_breast_feedings_path(breast_feeding: { duration_minutes: 0 }), method: :post, class: "button-blue-large", id: "acceptBtn" %>
@@ -47,6 +62,36 @@
 
 
 <%= javascript_pack_tag 'timer' %>
+
+<script>
+  // selecting all DOM elements
+  const pickBreastLeft = document.getElementById("breast_feeding_breast_side_l");
+  const pickBreastRight = document.getElementById("breast_feeding_breast_side_r");
+  const hiddenBreastSideFields = document.querySelectorAll("#breast_feeding_breast_side")
+
+  pickBreastRight.addEventListener("click",  (e) => {
+    // remove all boob active class on the other boob
+    pickBreastLeft.classList.remove("boob-active")
+    // add active class on the selected boob
+    e.target.classList.add("boob-active")
+    // update hidden filed to pass data to the controller
+    updateBreastSide(e.target.dataset.boob)
+  });
+
+  pickBreastLeft.addEventListener("click",  (e) => {
+    pickBreastRight.classList.remove("boob-active")
+    e.target.classList.add("boob-active")
+    updateBreastSide(e.target.dataset.boob)
+  });
+
+  const updateBreastSide = (side) => {
+    hiddenBreastSideFields.forEach(input => {
+      input.value = side
+    });
+  }
+
+
+</script>
 
 <script>
 

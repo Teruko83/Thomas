@@ -22,14 +22,14 @@
 <div class="log-row">
   <div><img src="<%= image_path('baby-bottle.svg') %>" alt="" style="width:30px"></div>
   <div><p><%= f[:quantity] %></p></div>
-  <div><p><%= f[:time_fed] %></p></div>
-  <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+  <div><p><%= f[:time_fed].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
+  <%= link_to bottle_feeding_path(f[:id]), method: :delete do %>
+  <img src="<%= image_path('close.svg')%>" style="width:10px" >
+  <% end %>
+
 </div>
 <hr>
 <% end %>
-
-
-
 
 
 
