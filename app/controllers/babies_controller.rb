@@ -10,6 +10,7 @@ class BabiesController < ApplicationController
     @bottlefeedings = @baby.bottlefeedings
     @breastfeedings = @baby.breast_feedings
     @diapers = @baby.diapers
+    @sleeps = @baby.sleeps
 
     @feedings = []
 
@@ -44,6 +45,17 @@ class BabiesController < ApplicationController
       }
 
     @feedings << diaper
+    end
+
+    @sleeps.each do |b|
+      feeding = {
+        type: "sleep",
+        sleep_time: "#{b.sleep_time}",
+        start_date: b.start_date,
+        id: b.id
+      }
+
+    @feedings << feeding
     end
 
 
