@@ -9,7 +9,6 @@ Rails.application.routes.draw do
       resources :bottle_feedings, only: [:create, :new, :show, :index]
       resources :care_takings, only: [:create]
   end
-
   resources :feedings, only: [:destroy]
   resources :users, only: [:show]
 end
