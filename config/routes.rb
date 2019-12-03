@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :bottle_feedings, only: [:destroy]
   resources :diapers, only: [:destroy]
   resources :users, only: [:show]
+  resources :care_takings, only: [:destroy]
 end
