@@ -15,9 +15,9 @@ require 'faker'
 
   puts 'Creating Users...'
 
-  user1 = User.create!(email: "adam@email.com", password: "123456")
-  user2 = User.create!(email: "aurelie@email.com", password: "123456")
-  user3 = User.create!(email: "athena@email.com", password: "123456")
+  user1 = User.create!(email: "adam@email.com", password: "123456", name: "Adam")
+  user2 = User.create!(email: "aurelie@email.com", password: "123456", name: "Aurelie" )
+  user3 = User.create!(email: "athena@email.com", password: "123456", name: "Athena")
 
   puts 'Creating Babies...'
 
