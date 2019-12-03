@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :care_takings, only: [:create]
       resources :diapers, only: [:create, :new, :show, :index]
   end
-  
+
   resources :sleeps, only: [:destroy]
   resources :breast_feedings, only: [:destroy]
   resources :bottle_feedings, only: [:destroy]

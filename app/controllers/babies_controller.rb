@@ -9,6 +9,8 @@ class BabiesController < ApplicationController
     @baby = Baby.find(params[:id])
     @bottlefeedings = @baby.bottlefeedings
     @breastfeedings = @baby.breast_feedings
+    @diapers = @baby.diapers
+    @sleeps = @baby.sleeps
 
     @feedings = []
 
@@ -32,7 +34,30 @@ class BabiesController < ApplicationController
 
     @feedings << feeding
     end
-    @feedings = @feedings.sort_by { |f| f[:start_date] }
+    # @feedings = @feedings.sort_by { |f| f[:start_date] }
+
+    @diapers.each do |b|
+      diaper = {
+        type: "diaper",
+        category: "#{b.category}",
+        start_date: b.start_date,
+        id: b.id
+      }
+
+    @feedings << diaper
+    end
+
+    @sleeps.each do |b|
+      feeding = {
+        type: "sleep",
+        sleep_time: "#{b.sleep_time}",
+        start_date: b.start_date,
+        id: b.id
+      }
+
+    @feedings << feeding
+    end
+
 
   end
 
