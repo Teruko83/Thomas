@@ -4,5 +4,6 @@ class BadgeOwnershipsController < ApplicationController
 
   def index
     @badge_ownerships = BadgeOwnership.all
+
   end
 end

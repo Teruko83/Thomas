@@ -1,9 +1,27 @@
 
 <%= link_to :back do %>
-    <div>
-      <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
-    </div>
-  <% end %>
+
+ <div>
+ <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+</div>
+<% end %>
+
+
+<% @badge_ownerships.each do |b| %>
+<% if b.badge_type == "Diaper Warrior" && b.user_id == current_user.id %>
+<p>
+<%= "you are Diaper Warrior" %>
+</p>
+<% elsif b.badge_type == "Diaper Warrior" && b.user_id != current_user.id %>
+<p>
+   <h2>Badges unlocked by other caretakers</h2>
+<%= "your caretaker is a Diaper Warrior" %>
+</p>
+<% else %>
+<%= "pas de warrior" %>
+<% end %>
+<% end %>
+
 
   <h1>Badges</h1>
 
@@ -66,7 +84,11 @@
 
   <hr>
 
+
   <h2>Caretakers's Badges</h2>
+
+
+</div>
 
   <div class="badge-group">
     <div class="badge-element">
@@ -85,4 +107,5 @@
       <p>Badge description</p>
     </div>
   </div>
+
 
