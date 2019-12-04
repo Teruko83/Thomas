@@ -13,6 +13,7 @@ class BreastFeedingsController < ApplicationController
         breast_side: b.breast_side || ["L", "R"].sample,
         quantity: "#{b.duration_minutes}min",
         time_fed: b.start_date,
+        user_id: b.user_id,
         id: b.id
       }
     end

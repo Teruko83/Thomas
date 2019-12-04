@@ -10,7 +10,8 @@ class SleepsController < ApplicationController
       sleeps = {
         sleep_type: "#{s.sleep_type}",
         sleep_time: "#{s.sleep_time}min",
-        time_of_sleep: s.start_date
+        time_of_sleep: s.start_date,
+        user_id: b.user_id
       }
     @allsleeps << sleeps
     end
@@ -40,6 +41,13 @@ class SleepsController < ApplicationController
   end
 
   def destroy
+    sleep = Sleep.find(params[:id])
+    sleep.destroy
+    if params[:location] == "home"
+      redirect_to baby_path(params[:baby_id])
+    else
+      redirect_to baby_sleeps_path(sleep.baby)
+    end
   end
 
   private

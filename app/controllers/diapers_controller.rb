@@ -32,7 +32,7 @@ class DiapersController < ApplicationController
     diaper = Diaper.find(params[:id])
     diaper.destroy
     if params[:location] == "home"
-      redirect_to diaper_path(params[:baby_id])
+      redirect_to baby_path(params[:baby_id])
     else
       redirect_to baby_diapers_path(diaper.baby)
     end
