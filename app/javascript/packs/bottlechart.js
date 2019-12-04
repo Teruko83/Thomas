@@ -4,9 +4,9 @@ let myChart = document.getElementById('myChart').getContext('2d');
 let chartTest = JSON.parse(document.getElementById('myChart').dataset.bottlefeedingweek);
 
 // Global Options
-Chart.defaults.global.defaultFontFamily = 'Lato';
-Chart.defaults.global.defaultFontSize = 18;
-Chart.defaults.global.defaultFontColor = '#777';
+Chart.defaults.global.defaultFontFamily = 'Open Sans';
+Chart.defaults.global.defaultFontSize = 14;
+Chart.defaults.global.defaultFontColor = '#444';
 
 let ConsumptionChart = new Chart(myChart, {
   type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
@@ -16,7 +16,7 @@ let ConsumptionChart = new Chart(myChart, {
       data: chartTest,
       backgroundColor:'#0F0D25',
       borderWidth:1,
-      borderColor:'#777',
+      borderColor:'#111',
       hoverBorderWidth:3,
       hoverBorderColor:'#000'
     }]
@@ -70,16 +70,16 @@ const getLastSevenConsumption = () => {
   console.log(finalData)
 
   ConsumptionChart = new Chart(myChart, {
-      type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      type:'scatter', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
       data:{
         datasets:[{
-          label:'Last seven days',
+          label:'',
           data: finalData,
-          backgroundColor:'#0F0D25',
-          borderWidth:1,
+          backgroundColor:'#82C4C8',
+          borderWidth:0,
           borderColor:'#777',
           hoverBorderWidth:3,
-          hoverBorderColor:'#000'
+          hoverBorderColor:'white'
         }]
       },
       options: {
