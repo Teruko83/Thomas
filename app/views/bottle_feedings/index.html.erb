@@ -15,7 +15,9 @@
   <div id="last7" class="button-blue-small">7 days</div>
   <div id="last30" class="button-blue-small">30 days</div>
 </div>
+<%= link_to new_baby_bottle_feeding_path(@baby) do %>
 <div class="button-blue-large">Add an entry</div>
+<% end %>
 <br>
 
 <% @feedings.each do |f| %>
