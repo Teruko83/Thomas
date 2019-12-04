@@ -17,7 +17,7 @@
 
   <%= simple_form_for [@baby, @diaper] do |f| %>
     <%= f.input(:category , as: :hidden)%>
-    <%= f.input(:comment)%>
+    <h2><%= f.input(:comment)%></h2>
     <%= f.input(:start_date, as: :hidden)%>
     <%= f.submit("Accept", class: "button-blue-large") %>
   <% end %>
