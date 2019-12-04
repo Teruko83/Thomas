@@ -1,16 +1,25 @@
 <div class="back-close-nav">
  <%= link_to :back do %>
-
  <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
 </div>
 <% end %>
+
 <div class="container">
+  <div class="user-information" style="display: flex: flex-wrap: wrap;"">
+    <h1><%= current_user.name %>'s profil</h1>
+      <div>
+        <img src="<%= image_path('adam.jpg') %>" alt="" style="width:80px; margin:25px; border-radius: 80px;">"
+        <p> edit profil</p>
+      </div>
+  </div>
+<img src="" alt="">
 
-<h1><%= current_user.name %>'s profil</h1>
-
-<h2>-------------  Your babies  -------------</h2>
+<div class=your-baby-information>
 
 
+
+
+</div>
 <% if @babies.any?  %>
   <% @babies.each do |b|  %>
 
@@ -35,6 +44,7 @@
   <% end %>
 <% end %>
 
+</div>
 
 <script>
   var acc = document.getElementsByClassName("accordion");
