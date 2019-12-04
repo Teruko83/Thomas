@@ -23,6 +23,13 @@
 
 <div class="category-selector">
 
+<%= link_to badge_ownerships_index_path do %>
+  <div class="category-card">
+    <img src="<%= image_path('baby-bottle.svg') %>" alt="">
+    <div><p>BADGES</p></div>
+  </div>
+<% end %>
+
  <%= link_to baby_bottle_feedings_path(@baby) do %>
   <div class="category-card">
     <img src="<%= image_path('baby-bottle.svg') %>" alt="">
