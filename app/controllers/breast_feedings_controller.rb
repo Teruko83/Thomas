@@ -12,7 +12,7 @@ class BreastFeedingsController < ApplicationController
         type: "boob",
         breast_side: b.breast_side || ["L", "R"].sample,
         quantity: "#{b.duration_minutes}min",
-        time_fed: b.start_date,
+        start_date: b.start_date,
         user_id: b.user_id,
         id: b.id
       }
@@ -52,7 +52,7 @@ class BreastFeedingsController < ApplicationController
       if params[:location] == "home"
         redirect_to baby_path(params[:baby_id])
       else
-        redirect_to baby_breast_feedings_path(params[id: :baby_id])
+        redirect_to baby_breast_feedings_path(params[:baby_id])
       end
   end
 
