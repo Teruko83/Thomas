@@ -1,111 +1,109 @@
 
 <%= link_to :back do %>
-
- <div>
- <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
-</div>
+  <div>
+    <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+  </div>
 <% end %>
 
+<h1>Badges</h1>
 
 <% @badge_ownerships.each do |b| %>
+
 <% if b.badge_type == "Diaper Warrior" && b.user_id == current_user.id %>
-<p>
-<%= "you are Diaper Warrior" %>
-</p>
-<% elsif b.badge_type == "Diaper Warrior" && b.user_id != current_user.id %>
-<p>
-   <h2>Badges unlocked by other caretakers</h2>
-<%= "your caretaker is a Diaper Warrior" %>
-</p>
-<% else %>
-<%= "pas de warrior" %>
-<% end %>
-<% end %>
 
-
-  <h1>Badges</h1>
-
-  <h2>Badges unlocked</h2>
+  <h2>Your Badges</h2>
+  <hr>
   <div class="badge-group">
     <div class="badge-element">
       <img src="<%= image_path('diaper_warrior.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
-    </div>
-    <div class = "badge-element">
-      <img src="<%= image_path('silver_nipple.svg') %>" alt="">
-      <h2></h2>
-      <p>Badge description</p>
-    </div>
-    <div class = "badge-element">
-      <img src="<%= image_path('golden_nipple.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
-    </div>
-
-  </div>
-
-  <hr>
-
-  <h2>Badges to unlock</h2>
-
-   <div class="badge-group">
-    <div class="badge-element">
-      <img src="<%= image_path('diaper_god.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
-    </div>
-    <div class="badge-element">
-      <img src="<%= image_path('diaper_master.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
-    </div>
-    <div class="badge-element">
-      <img src="<%= image_path('diaper_expert.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
-    </div>
-    <div class="badge-element">
-      <img src="<%= image_path('diaper_amateur.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
-    </div>
-    <div class = "badge-element">
-      <img src="<%= image_path('nipple_warrior.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
-    </div>
-    <div class = "badge-element">
-      <img src="<%= image_path('bronze_nipple.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
+      <h2>Diaper Warrior</h2>
+      <p>10 OMG Diapers</p>
     </div>
   </div>
 
-  <hr>
-
-
-  <h2>Caretakers's Badges</h2>
-
-
-</div>
+  <% else %>
 
   <div class="badge-group">
     <div class="badge-element">
-      <img src="<%= image_path('bottle_amateur.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
+      <p>No badge unlocked!</p>
     </div>
+  </div>
+  <% end %>
+
+<% end %>
+
+<% @badge_ownerships.each do |b| %>
+
+  <% if b.badge_type == "Diaper Warrior" && b.user_id != current_user.id %>
+
+  <br>
+  <h2>Caretakers's Badges</h2>
+  <hr>
+  <div class="badge-group">
     <div class="badge-element">
-      <img src="<%= image_path('bottle_master.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
-    </div>
-    <div class="badge-element">
-      <img src="<%= image_path('diaper_god.svg') %>" alt="">
-      <h2>Badge Title</h2>
-      <p>Badge description</p>
+      <img src="<%= image_path('diaper_warrior.svg') %>" alt="">
+      <h2>Diaper Warrior</h2>
+      <p>10 OMG Diapers</p>
     </div>
   </div>
 
+  <% end %>
+<% end %>
 
+<br>
+<h2>Badges to unlock</h2>
+
+<hr>
+
+<div class="badge-group" style="opacity: 0.5">
+  <div class = "badge-element">
+    <img src="<%= image_path('golden_nipple.svg') %>" alt="">
+    <h2>Golden Nipple</h2>
+    <p>Breastfeed 50 time</p>
+  </div>
+  <div class="badge-element">
+    <img src="<%= image_path('bottle_amateur.svg') %>" alt="">
+    <h2>Bottle Amateur</h2>
+    <p>Give 1 bottle</p>
+  </div>
+  <div class = "badge-element">
+    <img src="<%= image_path('diaper_god.svg') %>" alt="">
+    <h2>Diaper God</h2>
+    <p>Change 100 diapers</p>
+  </div>
+  <div class="badge-element">
+    <img src="<%= image_path('diaper_master.svg') %>" alt="">
+    <h2>Diaper Master</h2>
+    <p>Change 50 diapers</p>
+  </div>
+  <div class="badge-element">
+    <img src="<%= image_path('diaper_expert.svg') %>" alt="">
+    <h2>Diaper Expert</h2>
+    <p>Change 25 diapers</p>
+  </div>
+  <div class="badge-element">
+    <img src="<%= image_path('diaper_amateur.svg') %>" alt="">
+    <h2>Diaper Amateur</h2>
+    <p>Change 1 diaper</p>
+  </div>
+  <div class = "badge-element">
+    <img src="<%= image_path('nipple_warrior.svg') %>" alt="">
+    <h2>Nipple Warrior</h2>
+    <p>Breastfeed 100 time</p>
+  </div>
+  <div class = "badge-element">
+    <img src="<%= image_path('bronze_nipple.svg') %>" alt="">
+    <h2>Bronze Nipple</h2>
+    <p>Breastfeed 1 time</p>
+  </div>
+  <div class = "badge-element">
+    <img src="<%= image_path('silver_nipple.svg') %>" alt="">
+    <h2>Silver Nipple</h2>
+    <p>Breastfeed 25 time</p>
+  </div>
+  <div class="badge-element">
+    <img src="<%= image_path('bottle_master.svg') %>" alt="">
+    <h2>Bottle Master</h2>
+    <p>Give 100 bottles</p>
+  </div>
+</div>
