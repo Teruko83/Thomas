@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'badge_ownerships/show'
+  get 'badge_ownerships/index'
   get 'care_takings/new'
   # post 'care_takings/create', to: 'care_takings#create', as: "baby_care_takings"
   devise_for :users

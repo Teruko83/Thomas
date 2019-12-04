@@ -18,6 +18,7 @@
   <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:30px"></div>
   <div><p><%= s[:sleep_type] %></p></div>
   <div><p><%= s[:sleep_time] if s[:sleep_time]%>h</p></div>
+  <div><p><%= User.find(s[:user_id]).name %></p></div>
   <div><p><%= s[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M")  %></p></div>
   <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
 </div>

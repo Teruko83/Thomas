@@ -10,6 +10,7 @@ class BottleFeedingsController < ApplicationController
         type: "bottle",
         quantity: "#{b.quantity}ml",
         time_fed: b.start_date,
+        user_id: b.user_id,
         id: b.id
       }
     @feedings << feeding

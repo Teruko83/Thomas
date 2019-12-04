@@ -22,6 +22,13 @@
 
 <div class="category-selector">
 
+<%= link_to badge_ownerships_index_path do %>
+  <div class="category-card">
+    <img src="<%= image_path('baby-bottle.svg') %>" alt="">
+    <div><p>BADGES</p></div>
+  </div>
+<% end %>
+
  <%= link_to baby_bottle_feedings_path(@baby) do %>
   <div class="category-card">
     <img src="<%= image_path('baby-bottle.svg') %>" alt="">
@@ -74,24 +81,26 @@
       <div><img src="<%= image_path('breast.svg') %>" alt="" style="width:30px"></div>
       <div><p><%= f[:duration_minutes] %></p></div>
       <div><p><%= f[:time_fed].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
-
-        <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+        <%= link_to breast_feeding_path(f[:id], location: :home, baby_id: @baby.id), method: :delete do %>
+          <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+        <% end %>
     <% elsif f[:type] == "diaper" %>
 
       <div><img src="<%= image_path('diaper.svg') %>" alt="" style="width:30px"></div>
       <div><p><%= f[:category] %></p></div>
       <div><p><%= f[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
-
+      <%= link_to diaper_path(f[:id], location: :home, baby_id: @baby.id), method: :delete do %>
         <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
-
+      <% end  %>
     <% elsif f[:type] == "sleep" %>
 
       <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:30px"></div>
       <div><p><%= f[:sleep_time] %>h</p></div>
       <div><p><%= f[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
+      <%= link_to sleep_path(f[:id], location: :home, baby_id: @baby.id), method: :delete do %>
 
         <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
-
+      <% end %>
     <% end %>
   </div>
   <hr>
