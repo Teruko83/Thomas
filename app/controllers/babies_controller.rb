@@ -27,7 +27,8 @@ class BabiesController < ApplicationController
       feeding = {
         type: "boob",
         duration_minutes: "#{b.duration_minutes}min",
-        time_fed: b.start_date
+        time_fed: b.start_date,
+        id: b.id
       }
 
     @feedings << feeding

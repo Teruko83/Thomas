@@ -14,7 +14,7 @@
   <div id="last7" class="button-blue-small">Last 7 days</div>
   <div id="last30" class="button-blue-small">Last 30 days</div>
 </div>
-<%= link_to new_baby_bottle_feeding_path(@baby) do %>
+<%= link_to new_baby_breast_feeding_path(@baby) do %>
 <div class="button-blue-large">Add an entry</div>
 <% end %>
 <br>
@@ -24,6 +24,7 @@
   <div><img src="<%= image_path('breast.svg') %>" alt="" style="width:30px"></div>
   <div><p><%= f[:breast_side] %></p></div>
   <div><p><%= f[:quantity] %></p></div>
+  <div><p><%= User.find(f[:user_id]).name %></p></div>
   <div><p><%= f[:time_fed].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
   <%= link_to breast_feeding_path(f[:id]), method: :delete do %>
   <img src="<%= image_path('close.svg')%>" style="width:10px" >
