@@ -12,7 +12,9 @@ class DiapersController < ApplicationController
   def create
     @baby = Baby.find(params[:baby_id])
     @diaper = Diaper.new(diaper_params)
+    @user = current_user
     @diaper.start_date = DateTime.now
+    @diaper.created_by = @user.id
     @diaper.baby = @baby
       if @diaper.save
       redirect_to baby_diapers_path(@baby)
@@ -34,6 +36,6 @@ class DiapersController < ApplicationController
   private
 
   def diaper_params
-    params.require(:diaper).permit(:category, :comment)
+    params.require(:diaper).permit(:category, :comment, :created_by)
   end
 end

@@ -16,7 +16,8 @@
   <div class="button-blue-large" id="clean">Clean</div>
 
   <%= simple_form_for [@baby, @diaper] do |f| %>
-    <%= f.input( :category , as: :hidden)%>
+    <%= f.input(:created_by , as: :hidden)%>
+    <%= f.input(:category , as: :hidden)%>
     <%= f.input(:comment)%>
     <%= f.input(:start_date, as: :hidden)%>
     <%= f.submit("Accept", class: "button-blue-large") %>
