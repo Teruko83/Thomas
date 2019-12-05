@@ -1,5 +1,5 @@
 
-<%= link_to :back do %>
+<%= link_to baby_path(@badge_ownerships.first.user.babies.first) do %>
   <div>
     <img src="<%= image_path('back-arrow.svg') %>" alt="" style="margin: 30px;"></div>
   </div>
@@ -14,23 +14,24 @@
   <h2>Your Badges</h2>
   <hr>
   <div class="badge-group">
-    <div class="badge-element">
-      <img src="<%= image_path('diaper_warrior.svg') %>" alt="">
-      <h2>Diaper Warrior</h2>
-      <p>10 OMG Diapers</p>
-    </div>
+    <%= link_to badge_ownerships_show_path do %>
+      <div class="badge-element">
+        <img src="<%= image_path('diaper_warrior.svg') %>" alt="">
+        <h2>Diaper Warrior</h2>
+        <p>10 OMG Diapers</p>
+      </div>
+    <% end %>
+    <%= link_to badge_ownerships_show_path do %>
+      <div class="badge-element">
+        <img src="<%= image_path('sandman.svg') %>" alt="">
+        <h2>Sandman</h2>
+        <p>10h of sleep</p>
+      </div>
+    <% end %>
   </div>
-
-  <% else %>
-
-  <div class="badge-group">
-    <div class="badge-element">
-      <p>No badge unlocked!</p>
-    </div>
-  </div>
-  <% end %>
 
 <% end %>
+
 
 <% @badge_ownerships.each do |b| %>
 
@@ -107,3 +108,5 @@
     <p>Give 100 bottles</p>
   </div>
 </div>
+
+<% end %>
