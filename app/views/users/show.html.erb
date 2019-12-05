@@ -4,37 +4,80 @@
  <img src="<%= image_path('back-arrow.svg') %>" alt=""></div>
 </div>
 <% end %>
+
+
 <div class="container">
+  <div class="user-information" style="display: flex: flex-wrap: wrap;">
+    <h1><%= current_user.name %>'s profil</h1>
+      <div class="d-flex flex-column align-items-center">
+        <img src="<%= image_path('adam.jpg') %>" alt="" style="width:90px; margin:25px; border-radius: 80px;">
+        <p class="edit-profil">edit your profil</p>
+      </div>
+  </div>
 
-<h1><%= current_user.name %>'s profil</h1>
+  <% if @babies.any?  %>
+    <% @babies.each do |b|  %>
 
-<h2>-------------  Your babies  -------------</h2>
+  <button class="accordion baby-accordion">
+    <h2><span><%=b.name%> <i class="fas fa-angle-down"></i></span></h2>
+  </button>
+    <div class="panel">
+
+      <p class="shared-access-title">Shared access with:</p>
+
+      <% b.care_takings.each do |c|%>
+      <div class="caretaker-info">
+
+        <div class="caretaker-contact">
+
+          <p class="caretaker-name"><%= c.name %></p>
+          <p class="caretaker-email"><%= c.email %></p>
+
+        </div>
+        <%= link_to care_taking_path(c), method: :delete do %>
+          <img src="<%= image_path('close.svg') %>" alt="" style="width:10px">
+        <% end %>
+      </div>
+      <% end %>
 
 
-<% if @babies.any?  %>
-  <% @babies.each do |b|  %>
+        <%= simple_form_for [b, CareTaking.new], method: :post, url: baby_care_takings_path(b) do |f| %>
+          <%= f.input :email, placeholder: "email of the caretaker", label: false %>
+          <%= f.submit("Share Access", class: "button-share-access") %>
+        <% end %>
+    </div>
+    <% end %>
+  <% end %>
 
-<button class="accordion"><h2><%=b.name%></h2></button>
+
+<button class="accordion caretaking-baby-accordion">
+  <h2>babies shared with you <i class="fas fa-angle-down"></i></h2>
+</button>
+
   <div class="panel">
-    <div><p>Birthdate:</p></div>
-    <div><p> <%= b.birthdate %></p></div>
-    <div> <p> Shared access with:</p> </div>
-    <% b.care_takings.each do |c|%>
-      <%= c.email %>
-      <%= c.name %>
-      <%= link_to care_taking_path(c), method: :delete do %>
-        <img src="<%= image_path('close.svg') %>" alt="" style="width:10px">
+
+    <% if current_user.care_takings.count > 0 %>
+    <% current_user.care_takings.each do |care_taking| %>
+      <div class="caretaking-baby-card">
+        <p class="caretaking-baby-name"><%= link_to care_taking.baby.name, baby_path(care_taking.baby) %></p>
+
+        <div class="caretaking-baby-info">
+          <p>birthday : <%= care_taking.baby.birthdate %></p>
+        </div>
+
+
+      </div>
+
+    <!-- </div> -->
+
       <% end %>
     <% end %>
 
-      <%= simple_form_for [b, CareTaking.new], method: :post, url: baby_care_takings_path(b) do |f| %>
-        <%= f.input(:email)%>
-        <%= f.submit("Share Access", class: "button-yellow-small") %>
-      <% end %>
-  </div>
-  <% end %>
-<% end %>
 
+
+  </div>
+
+</div>
 
 <script>
   var acc = document.getElementsByClassName("accordion");
@@ -55,16 +98,5 @@
 
 
 
-<!-- Once access shared, + cleared field have a flash message saying "YOU HAVE SHARED ACCESS WITH EMAIL X, your baby's prpofil is now shared"
- -->
-<!-- <h2>-------------  Babies shared with you  -------------</h2>
- -->
-<%# if current_user.care_takings.count > 0 %>
-<%# current_user.care_takings.each do |care_taking| %>
-    <%#= link_to care_taking.baby.name , baby_path(care_taking.baby) %>
 
-<!-- </div> -->
-
-  <%# end %>
-<%# end %>
 
