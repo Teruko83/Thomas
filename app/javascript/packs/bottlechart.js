@@ -95,35 +95,35 @@ const getLastSevenConsumption = () => {
     }
     });
 };
-// document.getElementById("last30").addEventListener("click", getLastThirtyConsumption);
-// const getLastThirtyConsumption = () => {
-//   chartTest = JSON.parse(document.getElementById('myChart').dataset.consumptionthirty)
-//   ConsumptionChart = new Chart(myChart, {
-//       type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
-//       data:{
-//         datasets:[{
-//           label:'Last thirty days',
-//           data: chartTest,
-//           backgroundColor:'#0F0D25',
-//           borderWidth:1,
-//           borderColor:'#777',
-//           hoverBorderWidth:3,
-//           hoverBorderColor:'#000'
-//         }]
-//       },
-//       options: {
-//         scales: {
-//             xAxes: [{
-//                 type: 'time',
-//                 distribution: 'series',
-//                 time: {
-//                     unit: 'day'
-//                 }
-//             }]
-//         }
-//     }
-//     });
-// };
+document.getElementById("last30").addEventListener("click", getLastThirtyConsumption);
+const getLastThirtyConsumption = () => {
+  chartTest = JSON.parse(document.getElementById('myChart').dataset.consumptionthirty)
+  ConsumptionChart = new Chart(myChart, {
+      type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data:{
+        datasets:[{
+          label:'Last thirty days',
+          data: chartTest,
+          backgroundColor:'#0F0D25',
+          borderWidth:1,
+          borderColor:'#777',
+          hoverBorderWidth:3,
+          hoverBorderColor:'#000'
+        }]
+      },
+      options: {
+        scales: {
+            xAxes: [{
+                type: 'time',
+                distribution: 'series',
+                time: {
+                    unit: 'day'
+                }
+            }]
+        }
+    }
+    });
+};
 const initBottleChart = () => {
   getLastSevenConsumption();
   // getLastThirtyConsumption();
