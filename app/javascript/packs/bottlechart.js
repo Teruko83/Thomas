@@ -5,7 +5,7 @@ let chartTest = JSON.parse(document.getElementById('myChart').dataset.bottlefeed
 
 // Global Options
 Chart.defaults.global.defaultFontFamily = 'Open Sans';
-Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontSize = 11;
 Chart.defaults.global.defaultFontColor = '#777';
 Chart.defaults.global.responsive = true;
 
