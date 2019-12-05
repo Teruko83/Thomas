@@ -23,7 +23,7 @@ require 'faker'
   user1 = User.create!(email: "adam@email.com", password: "123456", name: "GrandMa")
   user2 = User.create!(email: "aurelie@email.com", password: "123456", name: "MyLover" )
   user3 = User.create!(email: "athena@email.com", password: "123456", name: "Mummy")
-  user4 = User.create!(email: "babysiter@email.com", password: "123456", name: "Babysiter")
+  user4 = User.create!(email: "aunt@email.com", password: "123456", name: "Aunt Gemma")
   user5 = User.create!(email: "grandpa@email.com", password: "123456", name: "GrandPa")
 
 
@@ -38,10 +38,6 @@ require 'faker'
   baby5 = Baby.create!(name: "Zoé", birthdate: "26/02/2015",user: user3)
   baby6 = Baby.create!(name: "Baltazar", birthdate: "01/05/2018", user: user3)
 
-  puts 'Creating Badge...'
-
-  BadgeOwnership.create!(badge_type: "Diaper Warrior", user: user1)
-  BadgeOwnership.create!(badge_type: "Super Sandman", user: user1)
 
 
   puts 'Creating Caretakers...'
