@@ -19,10 +19,11 @@ class DiapersController < ApplicationController
       if current_user.diapers.where(category: "OMG").count == 10 &&
         current_user.badge_ownerships.where(badge_type: "Diaper Warrior").count == 0
         BadgeOwnership.create(user: current_user, badge_type: "Diaper Warrior")
-        flash[:notice] = "you're a Diaper Warrior"
-
+        redirect_to badge_ownerships_show_path(badge: "diaper")
+        # flash[:notice] = "you're a Diaper Warrior"
+      else
+        redirect_to baby_diapers_path(@baby)
       end
-      redirect_to baby_diapers_path(@baby)
     else
       render "new"
     end

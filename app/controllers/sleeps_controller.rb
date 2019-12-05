@@ -28,13 +28,24 @@ class SleepsController < ApplicationController
   end
 
   def create
+
+  @baby = Baby.find(params[:baby_id])
+
     @baby = Baby.find(params[:baby_id])
     @sleep = Sleep.new(sleepparams)
     @sleep.start_date = DateTime.now
     @sleep.baby = @baby
     @sleep.user = current_user
     if @sleep.save
-      redirect_to baby_sleeps_path(@baby)
+      if current_user.sleeps.count == 20 &&
+        current_user.badge_ownerships.where(badge_type: "Super Sandman").count == 0
+        BadgeOwnership.create(user: current_user, badge_type: "Super Sandman")
+        redirect_to badge_ownerships_show_path(badge: "sleep")
+        # flash[:notice] = "you're a Diaper Warrior"
+      else
+         redirect_to baby_sleeps_path(@baby)
+      end
+
     else
       render "alert"
     end
