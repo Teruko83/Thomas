@@ -10,14 +10,22 @@
 
 require 'faker'
 
+
   User.destroy_all
   Baby.destroy_all
+  CareTaking.destroy_all
+  Bottlefeeding.destroy_all
+  BreastFeeding.destroy_all
 
+  puts "former seeds destroyed"
   puts 'Creating Users...'
 
-  user1 = User.create!(email: "adam@email.com", password: "123456", name: "Adam")
+  user1 = User.create!(email: "adam@email.com", password: "123456", name: "GrandMa")
   user2 = User.create!(email: "aurelie@email.com", password: "123456", name: "MyLover" )
   user3 = User.create!(email: "athena@email.com", password: "123456", name: "Mummy")
+  user4 = User.create!(email: "babysiter@email.com", password: "123456", name: "Babysiter")
+  user5 = User.create!(email: "grandpa@email.com", password: "123456", name: "GrandPa")
+
 
   puts 'Creating Babies...'
 
@@ -32,12 +40,17 @@ require 'faker'
 
   puts 'Creating Caretakers...'
 
-  CareTaking.create!(baby: baby1, user: user3, email: user3.email)
-  CareTaking.create!(baby: baby1, user: user2)
-  CareTaking.create!(baby: baby5, user: user1)
-  CareTaking.create!(baby: baby5, user: user2)
-  CareTaking.create!(baby: baby3, user: user3)
-  CareTaking.create!(baby: baby3, user: user1)
+  CareTaking.create!(baby: baby1, user: user2, email: user2.email, name: user2.name)
+  CareTaking.create!(baby: baby5, user: user1, email: user1.email, name: user1.name)
+  CareTaking.create!(baby: baby5, user: user2, email: user2.email, name: user2.name)
+  CareTaking.create!(baby: baby3, user: user1, email: user1.email, name: user1.name)
+  CareTaking.create!(baby: baby3, user: user4, email: user4.email, name: user4.name)
+  CareTaking.create!(baby: baby1, user: user4, email: user4.email, name: user4.name)
+  CareTaking.create!(baby: baby5, user: user4, email: user4.email, name: user4.name)
+  CareTaking.create!(baby: baby1, user: user5, email: user5.email, name: user5.name)
+  CareTaking.create!(baby: baby5, user: user5, email: user5.email, name: user5.name)
+  CareTaking.create!(baby: baby3, user: user5, email: user5.email, name: user5.name)
+
 
   puts 'Creating Breastfeedings...'
 
@@ -55,7 +68,7 @@ require 'faker'
   brfeeding12 = BreastFeeding.create!(start: "21:15", duration_minutes: 20, breast_side: "L", baby: baby1, user: baby1.user)
   brfeeding13 = BreastFeeding.create!(start: "10:10", duration_minutes: 25, breast_side: "R", baby: baby3, user: baby3.user)
   brfeeding14 = BreastFeeding.create!(start: "02:10", duration_minutes: 35, breast_side: "R", baby: baby4, user: baby4.user)
-  brfeeding15 = BreastFeeding.create!(start: "03:15", duration_minutes: 15, breast_side: "R", baby: baby5, user: baby5.user)
+  brfeeding15 = BreastFeeding.create!(start: "03:15", duration_minutes: 15, breast_side: "R", baby: baby5, user: baby1.user)
   brfeeding16 = BreastFeeding.create!(start: "05:15", duration_minutes: 20, breast_side: "L", baby: baby3, user: baby3.user)
   brfeeding17 = BreastFeeding.create!(start: "04:10", duration_minutes: 25, breast_side: "L", baby: baby5, user: baby5.user)
   brfeeding18 = BreastFeeding.create!(start: "23:10", duration_minutes: 35, breast_side: "L", baby: baby1, user: baby1.user)
@@ -102,36 +115,34 @@ require 'faker'
   bofeeding25 = Bottlefeeding.create!(quantity: 75, baby: baby3, user: baby3.user)
   bofeeding31 = Bottlefeeding.create!(quantity: 60, baby: baby3, user: baby3.user)
   bofeeding34 = Bottlefeeding.create!(quantity: 120, baby: baby3, user: baby3.user)
-
-
-  bofeeding2 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby2, user: baby2.user)
-  bofeeding3 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5, user: baby5.user)
-  bofeeding4 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby6, user: baby6.user)
-  bofeeding6 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby2, user: baby2.user)
-  bofeeding7 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby1, user: baby1.user)
-  bofeeding8 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby6, user: baby6.user)
-  bofeeding10 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby2, user: baby2.user)
-  bofeeding11 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5, user: baby5.user)
-  bofeeding12 = Bottlefeeding.create!(start: "21:40", quantity: 40, baby: baby6, user: baby6.user)
-  bofeeding14 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby2, user: baby2.user)
-  bofeeding15 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5, user: baby5.user)
-  bofeeding16 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby6, user: baby6.user)
-  bofeeding17 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby4, user: baby4.user)
-  bofeeding18 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby5, user: baby5.user)
-  bofeeding20 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby2, user: baby2.user)
-  bofeeding21 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby6, user: baby6.user)
-  bofeeding22 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby4, user: baby4.user)
-  bofeeding23 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby2, user: baby2.user)
-  bofeeding24 = Bottlefeeding.create!(start: "21:40", quantity: 40, baby: baby5, user: baby5.user)
-  bofeeding26 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby1, user: baby1.user)
-  bofeeding27 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby1, user: baby1.user)
-  bofeeding28 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby2, user: baby2.user)
-  bofeeding29 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby5, user: baby5.user)
-  bofeeding30 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby6, user: baby6.user)
-  bofeeding32 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby2, user: baby2.user)
-  bofeeding33 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby1, user: baby1.user)
-  bofeeding35 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5, user: baby5.user)
-  bofeeding36 = Bottlefeeding.create!(start: "21:40", quantity: 40, baby: baby4, user: baby4.user)
+  bofeeding2 = Bottlefeeding.create!(quantity: 120, baby: baby2, user: baby2.user)
+  bofeeding3 = Bottlefeeding.create!(quantity: 60, baby: baby5, user: baby1.user)
+  bofeeding4 = Bottlefeeding.create!(quantity: 40, baby: baby6, user: baby6.user)
+  bofeeding6 = Bottlefeeding.create!(quantity: 120, baby: baby2, user: baby2.user)
+  bofeeding7 = Bottlefeeding.create!(quantity: 60, baby: baby1, user: baby1.user)
+  bofeeding8 = Bottlefeeding.create!(quantity: 40, baby: baby6, user: baby6.user)
+  bofeeding10 = Bottlefeeding.create!(quantity: 120, baby: baby2, user: baby2.user)
+  bofeeding11 = Bottlefeeding.create!(quantity: 40, baby: baby5, user: user5)
+  bofeeding12 = Bottlefeeding.create!(quantity: 40, baby: baby6, user: baby6.user)
+  bofeeding14 = Bottlefeeding.create!(quantity: 120, baby: baby2, user: baby2.user)
+  bofeeding15 = Bottlefeeding.create!(quantity: 60, baby: baby5, user: baby3.user)
+  bofeeding16 = Bottlefeeding.create!(quantity: 40, baby: baby6, user: baby6.user)
+  bofeeding17 = Bottlefeeding.create!(quantity: 75, baby: baby4, user: baby4.user)
+  bofeeding18 = Bottlefeeding.create!(quantity: 120, baby: baby5, user: baby5.user)
+  bofeeding20 = Bottlefeeding.create!(quantity: 40, baby: baby2, user: baby2.user)
+  bofeeding21 = Bottlefeeding.create!(quantity: 75, baby: baby6, user: baby6.user)
+  bofeeding22 = Bottlefeeding.create!(quantity: 120, baby: baby4, user: baby4.user)
+  bofeeding23 = Bottlefeeding.create!(quantity: 60, baby: baby2, user: baby2.user)
+  bofeeding24 = Bottlefeeding.create!(quantity: 40, baby: baby5, user: baby3.user)
+  bofeeding26 = Bottlefeeding.create!(quantity: 120, baby: baby1, user: baby1.user)
+  bofeeding27 = Bottlefeeding.create!(quantity: 60, baby: baby1, user: baby1.user)
+  bofeeding28 = Bottlefeeding.create!(quantity: 40, baby: baby2, user: baby2.user)
+  bofeeding29 = Bottlefeeding.create!(quantity: 75, baby: baby5, user: user4)
+  bofeeding30 = Bottlefeeding.create!(quantity: 120, baby: baby6, user: baby6.user)
+  bofeeding32 = Bottlefeeding.create!(quantity: 40, baby: baby2, user: baby2.user)
+  bofeeding33 = Bottlefeeding.create!(quantity: 75, baby: baby1, user: baby1.user)
+  bofeeding35 = Bottlefeeding.create!(quantity: 60, baby: baby5, user: baby5.user)
+  bofeeding36 = Bottlefeeding.create!(quantity: 40, baby: baby4, user: baby4.user)
 
   Baby.all.each do |baby|
     bottlefeeding = baby.bottlefeedings
@@ -156,21 +167,26 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 3.3, category: "Wet", comment: "Baby clean!", baby: baby6, user: baby6.user)
   Diaper.create!(start_date: DateTime.now - 3.4, category: "Dirty", comment: "Baby clean!", baby: baby6, user: baby6.user)
   Diaper.create!(start_date: DateTime.now - 4.2, category: "Clean", comment: "Baby clean!", baby: baby6, user: baby6.user)
-  Diaper.create!(start_date: DateTime.now - 4.5, category: "Dry", comment: "Baby clean!", baby: baby6, user: baby6.user)
-  Diaper.create!(start_date: DateTime.now - 5.1, category: "Wet", comment: "Baby clean!", baby: baby6, user: baby6.user)
+  Diaper.create!(start_date: DateTime.now - 4.5, category: "OMG", comment: "Baby clean!", baby: baby6, user: baby6.user)
+  Diaper.create!(start_date: DateTime.now - 5.1, category: "OMG", comment: "Baby clean!", baby: baby6, user: baby6.user)
+  Diaper.create!(start_date: DateTime.now - 7.3, category: "OMG", comment: "Baby clean!", baby: baby6, user: baby6.user)
+  Diaper.create!(start_date: DateTime.now - 3.1, category: "OMG", comment: "Baby clean!", baby: baby6, user: baby6.user)
 
-  Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby5, user: baby5.user)
-  Diaper.create!(start_date: DateTime.now - 2.3, category: "Dry", comment: "Baby clean!", baby: baby5, user: baby5.user)
-  Diaper.create!(start_date: DateTime.now - 4.7, category: "Dirty", comment: "Baby clean!", baby: baby5, user: baby5.user)
+
+  Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby5, user: baby1.user)
+  Diaper.create!(start_date: DateTime.now - 2.3, category: "Dry", comment: "Baby clean!", baby: baby5, user: user5)
+  Diaper.create!(start_date: DateTime.now - 4.7, category: "Dirty", comment: "Baby clean!", baby: baby5, user: baby1.user)
   Diaper.create!(start_date: DateTime.now - 6.2, category: "OMG", comment: "Baby clean!", baby: baby5, user: baby5.user)
-  Diaper.create!(start_date: DateTime.now - 8.5, category: "OMG", comment: "Baby clean!", baby: baby5, user: baby5.user)
+  Diaper.create!(start_date: DateTime.now - 8.5, category: "Wet", comment: "Baby clean!", baby: baby5, user: baby3.user)
   Diaper.create!(start_date: DateTime.now - 10.4, category: "Clean", comment: "Baby clean!", baby: baby5, user: baby5.user)
-  Diaper.create!(start_date: DateTime.now - 12.2, category: "OMG", comment: "Baby clean!", baby: baby5, user: baby5.user)
-  Diaper.create!(start_date: DateTime.now - 14.8, category: "Wet", comment: "Baby clean!", baby: baby5, user: baby5.user)
-  Diaper.create!(start_date: DateTime.now - 16.3, category: "Dirty", comment: "Baby clean!", baby: baby5, user: baby5.user)
+  Diaper.create!(start_date: DateTime.now - 12.2, category: "Dirty", comment: "Baby clean!", baby: baby5, user: baby5.user)
+  Diaper.create!(start_date: DateTime.now - 14.8, category: "Wet", comment: "Baby clean!", baby: baby5, user: user4)
+  Diaper.create!(start_date: DateTime.now - 16.3, category: "Dry", comment: "Baby clean!", baby: baby5, user: baby3.user)
   Diaper.create!(start_date: DateTime.now - 18.4, category: "Clean", comment: "Baby clean!", baby: baby5, user: baby5.user)
-  Diaper.create!(start_date: DateTime.now - 20.2, category: "Dry", comment: "Baby clean!", baby: baby5, user: baby5.user)
-  Diaper.create!(start_date: DateTime.now - 22.5, category: "Wet", comment: "Baby clean!", baby: baby5, user: baby5.user)
+  Diaper.create!(start_date: DateTime.now - 20.2, category: "Wet + dirty", comment: "Baby clean!", baby: baby5, user: baby5.user)
+  Diaper.create!(start_date: DateTime.now - 22.5, category: "Wet", comment: "Baby clean!", baby: baby5, user: baby3.user)
+  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+
 
   Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby4, user: baby4.user)
   Diaper.create!(start_date: DateTime.now - 2.3, category: "Dry", comment: "Baby clean!", baby: baby4, user: baby4.user)
@@ -184,6 +200,8 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 18.6, category: "Clean", comment: "Baby clean!", baby: baby4, user: baby4.user)
   Diaper.create!(start_date: DateTime.now - 20.1, category: "Dry", comment: "Baby clean!", baby: baby4, user: baby4.user)
   Diaper.create!(start_date: DateTime.now - 22.2, category: "Wet", comment: "Baby clean!", baby: baby4, user: baby4.user)
+  Diaper.create!(start_date: DateTime.now - 7.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 3.1, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
 
   Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby3, user: baby3.user)
   Diaper.create!(start_date: DateTime.now - 2.4, category: "Dry", comment: "Baby clean!", baby: baby3, user: baby3.user)
@@ -197,6 +215,8 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 13.4, category: "Clean", comment: "Baby clean!", baby: baby3, user: baby3.user)
   Diaper.create!(start_date: DateTime.now - 20.3, category: "Dry", comment: "Baby clean!", baby: baby3, user: baby3.user)
   Diaper.create!(start_date: DateTime.now - 22.5, category: "Wet", comment: "Baby clean!", baby: baby3, user: baby3.user)
+  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+
 
   Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby2, user: baby2.user)
   Diaper.create!(start_date: DateTime.now - 2.2, category: "Dry", comment: "Baby clean!", baby: baby2, user: baby2.user)
@@ -210,8 +230,8 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 18.3, category: "Clean", comment: "Baby clean!", baby: baby2, user: baby2.user)
   Diaper.create!(start_date: DateTime.now - 20.5, category: "Dry", comment: "Baby clean!", baby: baby2, user: baby2.user)
   Diaper.create!(start_date: DateTime.now - 22.2, category: "Wet", comment: "Baby clean!", baby: baby2, user: baby2.user)
-  Diaper.create!(start_date: DateTime.now - 6.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
-  Diaper.create!(start_date: DateTime.now - 8.5, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 7.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 3.1, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
 
 
   Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby1, user: baby1.user)
@@ -226,7 +246,8 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 18.5, category: "Clean", comment: "Baby clean!", baby: baby1, user: baby1.user)
   Diaper.create!(start_date: DateTime.now - 20.4, category: "Dry", comment: "Baby clean!", baby: baby1, user: baby1.user)
   Diaper.create!(start_date: DateTime.now - 22.2, category: "Wet", comment: "Baby clean!", baby: baby1, user: baby1.user)
-  Diaper.create!(start_date: DateTime.now - 6.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 6.7, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
 
   puts "Creating Sleep sessions..."
 
