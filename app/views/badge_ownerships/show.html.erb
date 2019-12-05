@@ -7,11 +7,11 @@
 <h1 style="color: #DFAB7B">Congratulations!</h1>
 
 <div>
-  <img src="<%= image_path('diaper_warrior.svg') %>" class="animated tada" alt="" style="height:300px; display: block; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 15px">
+  <img src="<%= image_path(@badge[:svg]) %>" class="animated tada" alt="" style="height:300px; display: block; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 15px">
 </div>
 
-<h1 style="color: #DFAB7B">Diaper Warrior</h1>
-<h2>You changed 10 "OMG" diapers!</h2>
+<h1 style="color: #DFAB7B"><%= @badge[:title] %></h1>
+<h2><%= @badge[:accomplishement] %>!</h2>
 
 <div style="display: flex; justify-content: center; margin: 15px 15px;">
   <div style="margin: 15px 15px;">
@@ -32,7 +32,7 @@
       <div style="margin: auto; margin-top: 35px; margin-bottom:15px;"><img src="<%= image_path('thomas_logo_2.png') %>" alt="" style="width: 150px;"></div>
       <div class="modal-header" style="display: flex; flex-wrap: wrap; justify-content: center">
         <div><img src="<%= image_path('diaper_warrior.svg') %>" alt="" style="height: 250px;"></div>
-        <h1>I'm a Diaper Warrior!</h1>
+        <h1><%= @badge[:comment] %></h1>
       </div>
       <div class="modal-body">
         <input type="text" placeholder="Send a message!">
