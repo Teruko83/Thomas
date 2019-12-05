@@ -5,15 +5,10 @@
   </div>
 <% end %>
 
-<h1>Badges</h1>
+<h1>My Badges</h1>
 
-<% @badge_ownerships.each do |b| %>
-
-<% if b.badge_type == "Diaper Warrior" && b.user_id == current_user.id %>
-
-  <h2>Your Badges</h2>
-  <hr>
   <div class="badge-group">
+
     <%= link_to badge_ownerships_show_path do %>
       <div class="badge-element">
         <img src="<%= image_path('diaper_warrior.svg') %>" alt="">
@@ -21,47 +16,47 @@
         <p>10 OMG Diapers</p>
       </div>
     <% end %>
-    <%= link_to badge_ownerships_show_path do %>
-      <div class="badge-element">
-        <img src="<%= image_path('sandman.svg') %>" alt="">
-        <h2>Sandman</h2>
-        <p>10h of sleep</p>
+
+      <div class = "badge-element">
+        <img src="<%= image_path('golden_nipple.svg') %>" alt="">
+        <h2>Golden Nipple</h2>
+        <p>Breastfeed 50 time</p>
       </div>
-    <% end %>
   </div>
 
-<% end %>
-
-
-<% @badge_ownerships.each do |b| %>
-
-  <% if b.badge_type == "Diaper Warrior" && b.user_id != current_user.id %>
-
-  <br>
-  <h2>Caretakers's Badges</h2>
-  <hr>
+<br>
+<h1>Caretakers' Badges</h1>
+<h2>GrandMa's Badges</h2>
   <div class="badge-group">
+
     <div class="badge-element">
       <img src="<%= image_path('diaper_warrior.svg') %>" alt="">
       <h2>Diaper Warrior</h2>
       <p>10 OMG Diapers</p>
     </div>
+
+     <div class="badge-element">
+      <img src="<%= image_path('sandman.svg') %>" alt="">
+      <h2>Sandman</h2>
+      <p>10h of sleep</p>
+    </div>
   </div>
 
-  <% end %>
-<% end %>
 
 <br>
-<h2>Badges to unlock</h2>
 
-<hr>
+<h1>Badges to unlock</h1>
+
+
 
 <div class="badge-group" style="opacity: 0.5">
-  <div class = "badge-element">
-    <img src="<%= image_path('golden_nipple.svg') %>" alt="">
-    <h2>Golden Nipple</h2>
-    <p>Breastfeed 50 time</p>
-  </div>
+
+    <div class="badge-element">
+      <img src="<%= image_path('sandman.svg') %>" alt="">
+      <h2>Sandman</h2>
+      <p>10h of sleep</p>
+    </div>
+
   <div class="badge-element">
     <img src="<%= image_path('bottle_amateur.svg') %>" alt="">
     <h2>Bottle Amateur</h2>
@@ -109,4 +104,4 @@
   </div>
 </div>
 
-<% end %>
+
