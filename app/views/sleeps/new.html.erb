@@ -2,7 +2,7 @@
 
 <%= link_to baby_path(@baby) do %>
   <div>
-    <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+    <img src="<%= image_path('back-arrow.svg') %>" alt=""></div>
   </div>
 <% end %>
 
@@ -12,7 +12,7 @@
 
   <div class="range-slider">
     <span id="rs-bullet" class="rs-label">0</span>
-    <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="10" step="0.5">
+    <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="20" step="1">
   </div>
 
 </div>
@@ -36,7 +36,7 @@
 
     const newData = document.getElementById("sleep_sleep_time");
     // set the value of the query selected variable of the form above to the new value `newQuantity`
-    newData.value = bulletPosition * 10;
+    newData.value = bulletPosition * 20;
 
   }
 

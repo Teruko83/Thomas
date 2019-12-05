@@ -1,7 +1,7 @@
 <div class="back-close-nav">
 <%= link_to baby_path(@baby) do %>
  <div>
- <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+ <img src="<%= image_path('back-arrow.svg') %>" alt=""></div>
 </div>
 <% end %>
 
@@ -25,7 +25,7 @@
   <div><p><%= f[:breast_side] %></p></div>
   <div><p><%= f[:quantity] %></p></div>
   <div><p><%= User.find(f[:user_id]).name %></p></div>
-  <div><p><%= f[:time_fed].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
+  <div><p><%= f[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
   <%= link_to breast_feeding_path(f[:id]), method: :delete do %>
   <img src="<%= image_path('close.svg')%>" style="width:10px" >
   <% end %>

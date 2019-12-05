@@ -16,8 +16,9 @@ class BabiesController < ApplicationController
       feeding = {
         type: "bottle",
         quantity: "#{b.quantity}ml",
-        time_fed: b.start_date,
-        id: b.id
+        start_date: b.start_date,
+        id: b.id,
+        user_id: b.user_id
       }
 
     @feedings << feeding
@@ -27,21 +28,21 @@ class BabiesController < ApplicationController
       feeding = {
         type: "boob",
         duration_minutes: "#{b.duration_minutes}min",
-        time_fed: b.start_date,
-        id: b.id
+        start_date: b.start_date,
+        id: b.id,
+        user_id: b.user_id
       }
 
     @feedings << feeding
     end
-
-    @feedings = @feedings.sort_by { |f| f[:start_date] }
 
     @diapers.each do |b|
       diaper = {
         type: "diaper",
         category: "#{b.category}",
         start_date: b.start_date,
-        id: b.id
+        id: b.id,
+        user_id: b.user_id
       }
 
     @feedings << diaper
@@ -52,12 +53,14 @@ class BabiesController < ApplicationController
         type: "sleep",
         sleep_time: "#{b.sleep_time}",
         start_date: b.start_date,
-        id: b.id
+        id: b.id,
+        user_id: b.user_id
       }
 
     @feedings << feeding
-    end
 
+    end
+    @feedings = @feedings.sort_by { |f| f[:start_date] }.reverse!
   end
 
   def new

@@ -102,6 +102,7 @@ const getLastSevenConsumption = () => {
     });
 };
 
+
 //30day chart that doesn't work due to a lack of seeds
 
 // document.getElementById("last30").addEventListener("click", getLastThirtyConsumption);
@@ -133,6 +134,7 @@ const getLastSevenConsumption = () => {
 //     }
 //     });
 // };
+
 const initBottleChart = () => {
   getLastSevenConsumption();
   // getLastThirtyConsumption();
