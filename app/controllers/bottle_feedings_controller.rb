@@ -9,7 +9,7 @@ class BottleFeedingsController < ApplicationController
       feeding = {
         type: "bottle",
         quantity: "#{b.quantity}ml",
-        time_fed: b.start_date,
+        start_date: b.start_date,
         user_id: b.user_id,
         id: b.id
       }
