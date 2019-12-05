@@ -16,8 +16,8 @@ require 'faker'
   puts 'Creating Users...'
 
   user1 = User.create!(email: "adam@email.com", password: "123456", name: "Adam")
-  user2 = User.create!(email: "aurelie@email.com", password: "123456", name: "Aurelie" )
-  user3 = User.create!(email: "athena@email.com", password: "123456", name: "Athena")
+  user2 = User.create!(email: "aurelie@email.com", password: "123456", name: "MyLover" )
+  user3 = User.create!(email: "athena@email.com", password: "123456", name: "Mummy")
 
   puts 'Creating Babies...'
 
@@ -32,11 +32,11 @@ require 'faker'
 
   puts 'Creating Caretakers...'
 
-  CareTaking.create!(baby: baby1, user: user3)
+  CareTaking.create!(baby: baby1, user: user3, email: user3.email)
   CareTaking.create!(baby: baby1, user: user2)
   CareTaking.create!(baby: baby5, user: user1)
-  CareTaking.create!(baby: baby5, user: user3)
-  CareTaking.create!(baby: baby3, user: user2)
+  CareTaking.create!(baby: baby5, user: user2)
+  CareTaking.create!(baby: baby3, user: user3)
   CareTaking.create!(baby: baby3, user: user1)
 
   puts 'Creating Breastfeedings...'
@@ -210,6 +210,9 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 18.3, category: "Clean", comment: "Baby clean!", baby: baby2, user: baby2.user)
   Diaper.create!(start_date: DateTime.now - 20.5, category: "Dry", comment: "Baby clean!", baby: baby2, user: baby2.user)
   Diaper.create!(start_date: DateTime.now - 22.2, category: "Wet", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 6.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 8.5, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+
 
   Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby1, user: baby1.user)
   Diaper.create!(start_date: DateTime.now - 2.9, category: "Dry", comment: "Baby clean!", baby: baby1, user: baby1.user)
@@ -223,6 +226,7 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 18.5, category: "Clean", comment: "Baby clean!", baby: baby1, user: baby1.user)
   Diaper.create!(start_date: DateTime.now - 20.4, category: "Dry", comment: "Baby clean!", baby: baby1, user: baby1.user)
   Diaper.create!(start_date: DateTime.now - 22.2, category: "Wet", comment: "Baby clean!", baby: baby1, user: baby1.user)
+  Diaper.create!(start_date: DateTime.now - 6.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
 
   puts "Creating Sleep sessions..."
 
