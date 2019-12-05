@@ -10,9 +10,14 @@
 
 require 'faker'
 
+
   User.destroy_all
   Baby.destroy_all
+  CareTaking.destroy_all
+  Bottlefeeding.destroy_all
+  BreastFeeding.destroy_all
 
+  puts "former seeds destroyed"
   puts 'Creating Users...'
 
   user1 = User.create!(email: "adam@email.com", password: "123456", name: "GrandMa")
@@ -65,12 +70,12 @@ require 'faker'
   brfeeding14 = BreastFeeding.create!(start: "02:10", duration_minutes: 35, breast_side: "R", baby: baby4, user: baby4.user)
   brfeeding15 = BreastFeeding.create!(start: "03:15", duration_minutes: 15, breast_side: "R", baby: baby5, user: baby1.user)
   brfeeding16 = BreastFeeding.create!(start: "05:15", duration_minutes: 20, breast_side: "L", baby: baby3, user: baby3.user)
-  brfeeding17 = BreastFeeding.create!(start: "04:10", duration_minutes: 25, breast_side: "L", baby: baby5, user: user5)
+  brfeeding17 = BreastFeeding.create!(start: "04:10", duration_minutes: 25, breast_side: "L", baby: baby5, user: baby5.user)
   brfeeding18 = BreastFeeding.create!(start: "23:10", duration_minutes: 35, breast_side: "L", baby: baby1, user: baby1.user)
   brfeeding19 = BreastFeeding.create!(start: "22:15", duration_minutes: 15, breast_side: "L", baby: baby2, user: baby2.user)
   brfeeding20 = BreastFeeding.create!(start: "20:15", duration_minutes: 20, breast_side: "R", baby: baby3, user: baby3.user)
   brfeeding21 = BreastFeeding.create!(start: "12:10", duration_minutes: 25, breast_side: "L", baby: baby4, user: baby4.user)
-  brfeeding22 = BreastFeeding.create!(start: "18:10", duration_minutes: 35, breast_side: "L", baby: baby5, user: baby1.user)
+  brfeeding22 = BreastFeeding.create!(start: "18:10", duration_minutes: 35, breast_side: "L", baby: baby5, user: baby5.user)
   brfeeding23 = BreastFeeding.create!(start: "19:15", duration_minutes: 15, breast_side: "R", baby: baby4, user: baby4.user)
   brfeeding24 = BreastFeeding.create!(start: "02:15", duration_minutes: 20, breast_side: "R", baby: baby2, user: baby2.user)
   brfeeding25 = BreastFeeding.create!(start: "21:15", duration_minutes: 20, breast_side: "L", baby: baby2, user: baby2.user)
@@ -81,7 +86,7 @@ require 'faker'
   brfeeding30 = BreastFeeding.create!(start: "10:10", duration_minutes: 25, breast_side: "L", baby: baby3, user: baby3.user)
   brfeeding31 = BreastFeeding.create!(start: "12:10", duration_minutes: 35, breast_side: "L", baby: baby5, user: baby5.user)
   brfeeding32 = BreastFeeding.create!(start: "13:15", duration_minutes: 15, breast_side: "R", baby: baby2, user: baby2.user)
-  brfeeding33 = BreastFeeding.create!(start: "15:30", duration_minutes: 20, breast_side: "L", baby: baby5, user: baby3.user)
+  brfeeding33 = BreastFeeding.create!(start: "15:30", duration_minutes: 20, breast_side: "L", baby: baby5, user: baby5.user)
   brfeeding34 = BreastFeeding.create!(start: "10:10", duration_minutes: 25, breast_side: "R", baby: baby1, user: baby1.user)
   brfeeding35 = BreastFeeding.create!(start: "12:10", duration_minutes: 35, breast_side: "L", baby: baby4, user: baby4.user)
   brfeeding36 = BreastFeeding.create!(start: "13:15", duration_minutes: 15, breast_side: "L", baby: baby3, user: baby3.user)
@@ -110,36 +115,34 @@ require 'faker'
   bofeeding25 = Bottlefeeding.create!(quantity: 75, baby: baby3, user: baby3.user)
   bofeeding31 = Bottlefeeding.create!(quantity: 60, baby: baby3, user: baby3.user)
   bofeeding34 = Bottlefeeding.create!(quantity: 120, baby: baby3, user: baby3.user)
-
-
-  bofeeding2 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby2, user: baby2.user)
-  bofeeding3 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5, user: baby1.user)
-  bofeeding4 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby6, user: baby6.user)
-  bofeeding6 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby2, user: baby2.user)
-  bofeeding7 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby1, user: baby1.user)
-  bofeeding8 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby6, user: baby6.user)
-  bofeeding10 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby2, user: baby2.user)
-  bofeeding11 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5, user: user5)
-  bofeeding12 = Bottlefeeding.create!(start: "21:40", quantity: 40, baby: baby6, user: baby6.user)
-  bofeeding14 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby2, user: baby2.user)
-  bofeeding15 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5, user: baby3.user)
-  bofeeding16 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby6, user: baby6.user)
-  bofeeding17 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby4, user: baby4.user)
-  bofeeding18 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby5, user: baby5.user)
-  bofeeding20 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby2, user: baby2.user)
-  bofeeding21 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby6, user: baby6.user)
-  bofeeding22 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby4, user: baby4.user)
-  bofeeding23 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby2, user: baby2.user)
-  bofeeding24 = Bottlefeeding.create!(start: "21:40", quantity: 40, baby: baby5, user: baby3.user)
-  bofeeding26 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby1, user: baby1.user)
-  bofeeding27 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby1, user: baby1.user)
-  bofeeding28 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby2, user: baby2.user)
-  bofeeding29 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby5, user: user4)
-  bofeeding30 = Bottlefeeding.create!(start: "14:10", quantity: 120, baby: baby6, user: baby6.user)
-  bofeeding32 = Bottlefeeding.create!(start: "11:15", quantity: 40, baby: baby2, user: baby2.user)
-  bofeeding33 = Bottlefeeding.create!(start: "16:10", quantity: 75, baby: baby1, user: baby1.user)
-  bofeeding35 = Bottlefeeding.create!(start: "17:15", quantity: 60, baby: baby5, user: baby5.user)
-  bofeeding36 = Bottlefeeding.create!(start: "21:40", quantity: 40, baby: baby4, user: baby4.user)
+  bofeeding2 = Bottlefeeding.create!(quantity: 120, baby: baby2, user: baby2.user)
+  bofeeding3 = Bottlefeeding.create!(quantity: 60, baby: baby5, user: baby1.user)
+  bofeeding4 = Bottlefeeding.create!(quantity: 40, baby: baby6, user: baby6.user)
+  bofeeding6 = Bottlefeeding.create!(quantity: 120, baby: baby2, user: baby2.user)
+  bofeeding7 = Bottlefeeding.create!(quantity: 60, baby: baby1, user: baby1.user)
+  bofeeding8 = Bottlefeeding.create!(quantity: 40, baby: baby6, user: baby6.user)
+  bofeeding10 = Bottlefeeding.create!(quantity: 120, baby: baby2, user: baby2.user)
+  bofeeding11 = Bottlefeeding.create!(quantity: 40, baby: baby5, user: user5)
+  bofeeding12 = Bottlefeeding.create!(quantity: 40, baby: baby6, user: baby6.user)
+  bofeeding14 = Bottlefeeding.create!(quantity: 120, baby: baby2, user: baby2.user)
+  bofeeding15 = Bottlefeeding.create!(quantity: 60, baby: baby5, user: baby3.user)
+  bofeeding16 = Bottlefeeding.create!(quantity: 40, baby: baby6, user: baby6.user)
+  bofeeding17 = Bottlefeeding.create!(quantity: 75, baby: baby4, user: baby4.user)
+  bofeeding18 = Bottlefeeding.create!(quantity: 120, baby: baby5, user: baby5.user)
+  bofeeding20 = Bottlefeeding.create!(quantity: 40, baby: baby2, user: baby2.user)
+  bofeeding21 = Bottlefeeding.create!(quantity: 75, baby: baby6, user: baby6.user)
+  bofeeding22 = Bottlefeeding.create!(quantity: 120, baby: baby4, user: baby4.user)
+  bofeeding23 = Bottlefeeding.create!(quantity: 60, baby: baby2, user: baby2.user)
+  bofeeding24 = Bottlefeeding.create!(quantity: 40, baby: baby5, user: baby3.user)
+  bofeeding26 = Bottlefeeding.create!(quantity: 120, baby: baby1, user: baby1.user)
+  bofeeding27 = Bottlefeeding.create!(quantity: 60, baby: baby1, user: baby1.user)
+  bofeeding28 = Bottlefeeding.create!(quantity: 40, baby: baby2, user: baby2.user)
+  bofeeding29 = Bottlefeeding.create!(quantity: 75, baby: baby5, user: user4)
+  bofeeding30 = Bottlefeeding.create!(quantity: 120, baby: baby6, user: baby6.user)
+  bofeeding32 = Bottlefeeding.create!(quantity: 40, baby: baby2, user: baby2.user)
+  bofeeding33 = Bottlefeeding.create!(quantity: 75, baby: baby1, user: baby1.user)
+  bofeeding35 = Bottlefeeding.create!(quantity: 60, baby: baby5, user: baby5.user)
+  bofeeding36 = Bottlefeeding.create!(quantity: 40, baby: baby4, user: baby4.user)
 
   Baby.all.each do |baby|
     bottlefeeding = baby.bottlefeedings
