@@ -3,7 +3,7 @@
 
 <%= link_to baby_path(@baby) do %>
  <div>
- <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+ <img src="<%= image_path('back-arrow.svg') %>" alt=""></div>
 </div>
 <% end %>
 
@@ -17,7 +17,7 @@
 <div class="log-row">
   <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:30px"></div>
   <div><p><%= s[:sleep_type] %></p></div>
-  <div><p><%= s[:sleep_time] if s[:sleep_time]%>h</p></div>
+  <div><p><%= s[:sleep_time] if s[:sleep_time]%>min</p></div>
   <div><p><%= User.find(s[:user_id]).name %></p></div>
   <div><p><%= s[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M")  %></p></div>
   <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>

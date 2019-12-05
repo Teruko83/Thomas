@@ -10,7 +10,7 @@
   padding: 13px 10px;
   text-align: center;
   margin: auto;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .button-blue-large a {
@@ -33,7 +33,7 @@
   padding: 13px 10px;
   text-align: center;
   margin: auto;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .button-blue-small{
@@ -47,7 +47,7 @@
   font-weight: bold;
   padding: 13px 10px;
   text-align: center;
-  margin-top: 6px;
+  margin-bottom: 10px;
 }
 
 .button-blue-small a {
@@ -65,7 +65,7 @@
   font-weight: bold;
   padding: 13px 10px;
   text-align: center;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .button-red-small{
@@ -79,7 +79,7 @@
   font-weight: bold;
   padding: 13px 10px;
   text-align: center;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .time-selector{
@@ -88,4 +88,17 @@
   justify-content: space-around;
   padding: 0 35px;
   text-decoration: none;
+}
+
+.button-share-access{
+  // height: 10px;
+  background-color: #DFAB7B;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 4px 2px;
+  text-align: center;
+  margin-top: 6px;
 }
