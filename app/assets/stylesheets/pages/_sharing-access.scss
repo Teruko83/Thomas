@@ -1,0 +1,87 @@
+.shared-access-title {
+  text-transform: uppercase;
+  color: lighten(#717171, 20%);
+}
+
+.baby-accordion {
+
+  h2 {
+    position: relative;
+  }
+
+  h2:after {
+    width: 100%;
+    height: 1px;
+    background: #717171;
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 0;
+    z-index: 1;
+  }
+
+  h2 span {
+    background-color: white;
+    position: relative;
+    z-index: 4;
+    padding: 4px 20px;
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+  .fa-angle-down {
+    transition: 0.4s;
+  }
+
+  &.active .fa-angle-down{
+    transform: rotate(180deg);
+  }
+}
+
+
+.caretaker-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px auto;
+}
+
+.caretaker-name {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.caretaker-email {
+  color: ligthen(#717171, 10%);
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.new_care_taking {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .form-group {
+    margin: 0;
+  }
+}
+
+.caretaking-baby-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.caretaking-baby-name {
+  font-size: 18px;
+}
+
+.edit-profil{
+  text-decoration: underline;
+  color: gray;
+}
+
