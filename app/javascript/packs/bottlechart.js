@@ -5,34 +5,39 @@ let chartTest = JSON.parse(document.getElementById('myChart').dataset.bottlefeed
 
 // Global Options
 Chart.defaults.global.defaultFontFamily = 'Open Sans';
-Chart.defaults.global.defaultFontSize = 14;
-Chart.defaults.global.defaultFontColor = '#444';
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.global.defaultFontColor = '#777';
+Chart.defaults.global.responsive = true;
 
-let ConsumptionChart = new Chart(myChart, {
-  type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
-  data:{
-    datasets:[{
-      label:'Last seven days',
-      data: chartTest,
-      backgroundColor:'#0F0D25',
-      borderWidth:1,
-      borderColor:'#111',
-      hoverBorderWidth:3,
-      hoverBorderColor:'#000'
-    }]
-  },
-  options: {
-    scales: {
-        xAxes: [{
-            type: 'time',
-            distribution: 'series',
-            time: {
-                unit: 'day'
-            }
-        }]
-    }
-}
-});
+
+//Code below doesn't change anything
+
+// let ConsumptionChart = new Chart(myChart, {
+//   type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
+//   data:{
+//     datasets:[{
+//       label:'Last seven days',
+//       data: chartTest,
+//       backgroundColor:'#0F0D25',
+//       borderWidth:1,
+//       borderColor:'#111',
+//       hoverBorderWidth:3,
+//       hoverBorderColor:'#000'
+//     }]
+//   },
+//   options: {
+//     scales: {
+//         xAxes: [{
+//             type: 'time',
+//             distribution: 'series',
+//             time: {
+//                 unit: 'day'
+//             }
+//         }]
+//     }
+// }
+// });
+
 document.getElementById("last7").addEventListener("click", getLastSevenConsumption);
 const getLastSevenConsumption = () => {
   // Parse data from rails view
@@ -70,14 +75,15 @@ const getLastSevenConsumption = () => {
   console.log(finalData)
 
   ConsumptionChart = new Chart(myChart, {
-      type:'scatter', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
       data:{
         datasets:[{
-          label:'',
+          label:'Last week',
           data: finalData,
           backgroundColor:'#82C4C8',
-          borderWidth:0,
-          borderColor:'#777',
+          borderWidth:1,
+          fill: false,
+          borderColor:'#82C4C8',
           hoverBorderWidth:3,
           hoverBorderColor:'white'
         }]
@@ -95,35 +101,40 @@ const getLastSevenConsumption = () => {
     }
     });
 };
-document.getElementById("last30").addEventListener("click", getLastThirtyConsumption);
-const getLastThirtyConsumption = () => {
-  chartTest = JSON.parse(document.getElementById('myChart').dataset.consumptionthirty)
-  ConsumptionChart = new Chart(myChart, {
-      type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
-      data:{
-        datasets:[{
-          label:'Last thirty days',
-          data: chartTest,
-          backgroundColor:'#0F0D25',
-          borderWidth:1,
-          borderColor:'#777',
-          hoverBorderWidth:3,
-          hoverBorderColor:'#000'
-        }]
-      },
-      options: {
-        scales: {
-            xAxes: [{
-                type: 'time',
-                distribution: 'series',
-                time: {
-                    unit: 'day'
-                }
-            }]
-        }
-    }
-    });
-};
+
+
+//30day chart that doesn't work due to a lack of seeds
+
+// document.getElementById("last30").addEventListener("click", getLastThirtyConsumption);
+// const getLastThirtyConsumption = () => {
+//   chartTest = JSON.parse(document.getElementById('myChart').dataset.consumptionthirty)
+//   ConsumptionChart = new Chart(myChart, {
+//       type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
+//       data:{
+//         datasets:[{
+//           label:'Last thirty days',
+//           data: chartTest,
+//           backgroundColor:'#0F0D25',
+//           borderWidth:1,
+//           borderColor:'#777',
+//           hoverBorderWidth:3,
+//           hoverBorderColor:'#000'
+//         }]
+//       },
+//       options: {
+//         scales: {
+//             xAxes: [{
+//                 type: 'time',
+//                 distribution: 'series',
+//                 time: {
+//                     unit: 'day'
+//                 }
+//             }]
+//         }
+//     }
+//     });
+// };
+
 const initBottleChart = () => {
   getLastSevenConsumption();
   // getLastThirtyConsumption();
