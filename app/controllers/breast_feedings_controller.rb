@@ -47,12 +47,14 @@ class BreastFeedingsController < ApplicationController
   end
 
   def destroy
+
     breastfeeding = BreastFeeding.find(params[:id])
     breastfeeding.destroy
       if params[:location] == "home"
         redirect_to baby_path(params[:baby_id])
+
       else
-        redirect_to baby_breast_feedings_path(params[:baby_id])
+        redirect_to baby_breast_feedings_path(breastfeeding.baby)
       end
   end
 
