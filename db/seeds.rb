@@ -38,6 +38,12 @@ require 'faker'
   baby5 = Baby.create!(name: "Zoé", birthdate: "26/02/2015",user: user3)
   baby6 = Baby.create!(name: "Baltazar", birthdate: "01/05/2018", user: user3)
 
+  puts 'Creating Badge...'
+
+  BadgeOwnership.create!(badge_type: "Diaper Warrior", user: user1)
+  BadgeOwnership.create!(badge_type: "Super Sandman", user: user1)
+
+
   puts 'Creating Caretakers...'
 
   CareTaking.create!(baby: baby1, user: user2, email: user2.email, name: user2.name)
