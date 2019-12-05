@@ -36,8 +36,6 @@ class BabiesController < ApplicationController
     @feedings << feeding
     end
 
-
-
     @diapers.each do |b|
       diaper = {
         type: "diaper",
