@@ -1,11 +1,11 @@
 <div class="back-close-nav">
   <%= link_to baby_path(@baby) do %>
  <div>
- <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+ <img src="<%= image_path('back-arrow.svg') %>" alt=""></div>
 </div>
 <% end %>
 
-<h1>Breast Feeding</h1>
+<h1 style="margin-bottom: 25px;">Breast Feeding</h1>
 
 <div class="breast-inputs">
 
@@ -49,7 +49,7 @@
 </div>
 
 
-<div style="display: flex; justify-content: center; flex-wrap: wrap; margin-top: 20px">
+<div style="display: flex; justify-content: center; flex-wrap: wrap;">
   <%= simple_form_for [@baby, @feeding] do |f| %>
     <%= f.input(:duration_minutes, as: :hidden)%>
     <%= f.input(:breast_side, as: :hidden) %>

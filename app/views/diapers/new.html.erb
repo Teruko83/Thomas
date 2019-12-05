@@ -1,7 +1,7 @@
 <div class="back-close-nav">
  <%= link_to baby_path(@baby) do %>
   <div>
-  <img src="<%= image_path('back-arrow.svg') %>" alt="" style="width:25px; margin:25px"></div>
+  <img src="<%= image_path('back-arrow.svg') %>" alt=""></div>
 </div>
 <% end %>
 
@@ -17,7 +17,7 @@
 
   <%= simple_form_for [@baby, @diaper] do |f| %>
     <%= f.input(:category , as: :hidden)%>
-    <%= f.input(:comment)%>
+    <h2><%= f.input(:comment)%></h2>
     <%= f.input(:start_date, as: :hidden)%>
     <%= f.submit("Accept", class: "button-blue-large") %>
   <% end %>
