@@ -5,7 +5,7 @@ let chartTest = JSON.parse(document.getElementById('mybreastchart').dataset.brea
 
 // Global Options
 Chart.defaults.global.defaultFontFamily = 'Open Sans';
-Chart.defaults.global.defaultFontSize = 18;
+Chart.defaults.global.defaultFontSize = 11;
 Chart.defaults.global.defaultFontColor = '#777';
 Chart.defaults.global.responsive = true;
 
