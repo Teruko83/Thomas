@@ -9,8 +9,8 @@
   <div class="user-information" style="display: flex: flex-wrap: wrap;">
     <h1><%= current_user.name %>'s profil</h1>
       <div class="d-flex flex-column align-items-center">
-        <img src="<%= image_path('adam.jpg') %>" alt="" style="width:80px; margin:25px; border-radius: 80px;">
-        <p class="button-blue-large">edit your profile</p>
+        <img src="<%= image_path('adam.jpg') %>" alt="" style="width:90px; margin:25px; border-radius: 80px;">
+        <p class="edit-profil">edit your profil</p>
       </div>
   </div>
 
@@ -42,7 +42,7 @@
 
         <%= simple_form_for [b, CareTaking.new], method: :post, url: baby_care_takings_path(b) do |f| %>
           <%= f.input :email, placeholder: "email of the caretaker", label: false %>
-          <%= f.submit("Share Access", class: "button-yellow-small") %>
+          <%= f.submit("Share Access", class: "button-share-access") %>
         <% end %>
     </div>
     <% end %>
