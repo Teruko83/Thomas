@@ -4,9 +4,10 @@ let myChart = document.getElementById('mybreastchart').getContext('2d');
 let chartTest = JSON.parse(document.getElementById('mybreastchart').dataset.breastfeedingweek);
 
 // Global Options
-Chart.defaults.global.defaultFontFamily = 'Lato';
+Chart.defaults.global.defaultFontFamily = 'Open Sans';
 Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = '#777';
+Chart.defaults.global.responsive = true;
 
 // let ConsumptionChart = new Chart(myChart, {
 //   type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
@@ -33,6 +34,7 @@ Chart.defaults.global.defaultFontColor = '#777';
 //     }
 // }
 // });
+
 document.getElementById("last7").addEventListener("click", getLastSevenConsumption);
 const getLastSevenConsumption = () => {
   // Parse data from rails view
@@ -73,13 +75,14 @@ console.log(finalData)
       type:'line', // options: bar, horizontalBar, pie, line, doughnut, radar, polarArea
       data:{
         datasets:[{
-          label:'Last seven days',
+          label:'Last week',
           data: finalData,
-          backgroundColor:'#0F0D25',
+          backgroundColor:'#82C4C8',
           borderWidth:1,
-          borderColor:'#777',
+          fill: false,
+          borderColor:'#82C4C8',
           hoverBorderWidth:3,
-          hoverBorderColor:'#000'
+          hoverBorderColor:'white'
         }]
       },
       options: {
