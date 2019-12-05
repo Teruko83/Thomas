@@ -3,6 +3,7 @@ class BadgeOwnership < ApplicationRecord
   validates :badge_type, inclusion: {in: [
     "Diaper God",
     "Golden Nipple",
-    "Diaper Warrior"
+    "Diaper Warrior",
+    "Super Sandman"
   ]}
 end
