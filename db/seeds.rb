@@ -78,6 +78,8 @@ require 'faker'
   BreastFeeding.create!(start_date: DateTime.now - 11.2, duration_minutes: 15,  breast_side: "L", baby: baby5, user: baby5.user)
   BreastFeeding.create!(start_date: DateTime.now - 12.8, duration_minutes: 35,  breast_side: "R", baby: baby5, user: baby5.user)
 
+
+
   # seeds des autres bébés
 
   brfeeding1 = BreastFeeding.create!(start: "10:10", duration_minutes: 25,  breast_side: "R", baby: baby6, user: baby6.user)
@@ -173,11 +175,11 @@ require 'faker'
   Baby.all.each do |baby|
     bottlefeeding = baby.bottlefeedings
     bottlefeeding.each_with_index do |feeding, index|
-      feeding.update!(start_date: DateTime.now - index )
+      feeding.update!(start_date: DateTime.now - rand(0.5...25) )
     end
     breast_feeding = baby.breast_feedings
     breast_feeding.each_with_index do |feeding, index|
-      feeding.update!(start_date: DateTime.now - index )
+      feeding.update!(start_date: DateTime.now - rand(0.5...25) )
     end
   end
 
@@ -211,7 +213,7 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 18.4, category: "Clean", comment: "Baby clean!", baby: baby5, user: baby5.user)
   Diaper.create!(start_date: DateTime.now - 20.2, category: "Wet + dirty", comment: "Baby clean!", baby: baby5, user: baby5.user)
   Diaper.create!(start_date: DateTime.now - 22.5, category: "Wet", comment: "Baby clean!", baby: baby5, user: baby3.user)
-  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby5, user: baby5.user)
 
 
   Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby4, user: baby4.user)
@@ -226,8 +228,8 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 18.6, category: "Clean", comment: "Baby clean!", baby: baby4, user: baby4.user)
   Diaper.create!(start_date: DateTime.now - 20.1, category: "Dry", comment: "Baby clean!", baby: baby4, user: baby4.user)
   Diaper.create!(start_date: DateTime.now - 22.2, category: "Wet", comment: "Baby clean!", baby: baby4, user: baby4.user)
-  Diaper.create!(start_date: DateTime.now - 7.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
-  Diaper.create!(start_date: DateTime.now - 3.1, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 7.3, category: "OMG", comment: "Baby clean!", baby: baby4, user: baby4.user)
+  Diaper.create!(start_date: DateTime.now - 3.1, category: "OMG", comment: "Baby clean!", baby: baby4, user: baby4.user)
 
   Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby3, user: baby3.user)
   Diaper.create!(start_date: DateTime.now - 2.4, category: "Dry", comment: "Baby clean!", baby: baby3, user: baby3.user)
@@ -241,7 +243,7 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 13.4, category: "Clean", comment: "Baby clean!", baby: baby3, user: baby3.user)
   Diaper.create!(start_date: DateTime.now - 20.3, category: "Dry", comment: "Baby clean!", baby: baby3, user: baby3.user)
   Diaper.create!(start_date: DateTime.now - 22.5, category: "Wet", comment: "Baby clean!", baby: baby3, user: baby3.user)
-  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby3, user: baby3.user)
 
 
   Diaper.create!(start_date: DateTime.now, category: "Wet", comment: "Baby clean!", baby: baby2, user: baby2.user)
@@ -272,8 +274,8 @@ require 'faker'
   Diaper.create!(start_date: DateTime.now - 18.5, category: "Clean", comment: "Baby clean!", baby: baby1, user: baby1.user)
   Diaper.create!(start_date: DateTime.now - 20.4, category: "Dry", comment: "Baby clean!", baby: baby1, user: baby1.user)
   Diaper.create!(start_date: DateTime.now - 22.2, category: "Wet", comment: "Baby clean!", baby: baby1, user: baby1.user)
-  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
-  Diaper.create!(start_date: DateTime.now - 6.7, category: "OMG", comment: "Baby clean!", baby: baby2, user: baby2.user)
+  Diaper.create!(start_date: DateTime.now - 4.3, category: "OMG", comment: "Baby clean!", baby: baby1, user: baby1.user)
+  Diaper.create!(start_date: DateTime.now - 6.7, category: "OMG", comment: "Baby clean!", baby: baby1, user: baby1.user)
 
   puts "Creating Sleep sessions..."
 
@@ -329,18 +331,21 @@ require 'faker'
   Sleep.create!(start_date: DateTime.now - 20, sleep_time: 70, baby: baby4, user: baby4.user)
   Sleep.create!(start_date: DateTime.now - 22, sleep_time: 30, baby: baby4, user: baby4.user)
 
-  Sleep.create!(start_date: DateTime.now, sleep_time: 15, baby: baby5, user: baby5.user)
-  Sleep.create!(start_date: DateTime.now - 2, sleep_time: 30, baby: baby5, user: baby5.user)
+
+
+
+  Sleep.create!(start_date: DateTime.now - 0.9, sleep_time: 15, baby: baby5, user: baby1.user)
+  Sleep.create!(start_date: DateTime.now - 2, sleep_time: 30, baby: baby5, user: baby1.user)
   Sleep.create!(start_date: DateTime.now - 4, sleep_time: 80, baby: baby5, user: baby5.user)
-  Sleep.create!(start_date: DateTime.now - 6, sleep_time: 00, baby: baby5, user: baby5.user)
+  Sleep.create!(start_date: DateTime.now - 6, sleep_time: 00, baby: baby5, user: baby3.user)
   Sleep.create!(start_date: DateTime.now - 8, sleep_time: 20, baby: baby5, user: baby5.user)
-  Sleep.create!(start_date: DateTime.now - 10, sleep_time: 30, baby: baby5, user: baby5.user)
-  Sleep.create!(start_date: DateTime.now - 12, sleep_time: 50, baby: baby5, user: baby5.user)
-  Sleep.create!(start_date: DateTime.now - 14, sleep_time: 60, baby: baby5, user: baby5.user)
+  Sleep.create!(start_date: DateTime.now - 10, sleep_time: 30, baby: baby5, user: user4)
+  Sleep.create!(start_date: DateTime.now - 12, sleep_time: 50, baby: baby5, user: baby1.user)
+  Sleep.create!(start_date: DateTime.now - 14, sleep_time: 60, baby: baby5, user: user5)
   Sleep.create!(start_date: DateTime.now - 16, sleep_time: 10, baby: baby5, user: baby5.user)
-  Sleep.create!(start_date: DateTime.now - 18, sleep_time: 70, baby: baby5, user: baby5.user)
-  Sleep.create!(start_date: DateTime.now - 20, sleep_time: 70, baby: baby5, user: baby5.user)
-  Sleep.create!(start_date: DateTime.now - 22, sleep_time: 30, baby: baby5, user: baby5.user)
+  Sleep.create!(start_date: DateTime.now - 18, sleep_time: 70, baby: baby5, user: baby1.user)
+  Sleep.create!(start_date: DateTime.now - 20, sleep_time: 70, baby: baby5, user: baby3.user)
+  Sleep.create!(start_date: DateTime.now - 22, sleep_time: 30, baby: baby5, user: user4)
 
   Sleep.create!(start_date: DateTime.now, sleep_time: 15, baby: baby6, user: baby6.user)
   Sleep.create!(start_date: DateTime.now - 2, sleep_time: 30, baby: baby6, user: baby6.user)
@@ -350,6 +355,10 @@ require 'faker'
   Sleep.create!(start_date: DateTime.now - 10, sleep_time: 30, baby: baby6, user: baby6.user)
   Sleep.create!(start_date: DateTime.now - 12, sleep_time: 50, baby: baby6, user: baby6.user)
   Sleep.create!(start_date: DateTime.now - 14, sleep_time: 60, baby: baby6, user: baby6.user)
+  Sleep.create!(start_date: DateTime.now - 16, sleep_time: 10, baby: baby6, user: baby6.user)
+  Sleep.create!(start_date: DateTime.now - 18, sleep_time: 70, baby: baby6, user: baby6.user)
+  Sleep.create!(start_date: DateTime.now - 20, sleep_time: 70, baby: baby6, user: baby6.user)
+  Sleep.create!(start_date: DateTime.now - 22, sleep_time: 30, baby: baby6, user: baby6.user)
   Sleep.create!(start_date: DateTime.now - 16, sleep_time: 10, baby: baby6, user: baby6.user)
   Sleep.create!(start_date: DateTime.now - 18, sleep_time: 70, baby: baby6, user: baby6.user)
   Sleep.create!(start_date: DateTime.now - 20, sleep_time: 70, baby: baby6, user: baby6.user)
