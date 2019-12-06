@@ -37,11 +37,11 @@
               </div>
             <% end %>
 
-              <div class="caretaker-contact">
+              <div class="care_taking_form">
                 <%= simple_form_for [b, CareTaking.new], method: :post, url: baby_care_takings_path(b) do |f| %>
-                <%= f.input :name, placeholder: "name", label: false %>
-                <%= f.input :email, placeholder: "email of the caretaker", label: false %>
-                <%= f.submit("Share Access", class: "button-share-access") %>
+                  <%= f.input :name, placeholder: "Name", label: false %>
+                  <%= f.input :email, placeholder: "Email", label: false %>
+                  <%= f.submit("Share Access", class: "button-blue-share") %>
                 <% end %>
               </div>
         </div>
