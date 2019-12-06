@@ -17,8 +17,8 @@ class BreastFeedingsController < ApplicationController
         id: b.id
       }
     end
+    @feedings = @feedings.sort_by { |f| f[:start_date] }.reverse!
 
-    @feedings.sort_by! { |f| f[:time_fed] }.reverse!
 
     @last7 = @breast_feedings
       .where(start_date: 7.days.ago..DateTime.now)
@@ -47,12 +47,14 @@ class BreastFeedingsController < ApplicationController
   end
 
   def destroy
+
     breastfeeding = BreastFeeding.find(params[:id])
     breastfeeding.destroy
       if params[:location] == "home"
         redirect_to baby_path(params[:baby_id])
+
       else
-        redirect_to baby_breast_feedings_path(params[:baby_id])
+        redirect_to baby_breast_feedings_path(breastfeeding.baby)
       end
   end
 

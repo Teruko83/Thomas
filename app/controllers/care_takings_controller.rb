@@ -9,6 +9,7 @@ class CareTakingsController < ApplicationController
       unless @caretaker.nil?
         CareTaking.create(baby_id: @baby.id, user_id: @caretaker.id, email: params[:care_taking][:email], name: @caretaker.name)
         redirect_to user_path(current_user)
+        # il manque un .save pour que ca crée une entrée
       end
     end
   end

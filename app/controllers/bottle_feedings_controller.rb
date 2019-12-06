@@ -15,8 +15,7 @@ class BottleFeedingsController < ApplicationController
       }
     @feedings << feeding
     end
-
-    @feedings.sort_by! { |f| f[:time_fed] }.reverse!
+    @feedings = @feedings.sort_by { |f| f[:start_date] }.reverse!
 
     # Find the baby by user
 

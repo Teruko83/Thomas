@@ -13,6 +13,8 @@
 
 <div class="button-blue-large" style="margin-bottom: 25px"><%= link_to "Add Sleep Time", new_baby_sleep_path(@baby) %></div>
 
+<hr>
+<% @sleeps.sort_by { |s| s[:start_date] }.reverse! %>
 <% @sleeps.each do |s| %>
 <div class="log-row">
   <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:30px"></div>
@@ -20,7 +22,9 @@
   <div><p><%= s[:sleep_time] if s[:sleep_time]%>min</p></div>
   <div><p><%= User.find(s[:user_id]).name %></p></div>
   <div><p><%= s[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M")  %></p></div>
+  <%= link_to sleep_path(s[:id]), method: :delete do %>
   <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+  <% end %>
 </div>
 <hr>
 <% end %>

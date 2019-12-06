@@ -4,14 +4,14 @@ class BadgeOwnershipsController < ApplicationController
     @baby = current_user.babies.first
     if params[:badge] == "diaper"
       @badge = {
-        svg: "diaper_warrior.svg",
+        svg: "diaper_warrior.png",
         title: "Diaper Warrior",
         acomplishement: "You changed 10 'OMG' diapers!",
         comment: "I'm a Diaper Warrior!"
       }
     else params[:badge] == "sleep"
       @badge = {
-        svg: "sandman.svg",
+        svg: "sheep.png",
         title: "Super Sandman",
         acomplishement: "Your baby sleep so well!",
         comment: "So cool!"
