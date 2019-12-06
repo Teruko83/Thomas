@@ -19,12 +19,12 @@ require 'faker'
   puts "Former seeds destroyed"
   puts 'Creating new Users...'
 
-  user1 = User.create!(email: "adam@email.com", password: "123456", name: "GrandMa")
+  user1 = User.create!(email: "grandma@email.com", password: "123456", name: "GrandMa")
   user2 = User.create!(email: "aurelie@email.com", password: "123456", name: "MyLover" )
   user3 = User.create!(email: "athena@email.com", password: "123456", name: "Mummy")
   user4 = User.create!(email: "aunt@email.com", password: "123456", name: "Aunt Gemma")
   user5 = User.create!(email: "grandpa@email.com", password: "123456", name: "GrandPa")
-
+  user6 = User.create!(email: "adam@email.com", password: "123456", name: "Babysiter")
 
   puts 'Creating new Babies...'
 
