@@ -14,7 +14,7 @@
 <div class="button-blue-large" style="margin-bottom: 25px"><%= link_to "Add Sleep Time", new_baby_sleep_path(@baby) %></div>
 
 <hr>
-<% @sleeps.sort_by { |s| s[:start_date] }.reverse! %>
+
 <% @sleeps.each do |s| %>
 <div class="log-row">
   <div><img src="<%= image_path('moon.svg') %>" alt="" style="width:30px"></div>
