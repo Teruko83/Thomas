@@ -6,14 +6,14 @@ class BadgeOwnershipsController < ApplicationController
       @badge = {
         svg: "diaper_warrior.png",
         title: "Diaper Warrior",
-        acomplishement: "You changed 10 'OMG' diapers!",
+        accomplishement: "You changed 10 'OMG' diapers",
         comment: "I'm a Diaper Warrior!"
       }
     else params[:badge] == "sleep"
       @badge = {
         svg: "sheep.png",
         title: "Super Sandman",
-        acomplishement: "Your baby sleep so well!",
+        accomplishement: "Your baby sleeps so well",
         comment: "So cool!"
       }
     end

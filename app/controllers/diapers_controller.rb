@@ -2,6 +2,7 @@ class DiapersController < ApplicationController
   def index
     @baby = Baby.find(params[:baby_id])
     @diapers = @baby.diapers
+    @diapers = @diapers.sort_by { |d| d[:start_date] }.reverse!
   end
 
   def new
