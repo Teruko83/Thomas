@@ -17,8 +17,8 @@ class BreastFeedingsController < ApplicationController
         id: b.id
       }
     end
+    @feedings = @feedings.sort_by { |f| f[:start_date] }.reverse!
 
-    @feedings.sort_by! { |f| f[:time_fed] }.reverse!
 
     @last7 = @breast_feedings
       .where(start_date: 7.days.ago..DateTime.now)
