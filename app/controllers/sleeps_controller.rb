@@ -15,8 +15,8 @@ class SleepsController < ApplicationController
       }
     @allsleeps << sleeps
     end
-
-    @allsleeps = @allsleeps.sort_by { |s| s[:start_date] }
+    @allsleeps = @allsleeps.sort_by { |s| s[:time_of_sleep] }.reverse!
+    # @allsleeps = @allsleeps.sort_by { |s| s[:start_date] }
   end
 
   def show
