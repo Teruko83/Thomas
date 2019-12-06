@@ -52,61 +52,77 @@ require 'faker'
 
   puts 'Creating new Breastfeedings...'
 
-  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.21...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby6, user: baby6.user) }
-  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.21...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby5, user: baby5.user) }
-  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.21...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby4, user: baby4.user) }
-  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.21...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby3, user: baby3.user) }
-  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.21...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby2, user: baby2.user) }
-  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.21...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby1, user: baby1.user) }
+
+  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.9...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby6, user: baby6.user) }
+  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.9...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby5, user: baby5.user) }
+  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.9...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby4, user: baby4.user) }
+  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.9...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby3, user: baby3.user) }
+  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.9...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby2, user: baby2.user) }
+  100.times { BreastFeeding.create!(start_date: DateTime.now - rand(0.9...60), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby1, user: baby1.user) }
 
   # 100.times {BreastFeeding.create!(start_date: DateTime.now - rand(1...50), duration_minutes: rand(10..50),  breast_side: [:L, :R].sample, baby: baby5, user: baby5.user)}
 
 
   puts 'Creating new Feedings(Bottlefeeding)...'
 
-
-  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.21...60), quantity: rand(10..120),  baby: baby1, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.21...60), quantity: rand(10..120),  baby: baby2, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.21...60), quantity: rand(10..120),  baby: baby3, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.21...60), quantity: rand(10..120),  baby: baby4, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.21...60), quantity: rand(10..120),  baby: baby5, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.21...60), quantity: rand(10..120),  baby: baby6, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  Bottlefeeding.create!(start_date: "Fri, 06 Dec 2019 20:28:27", quantity: 100,  baby: baby5, user: baby3.user)
+  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.9...60), quantity: rand(10..120),  baby: baby1, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.9...60), quantity: rand(10..120),  baby: baby2, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.9...60), quantity: rand(10..120),  baby: baby3, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.9...60), quantity: rand(10..120),  baby: baby4, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.9...60), quantity: rand(10..120),  baby: baby5, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Bottlefeeding.create!(start_date: DateTime.now - rand(0.9...60), quantity: rand(10..120),  baby: baby6, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
 
 
   puts "Creating poooooop ^-^ "
 
+  Diaper.create!(start_date: "Fri, 06 Dec 2019 19:50:00",
+            category: "Dirty",
+            comment: "Bright yellow",
+            baby: baby5, user: baby3.user)
+
+  Diaper.create!(start_date: "Fri, 06 Dec 2019 17:13:00",
+            category: "Wet",
+            comment: "-",
+            baby: baby5, user: baby3.user)
+
+  Diaper.create!(start_date: "Fri, 06 Dec 2019 15:41:00",
+            category: "Dirty",
+            comment: "Ewwww...",
+            baby: baby5, user: baby3.user)
+
 # for baby1
-  100.times { Diaper.create!(start_date: DateTime.now - rand(0.21...60),
+  100.times { Diaper.create!(start_date: DateTime.now - rand(0.9...60),
             category: ["Wet", "Dry", "Dirty", "OMG", "Wet + Dirty", "Clean"].sample,
             comment: ["Baby clean!", "Yeurk!", "-", "Sick"].sample, baby: baby1,
             user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
             }
 # for baby2
-  100.times { Diaper.create!(start_date: DateTime.now - rand(0.21...60),
+  100.times { Diaper.create!(start_date: DateTime.now - rand(0.9...60),
             category: ["Wet", "Dry", "Dirty", "OMG", "Wet + Dirty", "Clean"].sample,
             comment: ["Baby clean!", "Yeurk!", "-", "Sick"].sample, baby: baby2,
             user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
             }
 # for baby3
-  100.times { Diaper.create!(start_date: DateTime.now - rand(0.21...60),
+  100.times { Diaper.create!(start_date: DateTime.now - rand(0.9...60),
             category: ["Wet", "Dry", "Dirty", "OMG", "Wet + Dirty", "Clean"].sample,
             comment: ["Baby clean!", "Yeurk!", "-", "Sick"].sample,
             baby: baby3, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
             }
 # for baby4
-  100.times { Diaper.create!(start_date: DateTime.now - rand(0.21...60),
+  100.times { Diaper.create!(start_date: DateTime.now - rand(0.9...60),
             category: ["Wet", "Dry", "Dirty", "OMG", "Wet + Dirty", "Clean"].sample,
             comment: ["Baby clean!", "Yeurk!", "-", "Sick"].sample,
             baby: baby4, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
             }
 # for baby5
-  100.times { Diaper.create!(start_date: DateTime.now - rand(0.21...60),
+  100.times { Diaper.create!(start_date: DateTime.now - rand(0.9...60),
             category: ["Wet", "Dry", "Dirty", "OMG", "Wet + Dirty", "Clean"].sample,
             comment: ["Baby clean!", "Yeurk!", "-", "Sick"].sample,
             baby: baby5, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
             }
 # for baby6
-  100.times { Diaper.create!(start_date: DateTime.now - rand(0.21...60),
+  100.times { Diaper.create!(start_date: DateTime.now - rand(0.9...60),
             category: ["Wet", "Dry", "Dirty", "OMG", "Wet + Dirty", "Clean"].sample,
             comment: ["Baby clean!", "Yeurk!", "-", "Sick"].sample, baby: baby6,
             user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
@@ -114,12 +130,12 @@ require 'faker'
 
   puts "Creating new Sleep sessions..."
 
-  100.times {Sleep.create!(start_date: DateTime.now - rand(0.21...60), sleep_time: rand(15..60), baby: baby1, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Sleep.create!(start_date: DateTime.now - rand(0.21...60), sleep_time: rand(15..60), baby: baby2, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Sleep.create!(start_date: DateTime.now - rand(0.21...60), sleep_time: rand(15..60), baby: baby3, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Sleep.create!(start_date: DateTime.now - rand(0.21...60), sleep_time: rand(15..60), baby: baby4, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Sleep.create!(start_date: DateTime.now - rand(0.21...60), sleep_time: rand(15..60), baby: baby5, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
-  100.times {Sleep.create!(start_date: DateTime.now - rand(0.21...60), sleep_time: rand(15..60), baby: baby6, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Sleep.create!(start_date: DateTime.now - rand(0.9...60), sleep_time: rand(15..60), baby: baby1, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Sleep.create!(start_date: DateTime.now - rand(0.9...60), sleep_time: rand(15..60), baby: baby2, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Sleep.create!(start_date: DateTime.now - rand(0.9...60), sleep_time: rand(15..60), baby: baby3, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Sleep.create!(start_date: DateTime.now - rand(0.9...60), sleep_time: rand(15..60), baby: baby4, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Sleep.create!(start_date: DateTime.now - rand(0.9...60), sleep_time: rand(15..60), baby: baby5, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
+  100.times {Sleep.create!(start_date: DateTime.now - rand(0.9...60), sleep_time: rand(15..60), baby: baby6, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
 
 
   puts "Seeds created!"
