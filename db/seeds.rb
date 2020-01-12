@@ -138,6 +138,41 @@ require 'faker'
   100.times {Sleep.create!(start_date: DateTime.now - rand(0.9...60), sleep_time: rand(15..60), baby: baby6, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)}
 
 
+
+  puts "Creating moods"
+
+# for baby1
+  100.times { Mood.create!(start_date: DateTime.now - rand(0.9...60),
+            category: ["Happy", "Calm", "Grumpy", "Sick", "Evil"].sample, baby: baby1,
+            user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
+            }
+# for baby2
+  100.times { Mood.create!(start_date: DateTime.now - rand(0.9...60),
+            category: ["Happy", "Calm", "Grumpy", "Sick", "Evil"].sample, baby: baby2,
+            user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
+            }
+# for baby3
+  100.times { Mood.create!(start_date: DateTime.now - rand(0.9...60),
+            category: ["Happy", "Calm", "Grumpy", "Sick", "Evil"].sample,
+            baby: baby3, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
+            }
+# for baby4
+  100.times { Mood.create!(start_date: DateTime.now - rand(0.9...60),
+            category: ["Happy", "Calm", "Grumpy", "Sick", "Evil"].sample,
+            baby: baby4, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
+            }
+# for baby5
+  100.times { Mood.create!(start_date: DateTime.now - rand(0.9...60),
+            category: ["Happy", "Calm", "Grumpy", "Sick", "Evil"].sample,
+            baby: baby5, user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
+            }
+# for baby6
+  100.times { Mood.create!(start_date: DateTime.now - rand(0.9...60),
+            category: ["Happy", "Calm", "Grumpy", "Sick", "Evil"].sample, baby: baby6,
+            user: [baby1.user, baby3.user, baby5.user, user4, user5].sample)
+            }
+
+
   puts "Seeds created!"
 
 
