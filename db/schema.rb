@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_232722) do
+ActiveRecord::Schema.define(version: 2020_01_12_034033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,17 @@ ActiveRecord::Schema.define(version: 2019_12_04_232722) do
     t.index ["user_id"], name: "index_diapers_on_user_id"
   end
 
+  create_table "moods", force: :cascade do |t|
+    t.string "category"
+    t.datetime "start_date"
+    t.bigint "baby_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["baby_id"], name: "index_moods_on_baby_id"
+    t.index ["user_id"], name: "index_moods_on_user_id"
+  end
+
   create_table "sleeps", force: :cascade do |t|
     t.string "sleeps"
     t.integer "integer"
@@ -122,6 +133,8 @@ ActiveRecord::Schema.define(version: 2019_12_04_232722) do
   add_foreign_key "breast_feedings", "users"
   add_foreign_key "diapers", "babies"
   add_foreign_key "diapers", "users"
+  add_foreign_key "moods", "babies"
+  add_foreign_key "moods", "users"
   add_foreign_key "sleeps", "babies"
   add_foreign_key "sleeps", "sleeps", column: "sleeps_id"
   add_foreign_key "sleeps", "users"

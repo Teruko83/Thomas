@@ -37,10 +37,12 @@
     <div><p>4.5h</p></div>
   </div>
 <% end %>
+<%= link_to baby_moods_path(@baby) do %>
     <div class="category-card">
       <img src="<%= image_path('give.svg') %>" alt="">
       <div><p>Happy</p></div>
     </div>
+<% end %>
   <%= link_to baby_diapers_path(@baby) do %>
     <div class="category-card">
       <img src="<%= image_path('diaper.svg') %>" alt="">
@@ -56,7 +58,7 @@
 </div>
 
 <div class="button-blue-large"><%= link_to "Sleep", new_baby_sleep_path(@baby) %></div>
-<div class="button-blue-large"><%= link_to "Mood", new_baby_sleep_path(@baby) %></div>
+<div class="button-blue-large"><%= link_to "Mood", new_baby_mood_path(@baby) %></div>
 <div class="button-blue-large"> <%= link_to "Diapers", new_baby_diaper_path(@baby) %></div>
 
 <div class="down-arrow" style="margin-top: 25px"><img src="<%= image_path('down-arrow.svg') %>" alt=""></div>
@@ -102,6 +104,20 @@
 
       <div><p><%= f[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
       <%= link_to sleep_path(f[:id], location: :home, baby_id: @baby.id), method: :delete do %>
+
+        <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
+      <% end %>
+
+      <% elsif f[:type] == "mood" %>
+
+      <div><img src="<%= image_path('give.svg') %>" alt="" style="width:30px"></div>
+
+      <div><p><%= f[:category] %></p></div>
+      <div><p><%= User.find(f[:user_id]).name %></p></div>
+
+
+      <div><p><%= f[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p></div>
+      <%= link_to mood_path(f[:id], location: :home, baby_id: @baby.id), method: :delete do %>
 
         <div><img src="<%= image_path('close.svg') %>" alt="" style="width:15px"></div>
       <% end %>

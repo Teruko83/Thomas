@@ -1,0 +1,47 @@
+<div class="back-close-nav">
+ <%= link_to baby_path(@baby) do %>
+  <div>
+  <img src="<%= image_path('back-arrow.svg') %>" alt=""></div>
+</div>
+<% end %>
+
+<h1>Mood</h1>
+<img src="<%= image_path('give.svg') %>" alt="" style="height:160px; display: block; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 25px">
+
+<div class="time-selector">
+  <div class="button-blue-large" id="Happy">Happy</div>
+  <div class="button-blue-large" id="Calm">Calm</div>
+  <div class="button-blue-large" id="Grumpy">Grumpy</div>
+  <div class="button-blue-large" id="Sick">Sick</div>
+  <div class="button-blue-large" id="Evil">Evil</div>
+
+  <%= simple_form_for [@baby, @mood] do |f| %>
+    <%= f.input(:category , as: :hidden)%>
+    <%= f.input(:start_date, as: :hidden)%>
+    <%= f.submit("Accept", class: "button-blue-large") %>
+  <% end %>
+
+  <div class="button-red-large" id="cancelBtn">Cancel</div>
+  </div>
+</div>
+
+<script>
+
+  document.getElementById("Happy").addEventListener("click", (e) => {changeMoodType("Happy", e)});
+  document.getElementById("Calm").addEventListener("click", (e) => {changeMoodType("Calm", e)});
+  document.getElementById("Grumpy").addEventListener("click", (e) => {changeMoodType("Grumpy", e)});
+  document.getElementById("Sick").addEventListener("click", (e) => {changeMoodType("Sick", e)});
+  document.getElementById("Evil").addEventListener("click", (e) => {changeMoodType("Evil", e)});
+
+  moodCategoryInput = document.getElementById("mood_category")
+
+  const changeMoodType = (moodType, e) => {
+    e.target.classList.toggle("selected-mood")
+    moodCategoryInput.value = moodType;
+  }
+
+
+</script>
+
+
+

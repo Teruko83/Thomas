@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :sleeps, only: [:create, :new, :show, :index]
       resources :care_takings, only: [:create]
       resources :diapers, only: [:create, :new, :show, :index]
+      resources :moods, only: [:create, :new, :show, :index]
   end
   resources :feedings, only: [:destroy]
   resources :sleeps, only: [:destroy]
@@ -21,6 +22,6 @@ Rails.application.routes.draw do
   resources :diapers, only: [:destroy]
   resources :users, only: [:show]
   resources :care_takings, only: [:destroy]
-
+  resources :moods, only: [:destroy]
 
 end

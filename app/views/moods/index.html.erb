@@ -1,0 +1,45 @@
+<div class="back-close-nav">
+ <%= link_to baby_path(@baby) do %>
+  <div>
+    <img src="<%= image_path('back-arrow.svg') %>" alt=""></div>
+  </div>
+<% end %>
+
+<h1>Mood</h1>
+<img src="<%= image_path('give.svg') %>" alt="" style="height:160px; display: block; margin-left: auto; margin-right: auto; margin-top: 30px; margin-bottom: 25px">
+
+<%= link_to new_baby_mood_path(@baby) do %>
+  <div class="button-blue-large">Add an entry</div>
+<% end %>
+<br>
+
+<hr>
+
+<% @moods.each do |d|  %>
+  <div class="log-row">
+    <div>
+      <img src="<%= image_path('give.svg') %>" alt="" style="width:30px">
+    </div>
+    <div>
+      <p><%= d[:category] %></p>
+    </div>
+    <div>
+      <p><%= d[:start_date].in_time_zone("EST").strftime("%b %e, %H:%M") %></p>
+    </div>
+  <%= link_to mood_path(d[:id]), method: :delete do %>
+    <img src="<%= image_path('close.svg')%>" style="width:10px" >
+  <% end %>
+  </div>
+  <div class="log-row-comment">
+    <div>
+      <p><%= User.find(d[:user_id]).name %></p>
+    </div>
+    <div>
+      <p><%= d[:comment] %></p>
+    </div>
+  </div>
+    <hr>
+<% end %>
+</div>
+
+

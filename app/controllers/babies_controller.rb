@@ -9,6 +9,7 @@ class BabiesController < ApplicationController
     @breastfeedings = @baby.breast_feedings
     @diapers = @baby.diapers
     @sleeps = @baby.sleeps
+    @moods = @baby.moods
 
     @feedings = []
 
@@ -20,8 +21,7 @@ class BabiesController < ApplicationController
         id: b.id,
         user_id: b.user_id
       }
-
-    @feedings << feeding
+      @feedings << feeding
     end
 
     @breastfeedings.each do |b|
@@ -45,7 +45,18 @@ class BabiesController < ApplicationController
         user_id: b.user_id
       }
 
-    @feedings << diaper
+      @feedings << diaper
+    end
+
+    @moods.each do |b|
+      mood = {
+        type: "mood",
+        category: "#{b.category}",
+        start_date: b.start_date,
+        id: b.id,
+        user_id: b.user_id
+      }
+      @feedings << mood
     end
 
     @sleeps.each do |b|
@@ -57,8 +68,7 @@ class BabiesController < ApplicationController
         user_id: b.user_id
       }
 
-    @feedings << feeding
-
+      @feedings << feeding
     end
     @feedings = @feedings.sort_by { |f| f[:start_date] }.reverse!
   end
