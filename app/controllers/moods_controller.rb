@@ -36,4 +36,10 @@ class MoodsController < ApplicationController
       redirect_to baby_moods_path(mood.baby)
     end
   end
+
+  private
+
+  def mood_params
+    params.require(:mood).permit(:category)
+  end
 end
