@@ -19,4 +19,11 @@
 
 
 
+@media (min-width: 400px) {
+  // For a screen > 400px, this CSS will be read */
+  .container {
+    width: 400px;
+    height: 667;
+  }
+}
 
