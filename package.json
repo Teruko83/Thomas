@@ -5,7 +5,7 @@
     "@rails/webpacker": "^4.2.0",
     "animate.css": "^3.7.2",
     "bootstrap": "^4.3.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "easytimer.js": "^4.0.2",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0"
